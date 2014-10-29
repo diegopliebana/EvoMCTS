@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="gvgai-framework:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/gvgai_framework_jar</output-path>
+    <root id="archive" name="gvgai-framework.jar">
+      <element id="module-output" name="java-vgdl" />
+    </root>
+  </artifact>
+</component>
