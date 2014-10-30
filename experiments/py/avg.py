@@ -30,7 +30,10 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 #filenames = ['TEVC_MCTS_100iter_K10_100r','TEVC_MCTS_500iter_K2_100r','TEVC_MCTS_1000iter_K1_100r','sampleMCTS_1000iter_100r']
 #filenames = ['sampleMCTS_100iter_100r_decay0.5','TEVC_MCTS_100iter_K1_100r_decay0.5']
 #filenames = ['sampleMCTS_1000iter_100r_decay0.5','TEVC_MCTS_100iter_K10_100r_decay0.5']
-filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99']
+#filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99']
+#filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99_H1-20','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-20']
+#filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99_H1-20(1)','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-20(1)']
+filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99_H1-50','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50']
 
 #Create a figure
 fig = pylab.figure()
@@ -77,7 +80,8 @@ for filename in filenames:
         
     #errorfill(roll_depth,averages,std_errs)
     #errorfill(roll_depth[-7:],averages[-7:],std_errs[-7:]) #for leftright
-    errorfill(roll_depth[-5:],averages[-5:],std_errs[-5:]) #for circle
+    #errorfill(roll_depth[-5:],averages[-5:],std_errs[-5:]) #for circle
+    errorfill(roll_depth[-43:],averages[-43:],std_errs[-43:]) #for circle
 
 ##Add the legend
 #plt.legend(('1+1','HT'), 

@@ -196,7 +196,7 @@ public class SingleTreeNode
         double rawDelta = value(rollerState);
 
         //Discount factor:
-        double accDiscount = Math.pow(0.99,thisDepth); //1
+        double accDiscount = Math.pow(0.50,thisDepth); //1
         double delta = rawDelta * accDiscount;
 
 

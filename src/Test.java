@@ -70,10 +70,10 @@ public class Test
         // 4. This plays a single game, in N levels, M times :
         //String level2 = gamesPath + games[gameIdx] + "_lvl" + 1 +".txt";//
 int M = 100;
-        //ArcadeMachine.runGamesN(game, level1, M, 13, controller, null, seed, filename);
-        //ArcadeMachine.runGamesN(game, level1, M, 13, sampleMCTSController, null, seed, filename);
+        //ArcadeMachine.runGamesN(game, level1, M, 50, controller, null, seed, filename);
+        ArcadeMachine.runGamesN(game, level1, M, 50, sampleMCTSController, null, seed, filename);
 
-        ArcadeMachine.runGames(game, new String[]{level1}, M, controller, null, seed);
+        //ArcadeMachine.runGames(game, new String[]{level1}, M, controller, null, seed);
         //ArcadeMachine.runGames(game, new String[]{level1}, M, sampleMCTSController, null, seed);
 
         
