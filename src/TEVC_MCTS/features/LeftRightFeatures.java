@@ -53,7 +53,7 @@ public class LeftRightFeatures extends NavFeatureSource
     {
         HashMap<String, Double> features = new HashMap<String, Double>();
         features.put("win:"+WIN, distanceToWin);
-        features.put("lose:"+LOSE, distanceToLose);
+        //features.put("lose:"+LOSE, distanceToLose);
         return features;
     }
 
@@ -111,8 +111,8 @@ public class LeftRightFeatures extends NavFeatureSource
         double left = -1;
         double right = 1;
 
-        return new double[]{left, left, right, right};
-        //return new double[]{left, right};
+        //return new double[]{left, left, right, right};
+        return new double[]{left, right};
     }
 
 
