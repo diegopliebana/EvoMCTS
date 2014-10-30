@@ -133,7 +133,6 @@ public class SingleTreeNode extends TreeNode
             //System.out.println(source.proposed[0] + " " + source.proposed[1]);
             //System.out.println(" **** ********** *** ");
 
-            iterations++;
             m_runList.clear();
             rolloutStates.clear();
             rolloutActions.clear();
@@ -156,6 +155,7 @@ public class SingleTreeNode extends TreeNode
 
             while(iterations < Config.INDIVIDUAL_ITERATIONS)
             {
+                iterations++;
                 //Perform rollout, assign fitness to weight vector and back-propagate reward.
                 double value = selected.tunedRollOut(source, roller.getFeatures());
                 averageReward.add(value);

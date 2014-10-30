@@ -19,21 +19,6 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/src/TEVC_MCTS/SingleMCTSPlayer.java" line="117" class="TEVC_MCTS.SingleMCTSPlayer" package="TEVC_MCTS">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
       <breakpoint url="file://$PROJECT_DIR$/src/controllers/sampleMCTS/SingleTreeNode.java" line="77" class="controllers.sampleMCTS.SingleTreeNode" package="controllers.sampleMCTS">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
@@ -95,10 +80,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Test.java" pinned="true" current="true" current-in-tab="true">
+      <file leaf-file-name="Test.java" pinned="true" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="35" selection-start="3425" selection-end="3425" vertical-scroll-proportion="0.37142858" vertical-offset="969" max-vertical-offset="1785">
+            <state line="73" column="28" selection-start="3455" selection-end="3455" vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="1785">
               <folding />
             </state>
           </provider>
@@ -125,7 +110,7 @@
       <file leaf-file-name="Bandit.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/vectorsource/Bandit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="0" selection-start="1553" selection-end="1553" vertical-scroll-proportion="0.0" vertical-offset="742" max-vertical-offset="1819">
+            <state line="74" column="0" selection-start="1674" selection-end="1674" vertical-scroll-proportion="0.0" vertical-offset="1138" max-vertical-offset="1819">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,16 +121,16 @@
       <file leaf-file-name="SingleTreeNode.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="161" column="13" selection-start="5574" selection-end="5574" vertical-scroll-proportion="0.0" vertical-offset="2135" max-vertical-offset="10166">
+            <state line="157" column="29" selection-start="5344" selection-end="5344" vertical-scroll-proportion="0.0" vertical-offset="2179" max-vertical-offset="10166">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArcadeMachine.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ArcadeMachine.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/ArcadeMachine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="216" column="23" selection-start="8297" selection-end="8297" vertical-scroll-proportion="0.0" vertical-offset="4001" max-vertical-offset="8517">
+            <state line="252" column="16" selection-start="9831" selection-end="9831" vertical-scroll-proportion="0.5567867" vertical-offset="3845" max-vertical-offset="8517">
               <folding />
             </state>
           </provider>
@@ -163,7 +148,7 @@
       <file leaf-file-name="Game.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/game/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="479" column="30" selection-start="13707" selection-end="13707" vertical-scroll-proportion="0.0" vertical-offset="7655" max-vertical-offset="20791">
+            <state line="474" column="0" selection-start="13578" selection-end="13578" vertical-scroll-proportion="0.0" vertical-offset="7913" max-vertical-offset="20791">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -187,7 +172,7 @@
       <file leaf-file-name="SingleMCTSPlayer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/SingleMCTSPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="0" selection-start="3661" selection-end="3661" vertical-scroll-proportion="0.0" vertical-offset="1713" max-vertical-offset="2176">
+            <state line="117" column="0" selection-start="3661" selection-end="3661" vertical-scroll-proportion="0.0" vertical-offset="1735" max-vertical-offset="2176">
               <folding />
             </state>
           </provider>
@@ -214,9 +199,9 @@
         <option value="$PROJECT_DIR$/src/controllers/sampleMCTS/Agent.java" />
         <option value="$PROJECT_DIR$/examples/gridphysics/leftright_lvl1.txt" />
         <option value="$PROJECT_DIR$/src/core/game/Game.java" />
-        <option value="$PROJECT_DIR$/src/core/ArcadeMachine.java" />
-        <option value="$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java" />
         <option value="$PROJECT_DIR$/src/Test.java" />
+        <option value="$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java" />
+        <option value="$PROJECT_DIR$/src/core/ArcadeMachine.java" />
       </list>
     </option>
   </component>
@@ -664,12 +649,12 @@
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6198126" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6171352" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.45381525" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.82463187" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14056225" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14056225" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -922,26 +907,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/SingleMCTSPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="0" selection-start="3661" selection-end="3661" vertical-scroll-proportion="0.0" vertical-offset="1606" max-vertical-offset="2176">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/competition/CompetitionParameters.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="47" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0" vertical-offset="371" max-vertical-offset="1071">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/vectorsource/Bandit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="1553" selection-end="1553" vertical-scroll-proportion="0.0" vertical-offset="742" max-vertical-offset="1819">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -982,7 +951,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/game/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="479" column="30" selection-start="13707" selection-end="13707" vertical-scroll-proportion="0.0" vertical-offset="7655" max-vertical-offset="20791">
+        <state line="474" column="0" selection-start="13578" selection-end="13578" vertical-scroll-proportion="0.0" vertical-offset="7913" max-vertical-offset="20791">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/SingleMCTSPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="0" selection-start="3661" selection-end="3661" vertical-scroll-proportion="0.0" vertical-offset="1735" max-vertical-offset="2176">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="28" selection-start="3455" selection-end="3455" vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="1785">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="157" column="29" selection-start="5344" selection-end="5344" vertical-scroll-proportion="0.0" vertical-offset="2179" max-vertical-offset="10166">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/vectorsource/Bandit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="0" selection-start="1674" selection-end="1674" vertical-scroll-proportion="0.0" vertical-offset="1138" max-vertical-offset="1819">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -991,21 +990,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/ArcadeMachine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="216" column="23" selection-start="8297" selection-end="8297" vertical-scroll-proportion="0.0" vertical-offset="3236" max-vertical-offset="8517">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="13" selection-start="5574" selection-end="5574" vertical-scroll-proportion="0.0" vertical-offset="2135" max-vertical-offset="10166">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="35" selection-start="3425" selection-end="3425" vertical-scroll-proportion="0.37142858" vertical-offset="969" max-vertical-offset="1785">
+        <state line="252" column="16" selection-start="9831" selection-end="9831" vertical-scroll-proportion="0.5567867" vertical-offset="3845" max-vertical-offset="8517">
           <folding />
         </state>
       </provider>

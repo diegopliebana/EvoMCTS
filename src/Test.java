@@ -71,8 +71,8 @@ public class Test
         //String level2 = gamesPath + games[gameIdx] + "_lvl" + 1 +".txt";//
 int M = 100;
         boolean isFixedTest = false;
-        //ArcadeMachine.runGamesN(game, level1, M, 15, controller, isFixedTest, seed, filename);
-        ArcadeMachine.runGamesN(game, level1, M, 15, sampleMCTSController, isFixedTest, seed, filename);
+        ArcadeMachine.runGamesN(game, level1, M, 15, controller, isFixedTest, seed, filename);
+        //ArcadeMachine.runGamesN(game, level1, M, 15, sampleMCTSController, isFixedTest, seed, filename);
 
 
         //ArcadeMachine.runGames(game, new String[]{level1}, M, controller, null, seed);
