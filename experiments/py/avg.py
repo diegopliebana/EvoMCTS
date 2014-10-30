@@ -30,7 +30,11 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 #filenames = ['TEVC_MCTS_100iter_K10_100r','TEVC_MCTS_500iter_K2_100r','TEVC_MCTS_1000iter_K1_100r','sampleMCTS_1000iter_100r']
 #filenames = ['sampleMCTS_100iter_100r_decay0.5','TEVC_MCTS_100iter_K1_100r_decay0.5']
 #filenames = ['sampleMCTS_1000iter_100r_decay0.5','TEVC_MCTS_100iter_K10_100r_decay0.5']
+<<<<<<< HEAD
 filenames = ['FEMCTS-Bandit-random-k10', 'sampleMCTS_1000iter_100r']
+=======
+filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99']
+>>>>>>> 6488ab6288e39fa0e95a79a0a0139bf1c24c935e
 
 #Create a figure
 fig = pylab.figure()
@@ -78,6 +82,7 @@ for filename in filenames:
     #errorfill(roll_depth,averages,std_errs)
     errorfill(roll_depth[-7:],averages[-7:],std_errs[-7:]) #for leftright
     #errorfill(roll_depth[-5:],averages[-5:],std_errs[-5:]) #for circle
+
 
 ##Add the legend
 #plt.legend(('1+1','HT'), 
