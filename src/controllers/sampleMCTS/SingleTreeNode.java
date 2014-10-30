@@ -1,6 +1,7 @@
 package controllers.sampleMCTS;
 
 import FastEvoMCTS.TranspositionTable;
+import TEVC_MCTS.Config;
 import core.game.StateObservation;
 import ontology.Types;
 import tools.ElapsedCpuTimer;
@@ -23,6 +24,9 @@ public class SingleTreeNode
     public int m_depth;
     protected static double[] lastBounds = new double[]{0,1};
     protected static double[] curBounds = new double[]{0,1};
+
+    private static int m_num_victories;
+    public static double percVictoriesFound;
 
     public SingleTreeNode(Random rnd) {
         this(null, null, rnd);
@@ -53,6 +57,9 @@ public class SingleTreeNode
         long remaining = elapsedTimer.remainingTimeMillis();
         int numIters = 0;
 
+        m_num_victories = 0;
+        percVictoriesFound = 0;
+
         int remainingLimit = 5;
         ///while(remaining > 2*avgTimeTaken && remaining > remainingLimit){
         while(numIters < 100){
@@ -67,6 +74,9 @@ public class SingleTreeNode
             avgTimeTaken  = acumTimeTaken/numIters;
             remaining = elapsedTimer.remainingTimeMillis();
         }
+
+        percVictoriesFound = (double) m_num_victories / numIters;
+
         //System.out.println("-- " + numIters + " -- ( " + avgTimeTaken + ")");
 
         //System.out.println(this.state.getGameTick() + "," + numIters);
@@ -190,6 +200,13 @@ public class SingleTreeNode
             rollerState.advance(Agent.actions[action]);
             thisDepth++;
         }
+
+
+        if(rollerState.isGameOver() && rollerState.getGameWinner() == Types.WINNER.PLAYER_WINS)
+        {
+            m_num_victories++;
+        }
+
 
         //double delta = value(rollerState);
 

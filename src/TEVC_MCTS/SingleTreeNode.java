@@ -59,6 +59,8 @@ public class SingleTreeNode extends TreeNode
     private static StatSummary weightVectorFitness;
     private static double[] all_fitness;
     private static int cur_fit_it;
+    private static int m_num_victories;
+    public static double percVictoriesFound;
 
 
     public SingleTreeNode(Random rnd, TunableRoller roller, Memory memory) {
@@ -99,6 +101,8 @@ public class SingleTreeNode extends TreeNode
             memory.forget(state.getGameTick());
 
         //System.out.println("###############");
+        m_num_victories = 0;
+        percVictoriesFound = 0;
 
         int remainingLimit = 5;
         //while(remaining > 2*avgTimeTaken && remaining > remainingLimit)
@@ -181,6 +185,10 @@ public class SingleTreeNode extends TreeNode
             avgTimeTaken  = acumTimeTaken/numIndividuals;
 
         }
+
+        int totRollouts = numIndividuals * Config.INDIVIDUAL_ITERATIONS;
+        percVictoriesFound = (double) m_num_victories / totRollouts;
+        //System.out.println("Perc. victories: " + percVictoriesFound);
     }
 
     public SingleTreeNode treePolicy() {
@@ -337,6 +345,11 @@ public class SingleTreeNode extends TreeNode
             }
 
             thisDepth++;
+        }
+
+        if(rollerState.isGameOver() && rollerState.getGameWinner() == Types.WINNER.PLAYER_WINS)
+        {
+            m_num_victories++;
         }
 
         //System.out.print(",");

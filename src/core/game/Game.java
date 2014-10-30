@@ -460,10 +460,16 @@ public abstract class Game
      * @param randomSeed sampleRandom seed for the whole game.
      * @return the score of the game played.
      */
-    public double runGame(AbstractPlayer player, int randomSeed)
+    public double runGame(AbstractPlayer player, int randomSeed, boolean isFixed)
     {
         //Prepare some structures and references for this game.
         prepareGame(player, randomSeed);
+
+        if(isFixed)
+        {
+            this.gameCycle();
+            return handleResult();
+        }
 
         //Play until the game is ended
         while(!isEnded)
@@ -614,7 +620,7 @@ public abstract class Game
     {
         //System.out.println("Result (1->win; 0->lose):"+ winner.key() + ", Score:" + score + ", timesteps:" + this.getGameTick());
         //System.out.println(winner.key() + "," + this.getGameTick());
-        System.out.println(this.getGameTick());
+        //System.out.println(this.getGameTick());
     }
 
     /**

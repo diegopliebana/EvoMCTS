@@ -71,7 +71,7 @@ public class ArcadeMachine
         if(visuals)
             score = toPlay.playGame(player, randomSeed);
         else
-            score = toPlay.runGame(player, randomSeed);
+            score = toPlay.runGame(player, randomSeed, false);
 
         //Finally, when the game is over, we need to tear the player down.
         ArcadeMachine.tearPlayerDown(player);
@@ -138,7 +138,7 @@ public class ArcadeMachine
         if(visuals)
             score = toPlay.playGame(player, seed);
         else
-            score = toPlay.runGame(player, seed);
+            score = toPlay.runGame(player, seed, false);
 
         //Finally, when the game is over, we need to tear the player down. Actually in this case this might never do anything.
         ArcadeMachine.tearPlayerDown(player);
@@ -194,7 +194,7 @@ public class ArcadeMachine
                 ArcadeMachine.warmUp(toPlay, CompetitionParameters.WARMUP_TIME);
 
                 //Then, play the game.
-                double score = toPlay.runGame(player, randomSeed);
+                double score = toPlay.runGame(player, randomSeed, false);
                 scores.add(score);
 
                 //Finally, when the game is over, we need to tear the player down.
@@ -215,7 +215,7 @@ public class ArcadeMachine
 
 
     public static void runGamesN(String game_file, String level_file, int level_times, int num_rollLength_values,
-                                String agentName, String[] actionFiles, int randomSeed, String filename)
+                                String agentName, boolean isFixed, int randomSeed, String filename)
     {
         VGDLFactory.GetInstance().init(); //This always first thing to do.
         VGDLRegistry.GetInstance().init();
@@ -224,7 +224,7 @@ public class ArcadeMachine
 
         Game toPlay = new VGDLParser().parseGame(game_file);
 
-        int all_results[][] = new int[num_rollLength_values][level_times];
+        double all_results[][] = new double[num_rollLength_values][level_times];
 
         for(int k = 0; k < num_rollLength_values; ++k)
         {
@@ -250,10 +250,24 @@ public class ArcadeMachine
                 ArcadeMachine.warmUp(toPlay, CompetitionParameters.WARMUP_TIME);
 
                 //Then, play the game.
-                double score = toPlay.runGame(player, randomSeed);
+                double score = toPlay.runGame(player, randomSeed, isFixed);
                 scores.add(score);
 
-                all_results[k][i] = toPlay.getGameTick();
+                if(!isFixed)
+                {
+                    all_results[k][i] = toPlay.getGameTick();
+                }else{
+                    if(player instanceof controllers.sampleMCTS.Agent)
+                    {
+                        all_results[k][i] = controllers.sampleMCTS.SingleTreeNode.percVictoriesFound;
+                    }else if(player instanceof TEVC_MCTS.Agent)
+                    {
+                        all_results[k][i] = TEVC_MCTS.SingleTreeNode.percVictoriesFound;
+                    }
+                }
+
+
+                System.out.println(all_results[k][i]);
 
                 //Finally, when the game is over, we need to tear the player down.
                 ArcadeMachine.tearPlayerDown(player);
@@ -271,8 +285,10 @@ public class ArcadeMachine
             {
                 for(int k = 0; k < num_rollLength_values; ++k)
                 {
-                    ps.print(all_results[k][i]);
-                    System.out.print(all_results[k][i]);
+                    double toPrint = all_results[k][i];
+
+                    ps.print(toPrint);
+                    System.out.print(toPrint);
 
                     if(k<num_rollLength_values-1)
                     {

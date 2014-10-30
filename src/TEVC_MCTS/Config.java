@@ -20,7 +20,7 @@ public class Config {
     public static int SCORE_TYPE = RAW_SCORE;
 
     //MCTS stuff
-    public static int INDIVIDUAL_ITERATIONS = 10;
+    public static int INDIVIDUAL_ITERATIONS = 1;
     public static int ROLLOUT_DEPTH = 10;
     public static double K = Math.sqrt(2);
 
