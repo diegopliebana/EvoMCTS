@@ -31,12 +31,12 @@ public class ES extends FitVectorSource
     Memory memory;
 
     public ES(String[] features, int order,
-              int nActions, Memory memory, Random rnd) {
-        this.memory = memory;
-        this.nFeatures = 0;
-        this.nActions = nActions;
-        this.order = order;
-        this.rand = rnd;
+        int nActions, Memory memory, Random rnd) {
+            this.memory = memory;
+            this.nFeatures = 0;
+            this.nActions = nActions;
+            this.order = order;
+            this.rand = rnd;
         namesGenomeMapping = new HashMap<String, Integer>();
         bestScore = Double.NEGATIVE_INFINITY * order;
         lastInit = -1;

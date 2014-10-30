@@ -3,10 +3,7 @@ package TEVC_MCTS;
 import TEVC_MCTS.features.NavFeatureSource;
 import TEVC_MCTS.roller.TunableRoller;
 import TEVC_MCTS.utils.Memory;
-import TEVC_MCTS.vectorsource.ES;
-import TEVC_MCTS.vectorsource.FitVectorSource;
-import TEVC_MCTS.vectorsource.RandomFitVector;
-import TEVC_MCTS.vectorsource.VariableRandomMutHillClimber;
+import TEVC_MCTS.vectorsource.*;
 import core.game.StateObservation;
 import tools.ElapsedCpuTimer;
 import tools.Vector2d;
@@ -104,6 +101,8 @@ public class SingleMCTSPlayer
             source = new VariableRandomMutHillClimber(featureNames, order, nActions, memory, m_rnd);
         if(Config.ES_TYPE == Config.MU_PLUS_ONE)
             source = new ES(featureNames, order, nActions, memory, m_rnd);
+        if(Config.ES_TYPE == Config.BANDIT)
+            source = new Bandit(featureNames, order, nActions, memory, m_rnd);
 
 
     }

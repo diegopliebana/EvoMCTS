@@ -27,9 +27,10 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 #filenames = ['SampleMCTS', 'SampleMCTS-NODF']
 #filenames = ['FEMCTS-HT', 'FEMCTS-HT-NODF']
 
-filenames = ['TEVC_MCTS_100iter_K10_100r','TEVC_MCTS_500iter_K2_100r','TEVC_MCTS_1000iter_K1_100r','sampleMCTS_1000iter_100r']
+#filenames = ['TEVC_MCTS_100iter_K10_100r','TEVC_MCTS_500iter_K2_100r','TEVC_MCTS_1000iter_K1_100r','sampleMCTS_1000iter_100r']
 #filenames = ['sampleMCTS_100iter_100r_decay0.5','TEVC_MCTS_100iter_K1_100r_decay0.5']
 #filenames = ['sampleMCTS_1000iter_100r_decay0.5','TEVC_MCTS_100iter_K10_100r_decay0.5']
+filenames = ['FEMCTS-Bandit-random-k10', 'sampleMCTS_1000iter_100r']
 
 #Create a figure
 fig = pylab.figure()
@@ -39,9 +40,9 @@ ax = fig.add_subplot(111)
 
 for filename in filenames:
 
-    datafile = '../circle/' + filename + '.csv'
-    #datafile = '../leftright/FEMCTS-11.csv'
-    datafile = '../tomConsoleRuns/' + filename + '.txt'
+    #datafile = '../circle/' + filename + '.csv'
+    datafile = '../leftright/' + filename + '.csv'
+    #datafile = '../tomConsoleRuns/' + filename + '.txt'
 
     print 'loading', datafile
     r = pylab.loadtxt(datafile, comments='#', delimiter=',')
@@ -74,8 +75,8 @@ for filename in filenames:
 #errorbar(roll_depth,averages,std_errs, linestyle='None')
 
         
-    errorfill(roll_depth,averages,std_errs)
-    #errorfill(roll_depth[-7:],averages[-7:],std_errs[-7:]) #for leftright
+    #errorfill(roll_depth,averages,std_errs)
+    errorfill(roll_depth[-7:],averages[-7:],std_errs[-7:]) #for leftright
     #errorfill(roll_depth[-5:],averages[-5:],std_errs[-5:]) #for circle
 
 ##Add the legend
@@ -94,7 +95,7 @@ plt.ylabel("Average time steps", fontsize=16)
 
 
 #Save to file.
-fig.savefig("../circle/All.pdf")
+fig.savefig("../leftright/BanditVSSample_tail.pdf")
 
 # And show it:
 plt.show()
