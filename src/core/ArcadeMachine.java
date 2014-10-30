@@ -250,7 +250,9 @@ public class ArcadeMachine
                 ArcadeMachine.warmUp(toPlay, CompetitionParameters.WARMUP_TIME);
 
                 //Then, play the game.
+                System.out.format("RL: %2d/%2d   LT: %3d/%3d   stepsWin: ", k, num_rollLength_values, i, level_times);
                 double score = toPlay.runGame(player, randomSeed, isFixed);
+
                 scores.add(score);
 
                 if(!isFixed)

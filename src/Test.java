@@ -74,6 +74,7 @@ int M = 100;
         //ArcadeMachine.runGamesN(game, level1, M, 15, controller, isFixedTest, seed, filename);
         ArcadeMachine.runGamesN(game, level1, M, 15, sampleMCTSController, isFixedTest, seed, filename);
 
+
         //ArcadeMachine.runGames(game, new String[]{level1}, M, controller, null, seed);
         //ArcadeMachine.runGames(game, new String[]{level1}, M, sampleMCTSController, null, seed);
 
