@@ -47,7 +47,6 @@ public class Test
         int seed = new Random().nextInt();
         System.out.println("Seed = " + seed);
         String wkDir = System.getProperty("user.dir");
-        String filename = wkDir.substring(wkDir.lastIndexOf("\\")+1)  + ".txt";
 		
         //Game and level to play
 
@@ -70,7 +69,8 @@ public class Test
         // 4. This plays a single game, in N levels, M times :
         //String level2 = gamesPath + games[gameIdx] + "_lvl" + 1 +".txt";//
 int M = 100;
-        boolean isFixedTest = false;
+        boolean isFixedTest = true;
+        String filename = wkDir.substring(wkDir.lastIndexOf("\\")+1)  + 10 + ".txt";
         ArcadeMachine.runGamesN(game, level1, M, 15, controller, isFixedTest, seed, filename);
         //ArcadeMachine.runGamesN(game, level1, M, 15, sampleMCTSController, isFixedTest, seed, filename);
 
