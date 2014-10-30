@@ -133,46 +133,38 @@ public class SingleTreeNode extends TreeNode
             //System.out.println(source.proposed[0] + " " + source.proposed[1]);
             //System.out.println(" **** ********** *** ");
 
+            iterations++;
+            m_runList.clear();
+            rolloutStates.clear();
+            rolloutActions.clear();
+            m_runList.add(this); //root always in.
+            firstAction = -1;
+
+            //initial score at the beginning of the playout.
+            rawScoreBeginPlayout = state.getGameScore();
+
+            //Tree policy.
+            SingleTreeNode selected = treePolicy();
+
+            //Get the knowledge gain value at the end of the tree policy
+            memScoreBeginRollout = knowledgeValue(selected.nodeFeatures);
+
+            //Score at the beginning of the rollout.
+            rawScoreBeginRollout = selected.state.getGameScore();
+
+            StatSummary averageReward = new StatSummary();
+
             while(iterations < Config.INDIVIDUAL_ITERATIONS)
             {
-                iterations++;
-                m_runList.clear();
-                rolloutStates.clear();
-                rolloutActions.clear();
-                m_runList.add(this); //root always in.
-                firstAction = -1;
-
-                //initial score at the beginning of the playout.
-                rawScoreBeginPlayout = state.getGameScore();
-
-                //Tree policy.
-                SingleTreeNode selected = treePolicy();
-
-                //Get the knowledge gain value at the end of the tree policy
-                memScoreBeginRollout = knowledgeValue(selected.nodeFeatures);
-
-                //Score at the beginning of the rollout.
-                rawScoreBeginRollout = selected.state.getGameScore();
-
                 //Perform rollout, assign fitness to weight vector and back-propagate reward.
                 double value = selected.tunedRollOut(source, roller.getFeatures());
-
-                backUp(selected, value);
+                averageReward.add(value);
             }
 
-            //System.out.println();
+            backUp(selected, averageReward.mean());
 
             double averageFitness = weightVectorFitness.mean();
             source.returnFitness(rolloutStates, rolloutActions, averageFitness);
-
-           /* if(averageFitness != 0)
-            {
-                System.out.println(source.proposed[0] + " " + source.proposed[1]);
-                for(int i = 0; i < all_fitness.length; ++i)
-                    System.out.print(all_fitness[i] + " ");
-                System.out.println(" => " + averageFitness);
-                int a = 0;
-            }*/
 
             //We might have found new features during the rollouts, update vector sizes.
             if(roller.newFeaturesFound())

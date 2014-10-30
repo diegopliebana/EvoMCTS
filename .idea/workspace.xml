@@ -98,7 +98,7 @@
       <file leaf-file-name="Test.java" pinned="true" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="13" selection-start="4527" selection-end="4527" vertical-scroll-proportion="1.232967" vertical-offset="1020" max-vertical-offset="1785">
+            <state line="72" column="35" selection-start="3425" selection-end="3425" vertical-scroll-proportion="0.37142858" vertical-offset="969" max-vertical-offset="1785">
               <folding />
             </state>
           </provider>
@@ -136,7 +136,7 @@
       <file leaf-file-name="SingleTreeNode.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="419" column="5" selection-start="14796" selection-end="14796" vertical-scroll-proportion="0.0" vertical-offset="5344" max-vertical-offset="10302">
+            <state line="161" column="13" selection-start="5574" selection-end="5574" vertical-scroll-proportion="0.0" vertical-offset="2135" max-vertical-offset="10166">
               <folding />
             </state>
           </provider>
@@ -145,7 +145,7 @@
       <file leaf-file-name="ArcadeMachine.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/ArcadeMachine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="251" column="38" selection-start="9814" selection-end="9814" vertical-scroll-proportion="0.0" vertical-offset="3878" max-vertical-offset="8517">
+            <state line="216" column="23" selection-start="8297" selection-end="8297" vertical-scroll-proportion="0.0" vertical-offset="4001" max-vertical-offset="8517">
               <folding />
             </state>
           </provider>
@@ -209,13 +209,13 @@
         <option value="$PROJECT_DIR$/src/TEVC_MCTS/features/LeftRightFeatures.java" />
         <option value="$PROJECT_DIR$/src/TEVC_MCTS/vectorsource/Bandit.java" />
         <option value="$PROJECT_DIR$/src/core/competition/CompetitionParameters.java" />
-        <option value="$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java" />
         <option value="$PROJECT_DIR$/src/TEVC_MCTS/Config.java" />
         <option value="$PROJECT_DIR$/src/controllers/sampleMCTS/SingleTreeNode.java" />
         <option value="$PROJECT_DIR$/src/controllers/sampleMCTS/Agent.java" />
         <option value="$PROJECT_DIR$/examples/gridphysics/leftright_lvl1.txt" />
         <option value="$PROJECT_DIR$/src/core/game/Game.java" />
         <option value="$PROJECT_DIR$/src/core/ArcadeMachine.java" />
+        <option value="$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java" />
         <option value="$PROJECT_DIR$/src/Test.java" />
       </list>
     </option>
@@ -669,7 +669,7 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32797858" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14056225" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -980,13 +980,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="419" column="5" selection-start="14796" selection-end="14796" vertical-scroll-proportion="0.0" vertical-offset="5344" max-vertical-offset="10302">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/game/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="479" column="30" selection-start="13707" selection-end="13707" vertical-scroll-proportion="0.0" vertical-offset="7655" max-vertical-offset="20791">
@@ -998,14 +991,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/ArcadeMachine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="251" column="38" selection-start="9814" selection-end="9814" vertical-scroll-proportion="0.0" vertical-offset="3878" max-vertical-offset="8517">
+        <state line="216" column="23" selection-start="8297" selection-end="8297" vertical-scroll-proportion="0.0" vertical-offset="3236" max-vertical-offset="8517">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="13" selection-start="5574" selection-end="5574" vertical-scroll-proportion="0.0" vertical-offset="2135" max-vertical-offset="10166">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="13" selection-start="4527" selection-end="4527" vertical-scroll-proportion="1.232967" vertical-offset="1020" max-vertical-offset="1785">
+        <state line="72" column="35" selection-start="3425" selection-end="3425" vertical-scroll-proportion="0.37142858" vertical-offset="969" max-vertical-offset="1785">
           <folding />
         </state>
       </provider>

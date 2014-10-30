@@ -70,7 +70,7 @@ public class Test
         // 4. This plays a single game, in N levels, M times :
         //String level2 = gamesPath + games[gameIdx] + "_lvl" + 1 +".txt";//
 int M = 100;
-        boolean isFixedTest = true;
+        boolean isFixedTest = false;
         //ArcadeMachine.runGamesN(game, level1, M, 15, controller, isFixedTest, seed, filename);
         ArcadeMachine.runGamesN(game, level1, M, 15, sampleMCTSController, isFixedTest, seed, filename);
 
