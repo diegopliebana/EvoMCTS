@@ -62,7 +62,7 @@ public class SingleTreeNode
 
         int remainingLimit = 5;
         ///while(remaining > 2*avgTimeTaken && remaining > remainingLimit){
-        while(numIters < 100){
+        while(numIters < Agent.MCTS_ITERATIONS){
             ElapsedCpuTimer elapsedTimerIteration = new ElapsedCpuTimer();
             SingleTreeNode selected = treePolicy();
             double delta = selected.rollOut();
@@ -213,7 +213,7 @@ public class SingleTreeNode
         double rawDelta = value(rollerState);
 
         //Discount factor:
-        double accDiscount = Math.pow(0.50,thisDepth); //1
+        double accDiscount = Math.pow(Agent.REWARD_DISCOUNT,thisDepth); //1
         double delta = rawDelta * accDiscount;
 
 

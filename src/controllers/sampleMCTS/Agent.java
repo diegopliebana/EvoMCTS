@@ -19,8 +19,10 @@ import java.util.Random;
 public class Agent extends AbstractPlayer {
 
     public static int NUM_ACTIONS;
+    public static int MCTS_ITERATIONS = 100;
     public static int ROLLOUT_DEPTH = 10;
     public static double K = Math.sqrt(2);
+    public static double REWARD_DISCOUNT = 0.99;
     public static Types.ACTIONS[] actions;
 
     /**

@@ -106,7 +106,7 @@ public class SingleTreeNode extends TreeNode
 
         int remainingLimit = 5;
         //while(remaining > 2*avgTimeTaken && remaining > remainingLimit)
-        while(numIndividuals < 100)
+        while(numIndividuals < Config.MCTS_ITERATIONS)
         {
             weightVectorFitness = new StatSummary();
             all_fitness = new double[Config.INDIVIDUAL_ITERATIONS];
@@ -352,11 +352,13 @@ public class SingleTreeNode extends TreeNode
         double percVectorUse = 1.0;
         //double percVectorUse = (double)rolloutMoves / Config.ROLLOUT_DEPTH;
         //double percVectorUse = Config.ROLLOUT_DEPTH /  ((double)rolloutMoves + 0.001); //this is the newInverseFitness
+        if( rolloutMoves == 0 )     //ignore control vectors that have not been used (where rollout duration equals 0)
+            percVectorUse = 0.0;
 
         double rawDelta = value(rollerState, fSource);
 
         //Discount factor:
-        double accDiscount = Math.pow(0.99,thisDepth);
+        double accDiscount = Math.pow(Config.REWARD_DISCOUNT, thisDepth);
         double delta = rawDelta * accDiscount;
 
         if(rawDelta == HUGE_POSITIVE || rawDelta == HUGE_NEGATIVE)

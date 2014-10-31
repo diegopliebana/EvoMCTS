@@ -20,7 +20,9 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
     print ymax
     ax.fill_between(x, ymax, ymin, color=color, alpha=alpha_fill)
     
-#Take the data
+###-- Take the data --###
+
+###-- leftRight
 #datafile = 'inout/sampleH3.csv'
 
 #filenames = ['SampleMCTS', 'FEMCTS-HT', 'FEMCTS-RND', 'FEMCTS-11', 'FEMCTS-U1']
@@ -30,10 +32,9 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 #filenames = ['TEVC_MCTS_100iter_K10_100r','TEVC_MCTS_500iter_K2_100r','TEVC_MCTS_1000iter_K1_100r','sampleMCTS_1000iter_100r']
 #filenames = ['sampleMCTS_100iter_100r_decay0.5','TEVC_MCTS_100iter_K1_100r_decay0.5']
 #filenames = ['sampleMCTS_1000iter_100r_decay0.5','TEVC_MCTS_100iter_K10_100r_decay0.5']
-filenames = ['FEMCTS-Bandit-random-k1_2feat', 'FEMCTS-Bandit-random-k1_1feat', 'sampleMCTS']
+#filenames = ['FEMCTS-Bandit-random-k1_2feat', 'FEMCTS-Bandit-random-k1_1feat', 'sampleMCTS']
 
-
-filenames = ['FEMCTS_BanditK10_1feat_Proper', 'sampleMCTS_1000iter_100r']
+#filenames = ['FEMCTS_BanditK10_1feat_Proper', 'sampleMCTS_1000iter_100r']
 
 #filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99']
 #filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99_H1-20','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-20']
@@ -45,7 +46,14 @@ filenames = ['FEMCTS_BanditK10_1feat_Proper', 'sampleMCTS_1000iter_100r']
 ##2014.10.30 modified fitness function with rollout duration ratio to horizon length
 #filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_30_sampleMCTS_100iter_decay0.99_H1-50_r1000','2014_10_30_newInverseFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50']
 #2014.10.30 decay 0.5 instead of 0.99
-#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_30_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_30_sampleMCTS_100iter_decay0.50_H1-50']
+#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_30_sampleMCTS_100iter_decay0.50_H1-50_r1000'];
+#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_30_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50_r400']
+#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_30_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50_r400','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_30_sampleMCTS_100iter_decay0.50_H1-50_r1000']
+
+###-- circle
+
+filenames = ['2014_10_31_r10_sampleMCTS_decay0.99']
+
 
 
 #Create a figure
@@ -56,8 +64,8 @@ ax = fig.add_subplot(111)
 
 for filename in filenames:
 
-    #datafile = '../circle/' + filename + '.csv'
-    datafile = '../leftright/' + filename + '.csv'
+    datafile = '../circle/' + filename + '.csv'
+    #datafile = '../leftright/' + filename + '.csv'
     #datafile = '../tomConsoleRuns/' + filename + '.txt'
 
     print 'loading', datafile
@@ -91,12 +99,12 @@ for filename in filenames:
 #errorbar(roll_depth,averages,std_errs, linestyle='None')
 
         
-    errorfill(roll_depth,averages,std_errs)
+    #errorfill(roll_depth,averages,std_errs)
     #errorfill(roll_depth[-7:],averages[-7:],std_errs[-7:]) #for leftright
     #errorfill(roll_depth[-5:],averages[-5:],std_errs[-5:]) #for circle
     #errorfill(roll_depth[-7:],averages[-7:],std_errs[-7:]) #for leftright
     #errorfill(roll_depth[-5:],averages[-5:],std_errs[-5:]) #for circle
-    #errorfill(roll_depth[-43:],averages[-43:],std_errs[-43:]) #for circle
+    errorfill(roll_depth[7:],averages[7:],std_errs[7:]) #for circle
 
 
 ##Add the legend
