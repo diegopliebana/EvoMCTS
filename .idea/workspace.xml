@@ -89,10 +89,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LeftRightFeatures.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/features/LeftRightFeatures.java">
+      <file leaf-file-name="circle_lvl1.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/examples/gridphysics/circle_lvl1.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="5" selection-start="3482" selection-end="3482" vertical-scroll-proportion="0.25" vertical-offset="1659" max-vertical-offset="2550">
+            <state line="1" column="17" selection-start="37" selection-end="37" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
               <folding />
             </state>
           </provider>
@@ -131,6 +131,15 @@
         <entry file="file://$PROJECT_DIR$/src/core/competition/CompetitionParameters.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="29" column="47" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0" vertical-offset="371" max-vertical-offset="1071">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Config.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/Config.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="0" selection-start="647" selection-end="647" vertical-scroll-proportion="0.12116317" vertical-offset="265" max-vertical-offset="884">
               <folding />
             </state>
           </provider>
@@ -193,6 +202,7 @@
         <option value="$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java" />
         <option value="$PROJECT_DIR$/examples/gridphysics/leftright_lvl1.txt" />
         <option value="$PROJECT_DIR$/src/Test.java" />
+        <option value="$PROJECT_DIR$/examples/gridphysics/circle_lvl1.txt" />
       </list>
     </option>
   </component>
@@ -762,7 +772,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/gridphysics/circle_lvl0.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/examples/gridphysics/circle.txt">
@@ -887,13 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="647" selection-end="647" vertical-scroll-proportion="-0.2159383" vertical-offset="424" max-vertical-offset="884">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/examples/gridphysics/leftright_lvl1.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="21" selection-start="45" selection-end="45" vertical-scroll-proportion="0.05279503" vertical-offset="0" max-vertical-offset="322">
@@ -942,13 +947,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="56" selection-start="4109" selection-end="4109" vertical-scroll-proportion="0.6751055" vertical-offset="1516" max-vertical-offset="10166">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/sampleMCTS/SingleTreeNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="64" column="30" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.3613963" vertical-offset="793" max-vertical-offset="5695">
@@ -979,9 +977,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/examples/gridphysics/circle_lvl1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="17" selection-start="37" selection-end="37" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/features/LeftRightFeatures.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="5" selection-start="3482" selection-end="3482" vertical-scroll-proportion="0.25" vertical-offset="1659" max-vertical-offset="2550">
+        <state line="115" column="5" selection-start="3482" selection-end="3482" vertical-scroll-proportion="0.2584814" vertical-offset="1659" max-vertical-offset="2550">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/SingleTreeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="56" selection-start="4109" selection-end="4109" vertical-scroll-proportion="0.0" vertical-offset="1426" max-vertical-offset="10183">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="647" selection-end="647" vertical-scroll-proportion="0.12116317" vertical-offset="265" max-vertical-offset="884">
           <folding />
         </state>
       </provider>
