@@ -44,15 +44,20 @@ public class Bandit extends FitVectorSource{
         n = new int[popSize];
         pop = new double[popSize][bestYet.length];
 
+        for (int i=0; i< pop.length; i++)
+        {
+            for (int j=0; j<bestYet.length; j++)
+                pop[i][j] = nextRandom();
+        }
 
-        for (int i=0; i< pop.length-1; i++)
+       /* for (int i=0; i< pop.length-1; i++)
         {
             for (int j=0; j<bestYet.length; j++)
                 pop[i][j] = nextRandom();
         }
 
         pop[pop.length-1][0] = -1;
-        pop[pop.length-1][1] = 1;
+        pop[pop.length-1][1] = 1;*/
 
 
         for (int i=0; i<  bestYet.length; i++)
