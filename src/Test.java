@@ -47,6 +47,7 @@ public class Test
         int seed = new Random().nextInt();
         System.out.println("Seed = " + seed);
         String wkDir = System.getProperty("user.dir");
+        String filename = wkDir.substring(wkDir.lastIndexOf("\\")+1) + ".txt";
 		
         //Game and level to play
 
@@ -68,10 +69,28 @@ public class Test
 
         // 4. This plays a single game, in N levels, M times :
         //String level2 = gamesPath + games[gameIdx] + "_lvl" + 1 +".txt";//
-int M = 100;
+
+        int M = 100;
         boolean isFixedTest = true;
-        String filename = wkDir.substring(wkDir.lastIndexOf("\\")+1)  + 10 + ".txt";
+
+
+        filename = wkDir.substring(wkDir.lastIndexOf("\\")+1)  + "FE1.txt";
+        level1 = gamesPath + games[gameIdx] + "_lvl1.txt";
+        System.out.println("filename: " + filename + ", levelFile: " + level1);
         ArcadeMachine.runGamesN(game, level1, M, 15, controller, isFixedTest, seed, filename);
+
+        for(int i = 10; i > 0; --i)
+        {
+            filename = wkDir.substring(wkDir.lastIndexOf("\\")+1)  + i + ".txt";
+            level1 = gamesPath + games[gameIdx] + "_lvl" + i +".txt";
+            System.out.println("filename: " + filename + ", levelFile: " + level1);
+            //ArcadeMachine.runGamesN(game, level1, M, 15, controller, isFixedTest, seed, filename);
+            ArcadeMachine.runGamesN(game, level1, M, 15, sampleMCTSController, isFixedTest, seed, filename);
+        }
+
+        //M = 100;
+        //isFixedTest = false;
+        //ArcadeMachine.runGamesN(game, level1, M, 15, controller, isFixedTest, seed, filename);
         //ArcadeMachine.runGamesN(game, level1, M, 15, sampleMCTSController, isFixedTest, seed, filename);
 
 
