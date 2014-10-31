@@ -80,19 +80,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Test.java" pinned="true" current="true" current-in-tab="true">
+      <file leaf-file-name="Test.java" pinned="true" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="34" selection-start="4413" selection-end="4413" vertical-scroll-proportion="0.753125" vertical-offset="1065" max-vertical-offset="1887">
+            <state line="80" column="60" selection-start="3696" selection-end="3696" vertical-scroll-proportion="0.0" vertical-offset="1065" max-vertical-offset="1887">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LeftRightFeatures.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LeftRightFeatures.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/features/LeftRightFeatures.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="5" selection-start="3482" selection-end="3482" vertical-scroll-proportion="0.0" vertical-offset="1557" max-vertical-offset="2550">
+            <state line="115" column="5" selection-start="3482" selection-end="3482" vertical-scroll-proportion="0.25" vertical-offset="1659" max-vertical-offset="2550">
               <folding />
             </state>
           </provider>
@@ -110,7 +110,7 @@
       <file leaf-file-name="Bandit.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/vectorsource/Bandit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="38" selection-start="1552" selection-end="1552" vertical-scroll-proportion="0.0" vertical-offset="832" max-vertical-offset="1819">
+            <state line="63" column="38" selection-start="1552" selection-end="1552" vertical-scroll-proportion="0.0" vertical-offset="1036" max-vertical-offset="1819">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -901,13 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/features/LeftRightFeatures.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="5" selection-start="3482" selection-end="3482" vertical-scroll-proportion="0.0" vertical-offset="1455" max-vertical-offset="2550">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/sampleMCTS/Agent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="40" selection-start="529" selection-end="531" vertical-scroll-proportion="0.0" vertical-offset="24" max-vertical-offset="1343">
@@ -956,15 +949,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/vectorsource/Bandit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="38" selection-start="1552" selection-end="1552" vertical-scroll-proportion="0.0" vertical-offset="781" max-vertical-offset="1819">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/sampleMCTS/SingleTreeNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="64" column="30" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.3613963" vertical-offset="793" max-vertical-offset="5695">
@@ -981,7 +965,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="34" selection-start="4413" selection-end="4413" vertical-scroll-proportion="0.753125" vertical-offset="1065" max-vertical-offset="1887">
+        <state line="80" column="60" selection-start="3696" selection-end="3696" vertical-scroll-proportion="0.0" vertical-offset="1065" max-vertical-offset="1887">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/vectorsource/Bandit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="38" selection-start="1552" selection-end="1552" vertical-scroll-proportion="0.0" vertical-offset="781" max-vertical-offset="1819">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TEVC_MCTS/features/LeftRightFeatures.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="5" selection-start="3482" selection-end="3482" vertical-scroll-proportion="0.25" vertical-offset="1659" max-vertical-offset="2550">
           <folding />
         </state>
       </provider>
