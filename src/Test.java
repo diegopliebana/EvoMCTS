@@ -73,7 +73,7 @@ public class Test
         int M = 100;
         boolean isFixedTest = false;
         ArcadeMachine.runGamesN(game, level1, M, 15, controller, isFixedTest, seed, filename);
-        
+
         /*int M = 100;
         boolean isFixedTest = true;
         for(int i = 10; i > 0; --i)
