@@ -69,7 +69,7 @@ public class Test
 
         // 4. This plays a single game, in N levels, M times :
         //String level2 = gamesPath + games[gameIdx] + "_lvl" + 1 +".txt";//
-int M = 100;
+int M = 1000;
         //ArcadeMachine.runGamesN(game, level1, M, 50, controller, null, seed, filename);
         ArcadeMachine.runGamesN(game, level1, M, 50, sampleMCTSController, null, seed, filename);
 

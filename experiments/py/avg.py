@@ -39,11 +39,11 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 #filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99']
 #filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99_H1-50','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50']
 ##2014.10.29 horizon 1-50, TEVC_MCTS100iterK1 vs sampleMCTS100iter
-#filenames = ['2014_10_29_sampleMCTS_100iter_decay0.99_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50 (1)','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50 (2)','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50 (3)']
+#filenames = ['2014_10_30_sampleMCTS_100iter_decay0.99_H1-50_r1000','2014_10_29_sampleMCTS_100iter_decay0.99_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50 (1)','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50 (2)','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50 (3)']
 ##2014.10.30 modified fitness function with rollout duration ratio to horizon length
-#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_29_sampleMCTS_100iter_decay0.99_H1-50']
+filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_30_sampleMCTS_100iter_decay0.99_H1-50_r1000','2014_10_30_newInverseFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50']
 #2014.10.30 decay 0.5 instead of 0.99
-filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_30_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_30_sampleMCTS_100iter_decay0.50_H1-50']
+#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_30_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_30_sampleMCTS_100iter_decay0.50_H1-50']
 
 
 #filenames = []
