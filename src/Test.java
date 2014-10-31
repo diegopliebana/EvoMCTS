@@ -52,7 +52,7 @@ public class Test
         //Game and level to play
 
         int gameIdx = 21;
-        int levelIdx = 1; //level names from 0 to 4 (game_lvlN.txt).
+        int levelIdx = 0; //level names from 0 to 4 (game_lvlN.txt).
         String game = gamesPath + games[gameIdx] + ".txt";
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
 
@@ -71,14 +71,11 @@ public class Test
         //String level2 = gamesPath + games[gameIdx] + "_lvl" + 1 +".txt";//
 
         int M = 100;
-        boolean isFixedTest = true;
-
-
-        filename = wkDir.substring(wkDir.lastIndexOf("\\")+1)  + "FE1.txt";
-        level1 = gamesPath + games[gameIdx] + "_lvl1.txt";
-        System.out.println("filename: " + filename + ", levelFile: " + level1);
+        boolean isFixedTest = false;
         ArcadeMachine.runGamesN(game, level1, M, 15, controller, isFixedTest, seed, filename);
-
+        
+        /*int M = 100;
+        boolean isFixedTest = true;
         for(int i = 10; i > 0; --i)
         {
             filename = wkDir.substring(wkDir.lastIndexOf("\\")+1)  + i + ".txt";
@@ -86,19 +83,9 @@ public class Test
             System.out.println("filename: " + filename + ", levelFile: " + level1);
             //ArcadeMachine.runGamesN(game, level1, M, 15, controller, isFixedTest, seed, filename);
             ArcadeMachine.runGamesN(game, level1, M, 15, sampleMCTSController, isFixedTest, seed, filename);
-        }
-
-        //M = 100;
-        //isFixedTest = false;
-        //ArcadeMachine.runGamesN(game, level1, M, 15, controller, isFixedTest, seed, filename);
-        //ArcadeMachine.runGamesN(game, level1, M, 15, sampleMCTSController, isFixedTest, seed, filename);
+        }*/
 
 
-        //ArcadeMachine.runGames(game, new String[]{level1}, M, controller, null, seed);
-        //ArcadeMachine.runGames(game, new String[]{level1}, M, sampleMCTSController, null, seed);
-
-        
-		
         //5. This plays N games, in the first L levels, M times each. Actions to file optional (set saveActions to true).
         /*int N = 30, L = 1, M = 1;
         boolean saveActions = false;

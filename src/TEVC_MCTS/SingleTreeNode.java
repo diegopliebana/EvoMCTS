@@ -349,8 +349,9 @@ public class SingleTreeNode extends TreeNode
         //System.out.println("POSITION AT LEAF: " + rollerState.getAvatarPosition());
 
         int rolloutMoves = (thisDepth - this.m_depth);
-        //double percVectorUse = 1.0;
-        double percVectorUse = (double)rolloutMoves / Config.ROLLOUT_DEPTH;
+        double percVectorUse = 1.0;
+        //double percVectorUse = (double)rolloutMoves / Config.ROLLOUT_DEPTH;
+        //double percVectorUse = Config.ROLLOUT_DEPTH /  ((double)rolloutMoves + 0.001); //this is the newInverseFitness
 
         double rawDelta = value(rollerState, fSource);
 
