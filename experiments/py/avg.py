@@ -36,23 +36,26 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 
 #filenames = ['FEMCTS_BanditK10_1feat_Proper', 'sampleMCTS_1000iter_100r']
 
-#filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99']
-#filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99_H1-20','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-20']
-#filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99_H1-20(1)','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-20(1)']
-#filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99']
-#filenames = ['2014_10_29_newFitness_sampleMCTS_100iter_decay0.99_H1-50','2014_10_29_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50']
-##2014.10.29 horizon 1-50, TEVC_MCTS100iterK1 vs sampleMCTS100iter
-#filenames = ['2014_10_30_sampleMCTS_100iter_decay0.99_H1-50_r1000','2014_10_29_sampleMCTS_100iter_decay0.99_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50 (1)','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50 (2)','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50 (3)']
-##2014.10.30 modified fitness function with rollout duration ratio to horizon length
-#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_30_sampleMCTS_100iter_decay0.99_H1-50_r1000','2014_10_30_newInverseFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50']
-#2014.10.30 decay 0.5 instead of 0.99
-#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_30_sampleMCTS_100iter_decay0.50_H1-50_r1000'];
-#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_30_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50_r400']
-#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_30_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_29_TEVC_MCTS_100iterK1_decay0.99_H1-50_r400','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_30_sampleMCTS_100iter_decay0.50_H1-50_r1000']
+###-- leftRight (Tom)
+
+#TEVC_MCTS larger K
+#filenames = ['TEVC_MCTS_100iter_K10_100r','TEVC_MCTS_500iter_K2_100r','TEVC_MCTS_1000iter_K1_100r','sampleMCTS_1000iter_100r']
+#filenames = ['sampleMCTS_1000iter_100r_decay0.5','TEVC_MCTS_100iter_K10_100r_decay0.5']
+
+#different reward discount/decay rates
+#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay1.00_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.00_H8-30']
+#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay1.00_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30']
+#filenames = ['2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.90_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.80_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.50_H8-30']
+
+#TEVC_MCTS different fitness functions
+#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_30_newInverseFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.99_H8-30']
+#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_31_r1000_TEVCMCTS_decay0.50_fitnessZero','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.50_H8-30']
+
+#BEST: sampleMCTS vs TEVC_MCTS
+#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.90_H8-30','2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50']
 
 ###-- circle
-
-filenames = ['2014_10_31_r10_sampleMCTS_decay0.99']
+filenames = ['2014_10_31_r100_sampleMCTS_decay0.99','2014_10_31_r100_TEVCMCTS_decay0.50']
 
 
 
@@ -66,7 +69,7 @@ for filename in filenames:
 
     datafile = '../circle/' + filename + '.csv'
     #datafile = '../leftright/' + filename + '.csv'
-    #datafile = '../tomConsoleRuns/' + filename + '.txt'
+    #datafile = '../tomConsoleRuns/' + filename + '.txt'    #leftRight (Tom)
 
     print 'loading', datafile
     r = pylab.loadtxt(datafile, comments='#', delimiter=',')
