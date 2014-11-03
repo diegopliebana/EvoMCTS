@@ -52,8 +52,8 @@ public class Test
 		
         //Game and level to play
 
-        int gameIdx = 20;
-        int levelIdx = 1; //level names from 0 to 4 (game_lvlN.txt).
+        int gameIdx = 21;
+        int levelIdx = 0; //level names from 0 to 4 (game_lvlN.txt).
         String game = gamesPath + games[gameIdx] + ".txt";
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
 
@@ -71,8 +71,8 @@ public class Test
         // 4. This plays a single game, in N levels, M times :
         //String level2 = gamesPath + games[gameIdx] + "_lvl" + 1 +".txt";//
 
-        int M = 100;   //number of repeats (only for statistical accuracy)
-        int RLmin = 18;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
+        int M = 1000;   //number of repeats (only for statistical accuracy)
+        int RLmin = 8;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
         int RLmax = 30;
         boolean isFixedTest = false;
         ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);

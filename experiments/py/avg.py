@@ -43,8 +43,9 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 #filenames = ['sampleMCTS_1000iter_100r_decay0.5','TEVC_MCTS_100iter_K10_100r_decay0.5']
 
 #different reward discount/decay rates
-#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay1.00_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.00_H8-30']
+#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay1.00_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_11_02_r1000_sampleMCTS_decay0.90','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.00_H8-30']
 #filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay1.00_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30']
+#filenames = ['2014_11_02_r1000_TEVCMCTS_newFitness_decay0.50','2014_11_02_r1000_TEVCMCTS_newFitness_decay0.80','2014_11_02_r1000_TEVCMCTS_newFitness_decay0.90','2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50']
 #filenames = ['2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.90_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.80_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.50_H8-30']
 
 #TEVC_MCTS different fitness functions
@@ -52,10 +53,10 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 #filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_31_r1000_TEVCMCTS_decay0.50_fitnessZero','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.50_H8-30']
 
 #BEST: sampleMCTS vs TEVC_MCTS
-#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.90_H8-30','2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50']
+filenames = ['2014_11_02_r1000_sampleMCTS_decay0.90','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.90_H8-30','2014_11_02_r1000_TEVCMCTS_newFitness_decay0.80']
 
 ###-- circle
-filenames = ['2014_10_31_r100_sampleMCTS_decay0.99','2014_10_31_r100_TEVCMCTS_decay0.50']
+#filenames = ['2014_10_31_r100_sampleMCTS_decay0.99','2014_10_31_r100_TEVCMCTS_decay0.50']
 
 
 
@@ -67,9 +68,9 @@ ax = fig.add_subplot(111)
 
 for filename in filenames:
 
-    datafile = '../circle/' + filename + '.csv'
+    #datafile = '../circle/' + filename + '.csv'
     #datafile = '../leftright/' + filename + '.csv'
-    #datafile = '../tomConsoleRuns/' + filename + '.txt'    #leftRight (Tom)
+    datafile = '../tomConsoleRuns/' + filename + '.txt'    #leftRight (Tom)
 
     print 'loading', datafile
     r = pylab.loadtxt(datafile, comments='#', delimiter=',')
