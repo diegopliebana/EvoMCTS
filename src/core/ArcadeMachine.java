@@ -216,7 +216,7 @@ public class ArcadeMachine
 
 
 
-    public static void runGamesN(String game_file, String level_file, int level_times, int num_rollLength_values,
+    public static void runGamesN(String game_file, String level_file, int level_times, int num_rollLength_valuesInit, int num_rollLength_values,
                                 String agentName, boolean isFixed, int randomSeed, String filename)
     {
         VGDLFactory.GetInstance().init(); //This always first thing to do.
@@ -228,7 +228,11 @@ public class ArcadeMachine
 
         double all_results[][] = new double[num_rollLength_values][level_times];
 
-        for(int k = 0; k < num_rollLength_values; ++k)
+        for(int i = 0 ; i < num_rollLength_values; i++)
+            for(int j = 0 ; j < level_times; j++)
+                all_results[i][j] = 0.0;
+
+        for(int k = num_rollLength_valuesInit-1; k < num_rollLength_values; ++k)
         {
             for(int i = 0; i < level_times; ++i)
             {

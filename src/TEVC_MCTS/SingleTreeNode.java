@@ -106,7 +106,7 @@ public class SingleTreeNode extends TreeNode
 
         int remainingLimit = 5;
         //while(remaining > 2*avgTimeTaken && remaining > remainingLimit)
-        while(numIndividuals < 100)
+        while(numIndividuals < Config.MCTS_ITERATIONS)
         {
             weightVectorFitness = new StatSummary();
             all_fitness = new double[Config.INDIVIDUAL_ITERATIONS];
@@ -349,14 +349,14 @@ public class SingleTreeNode extends TreeNode
         //System.out.println("POSITION AT LEAF: " + rollerState.getAvatarPosition());
 
         int rolloutMoves = (thisDepth - this.m_depth);
-        double percVectorUse = 1.0;
+        //double percVectorUse = 1.0;
         //double percVectorUse = (double)rolloutMoves / Config.ROLLOUT_DEPTH;
-        //double percVectorUse = Config.ROLLOUT_DEPTH /  ((double)rolloutMoves + 0.001); //this is the newInverseFitness
+        double percVectorUse = Config.ROLLOUT_DEPTH /  ((double)rolloutMoves + 0.001); //this is the newInverseFitness
 
         double rawDelta = value(rollerState, fSource);
 
         //Discount factor:
-        double accDiscount = Math.pow(0.99,thisDepth);
+        double accDiscount = Math.pow(Config.REWARD_DISCOUNT, thisDepth);
         double delta = rawDelta * accDiscount;
 
         if(rawDelta == HUGE_POSITIVE || rawDelta == HUGE_NEGATIVE)
