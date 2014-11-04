@@ -22,7 +22,7 @@ public class Config {
     //MCTS stuff
     public static int MCTS_ITERATIONS = 100;
     public static int INDIVIDUAL_ITERATIONS = 1;
-    public static int ROLLOUT_DEPTH = 10;
+    public static int ROLLOUT_DEPTH = 20;
     public static double K = Math.sqrt(2);
     public static double REWARD_DISCOUNT = 0.8;
 
@@ -45,8 +45,8 @@ public class Config {
     public static int BOULDERDASH_FEATURES = 3;
     public static int CIRCLE_FEATURES = 4;
     public static int LEFTRIGHT_FEATURES = 5;
-    public static int FEATURES = LEFTRIGHT_FEATURES;
-    //public static int FEATURES = CIRCLE_FEATURES;
+    //public static int FEATURES = LEFTRIGHT_FEATURES;
+    public static int FEATURES = CIRCLE_FEATURES;
 
     //Debug.
     public static boolean COMPUTE_HIT_MAP = false;

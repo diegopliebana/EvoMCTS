@@ -23,8 +23,8 @@ import java.util.HashMap;
 public class CircleFeatures extends NavFeatureSource
 {
 
-    private static final double HUGE_NEGATIVE = -10000000.0;
-    private static final double HUGE_POSITIVE =  10000000.0;
+    private static final double HUGE_NEGATIVE = -2.0;
+    private static final double HUGE_POSITIVE =  2.0;
     private int WALL = 0, WIN = 2, LOSE = 3;
 
     private Vector2d avatarPos;
@@ -78,10 +78,12 @@ public class CircleFeatures extends NavFeatureSource
                     Observation closestObs = portalPositions[i].get(0);
                     if(closestObs.itype == WIN)
                     {
-                        distanceToWin = maxDist - avatarPos.dist(closestObs.position);
+                        //distanceToWin = maxDist - avatarPos.dist(closestObs.position);
+                        distanceToWin =  1 - (avatarPos.dist(closestObs.position)/maxDist);
                     }else if(closestObs.itype == LOSE)
                     {
-                        distanceToLose = maxDist - avatarPos.dist(closestObs.position);
+                        distanceToLose =  1 - (avatarPos.dist(closestObs.position)/maxDist);
+                        //distanceToLose = maxDist - avatarPos.dist(closestObs.position);
                     }
                 }
             }
@@ -127,24 +129,22 @@ public class CircleFeatures extends NavFeatureSource
         //return new double[]{1,-1,1,-1,1,-1,1,-1};
 
         double left = -1;
-        double up = -1;
+        double up = 1;
         double right = 1, down = -1;
 
-        /*Vector2d avatarPos = stateObs.getAvatarPosition();
-        Vector2d closestWin = getClosestWinPosition(stateObs);
+        Vector2d avatarPos = stateObs.getAvatarPosition();
 
-        double distHor = Math.abs(closestWin.x - avatarPos.x);
-        double distVer = Math.abs(closestWin.y - avatarPos.y);
-
-        if(distHor < distVer)
+        if(avatarPos.x > 700)
         {
+            //right edge
             right = -1;
-            down = 1;
-        }else if(distHor > distVer){
-            right = 1;
-            down = -1;
         }
-*/
+        if(avatarPos.y < 50)
+        {
+            //upper edge
+            up = -1;
+        }
+
         return new double[]{left, left, right, right, down, down,up,up};
     }
 
