@@ -26,13 +26,17 @@ public class Config {
     public static double K = Math.sqrt(2);
     public static double REWARD_DISCOUNT = 0.8;
 
+    public static boolean OPTIMAL_PLAY_ENABLED = false;
+    public static int OPTIMAL_MAX_ACTIONS_RL = 10;
+    public static int OPTIMAL_MAX_ACTIONS_CIRCLE = 15;
+
     //Vector source type.
     public static int HAND_TUNED_WEIGHTS = -1;
     public static int RANDOM = 0;
     public static int ONE_PLUS_ONE = 1;
     public static int MU_PLUS_ONE = 2;
     public static int BANDIT = 3;
-    public static int ES_TYPE = BANDIT;
+    public static int ES_TYPE = HAND_TUNED_WEIGHTS;
 
     //FEATURES:
     public static int GVG_FEATURES = 0;

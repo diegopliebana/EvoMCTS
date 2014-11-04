@@ -11,6 +11,7 @@ import core.game.StateObservation;
 import ontology.Types;
 import tools.ElapsedCpuTimer;
 import tools.StatSummary;
+import tools.Utils;
 import tools.Vector2d;
 
 import java.util.ArrayList;
@@ -164,7 +165,13 @@ public class SingleTreeNode extends TreeNode
             backUp(selected, averageReward.mean());
 
             double averageFitness = weightVectorFitness.mean();
-            source.returnFitness(rolloutStates, rolloutActions, averageFitness);
+
+            if(weightVectorFitness.n() > 0)
+            {
+                //This may happen when we choose not to update a fitness (i.e.: bandits).
+                double normFit = Utils.normalise(averageFitness,HUGE_NEGATIVE,HUGE_POSITIVE);
+                source.returnFitness(rolloutStates, rolloutActions, normFit);
+            }
 
             //We might have found new features during the rollouts, update vector sizes.
             if(roller.newFeaturesFound())
@@ -349,15 +356,16 @@ public class SingleTreeNode extends TreeNode
         //System.out.println("POSITION AT LEAF: " + rollerState.getAvatarPosition());
 
         int rolloutMoves = (thisDepth - this.m_depth);
-        //double percVectorUse = 1.0;
+        double percVectorUse = 1.0;
         //double percVectorUse = (double)rolloutMoves / Config.ROLLOUT_DEPTH;
-        double percVectorUse = Config.ROLLOUT_DEPTH /  ((double)rolloutMoves + 0.001); //this is the newInverseFitness
+        //double percVectorUse = Config.ROLLOUT_DEPTH /  ((double)rolloutMoves + 0.001); //this is the newInverseFitness
 
         double rawDelta = value(rollerState, fSource);
 
         //Discount factor:
         double accDiscount = Math.pow(Config.REWARD_DISCOUNT, thisDepth);
         double delta = rawDelta * accDiscount;
+
 
         if(rawDelta == HUGE_POSITIVE || rawDelta == HUGE_NEGATIVE)
         {
