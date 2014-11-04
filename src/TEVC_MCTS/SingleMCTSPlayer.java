@@ -114,6 +114,7 @@ public class SingleMCTSPlayer
      */
     public int run(ElapsedCpuTimer elapsedTimer)
     {
+        //Config.ROLLOUT_DEPTH = 15;
         //Do the search within the available time.
         m_root.mctsSearch(elapsedTimer, roller, source);
 

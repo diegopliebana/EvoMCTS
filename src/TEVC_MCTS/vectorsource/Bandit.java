@@ -50,6 +50,10 @@ public class Bandit extends FitVectorSource{
                 pop[i][j] = nextRandom();
         }
 
+
+        //pop[pop.length-1][0] = 0;
+        //pop[pop.length-1][1] = 0;
+
        /* for (int i=0; i< pop.length-1; i++)
         {
             for (int j=0; j<bestYet.length; j++)
@@ -58,6 +62,20 @@ public class Bandit extends FitVectorSource{
 
         pop[pop.length-1][0] = -1;
         pop[pop.length-1][1] = 1;*/
+
+
+        //this is the good guy
+        //pop[0][0] = -1;
+        //pop[0][1] = 1;
+
+        //this is the bad guy
+        //pop[1][0] = 1;
+        //pop[1][1] = -1;
+
+        //this is the 'You know nothing, Jon Snow' guy
+        //pop[1][0] = 0;
+        //pop[1][1] = 0;
+
 
 
         for (int i=0; i<  bestYet.length; i++)
