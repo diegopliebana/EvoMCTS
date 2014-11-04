@@ -366,10 +366,7 @@ public class SingleTreeNode extends TreeNode
             {
                 //boolean improved = vSource.returnFitness(rolloutStates, rolloutActions, delta);
                 double evo_delta = percVectorUse * delta;
-                weightVectorFitness.add(evo_delta);
-                all_fitness[cur_fit_it++] = evo_delta;
-                //if(improved)
-                //    System.out.println(" -> " + thisDepth);
+                assignFitnessValue(rolloutMoves, evo_delta);
             }
             return delta;
         }
@@ -401,12 +398,27 @@ public class SingleTreeNode extends TreeNode
         {
             //vSource.returnFitness(rolloutStates, rolloutActions, vectorFitness);
             double evo_delta = percVectorUse * vectorFitness;
-            weightVectorFitness.add(evo_delta);
-            all_fitness[cur_fit_it++] = evo_delta;
+            assignFitnessValue(rolloutMoves, evo_delta);
         }
         return mctsScore;
     }
 
+    private void assignFitnessValue(int rolloutMoves, double evo_delta)
+    {
+        if((rolloutMoves == 0) && (Config.ES_TYPE != Config.BANDIT))
+            evo_delta = Double.NEGATIVE_INFINITY;
+
+        /*if((rolloutMoves == 0) && (Config.ES_TYPE == Config.BANDIT))
+        {
+            int a = 0;
+        }
+        else */
+        if((rolloutMoves != 0) || (Config.ES_TYPE != Config.BANDIT))
+        {
+            weightVectorFitness.add(evo_delta);
+            all_fitness[cur_fit_it++] = evo_delta;
+        }
+    }
 
     public double knowledgeValue(HashMap<String, Double> features)
     {
