@@ -1,5 +1,6 @@
 package core.game;
 
+import TEVC_MCTS.Config;
 import core.*;
 import core.competition.CompetitionParameters;
 import core.content.Content;
@@ -465,11 +466,14 @@ public abstract class Game
         //Prepare some structures and references for this game.
         prepareGame(player, randomSeed);
 
-        if(isFixed)
+        if(isFixed) //only one.
         {
             this.gameCycle();
             return handleResult();
         }
+
+        if(Config.OPTIMAL_PLAY_ENABLED)
+            return playOptimal();
 
         //Play until the game is ended
         while(!isEnded)
@@ -528,6 +532,21 @@ public abstract class Game
 
         return handleResult();
     }
+
+    private double playOptimal()
+    {
+        boolean ended = false;
+        while(!ended)
+        {
+            this.gameCycle();
+            if(Config.FEATURES == Config.LEFTRIGHT_FEATURES && this.getGameTick() > Config.OPTIMAL_MAX_ACTIONS_RL)
+                ended = true;
+            if(Config.FEATURES == Config.CIRCLE_FEATURES && this.getGameTick() > Config.OPTIMAL_MAX_ACTIONS_CIRCLE)
+                ended = true;
+        }
+        return handleResult();
+    }
+
 
     /**
      * Initializes some variables for the game to be played, such as
