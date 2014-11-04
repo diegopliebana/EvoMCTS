@@ -26,7 +26,7 @@ public class Config {
     public static double K = Math.sqrt(2);
     public static double REWARD_DISCOUNT = 0.8;
 
-    public static boolean OPTIMAL_PLAY_ENABLED = false;
+    public static boolean OPTIMAL_PLAY_ENABLED = true;
     public static int OPTIMAL_MAX_ACTIONS_RL = 10;
     public static int OPTIMAL_MAX_ACTIONS_CIRCLE = 15;
 
