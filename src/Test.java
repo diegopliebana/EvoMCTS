@@ -112,4 +112,24 @@ public class Test
         }
                      */
     }
+
+    public static void RightLeft_2014_11_04(String gamesPath, String[] games, String controller, String sampleMCTSController, int seed, String filename){
+
+        int gameIdx = 21;
+        int levelIdx = 0; //level names from 0 to 4 (game_lvlN.txt).
+        String game = gamesPath + games[gameIdx] + ".txt";
+        String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
+
+        int M = 10000;   //number of repeats (only for statistical accuracy)
+        int RLmin = 1;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
+        int RLmax = 8;
+
+        //int M = 1000;   //number of repeats (only for statistical accuracy)
+        //int RLmin = 9;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
+        //int RLmax = 30;
+
+        boolean isFixedTest = false;
+        ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
+        //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
+    }
 }

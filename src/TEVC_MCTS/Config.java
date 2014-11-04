@@ -36,7 +36,7 @@ public class Config {
     public static int ONE_PLUS_ONE = 1;
     public static int MU_PLUS_ONE = 2;
     public static int BANDIT = 3;
-    public static int ES_TYPE = HAND_TUNED_WEIGHTS;
+    public static int ES_TYPE = BANDIT;
 
     //FEATURES:
     public static int GVG_FEATURES = 0;
