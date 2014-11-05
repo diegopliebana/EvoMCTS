@@ -8,10 +8,10 @@ import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots()
 
-filenames = ['EvoMCTS-BanditAllRandom_Dist10','EvoMCTS-BanditAllRandom_Dist9','EvoMCTS-BanditAllRandom_Dist8',
-             'EvoMCTS-BanditAllRandom_Dist7', 'EvoMCTS-BanditAllRandom_Dist6','EvoMCTS-BanditAllRandom_Dist5',
-             'EvoMCTS-BanditAllRandom_Dist4','EvoMCTS-BanditAllRandom_Dist3', 'EvoMCTS-BanditAllRandom_Dist2',
-             'EvoMCTS-BanditAllRandom_Dist1']
+filenames = ['HitsOnGoal10','HitsOnGoal9','HitsOnGoal8',
+             'HitsOnGoal7', 'HitsOnGoal6','HitsOnGoal5',
+             'HitsOnGoal4','HitsOnGoal3', 'HitsOnGoal2',
+             'HitsOnGoal1']
 
 #filenames = ['SampleMCTS-Dist10','SampleMCTS-Dist9','SampleMCTS-Dist8',
 #             'SampleMCTS-Dist7', 'SampleMCTS-Dist6','SampleMCTS-Dist5',
@@ -27,7 +27,7 @@ for filename in filenames:
 
     
     #datafile = '../circle/' + filename + '.csv'
-    datafile = '../leftright/fixedPos/' + filename + '.txt'
+    datafile = '../leftright/fixedPos/tevcMCTS_lr_2feat_100rx100it/' + filename + '.txt'
     #datafile = '../tomConsoleRuns/' + filename + '.txt'
 
     print 'loading', datafile
@@ -97,4 +97,4 @@ plt.ylabel("Distance to goal", fontsize=16)
 
 plt.show()
 
-fig.savefig("../leftright/fixedPos/FEMCTS-BanditAllRandom_k10_2xStdDev.pdf")
+fig.savefig("../leftright/fixedPos/tevcMCTS_lr_2feat_100rx100it/tevcMCTS_lr_2feat_100rx100it_2xStdDev.pdf")

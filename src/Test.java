@@ -52,7 +52,7 @@ public class Test
 		
         //Game and level to play
 
-        int gameIdx = 20;
+        int gameIdx = 21;
         int levelIdx = 1; //level names from 0 to 4 (game_lvlN.txt).
         String game = gamesPath + games[gameIdx] + ".txt";
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
@@ -72,27 +72,25 @@ public class Test
         //String level2 = gamesPath + games[gameIdx] + "_lvl" + 1 +".txt";//
 
         //int M = 100;
-        int M = 10000;   //number of repeats (only for statistical accuracy)
+        int M = 100;   //number of repeats (only for statistical accuracy)
         int RLmin = 1;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
         int RLmax = 8;
         boolean isFixedTest = false;
-        ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
-        //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
+        //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
+        ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
 
-        
-       /* int M = 100;
+        /*int M = 100;
         boolean isFixedTest = true;
-        RLmin = 1;
-        RLmax = 15;
+        int RLmin = 1;
+        int RLmax = 15;
         for(int i = 10; i > 0; --i)
         {
             filename = wkDir.substring(wkDir.lastIndexOf("\\")+1)  + i + ".txt";
             level1 = gamesPath + games[gameIdx] + "_lvl" + i +".txt";
             System.out.println("filename: " + filename + ", levelFile: " + level1);
-            //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
-            ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
+            ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
+            //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
         }*/
-
 
         //5. This plays N games, in the first L levels, M times each. Actions to file optional (set saveActions to true).
         /*int N = 30, L = 1, M = 1;
