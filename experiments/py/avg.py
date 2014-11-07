@@ -57,10 +57,11 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 
 
 #2014_11_14 final measurements for the TEVC paper, leftRight
-filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS bandit20']
-#filenames = ['2014_11_04 TEVCMCTS bandit','2014_11_04 TEVCMCTS bandit10','2014_11_04 TEVCMCTS bandit20']
+#filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS bandit20']
+filenames = ['2014_11_04 TEVCMCTS bandit','2014_11_04 TEVCMCTS bandit10','2014_11_04 TEVCMCTS bandit20']
 
-mergeFiles = [[0,1]]
+mergeFiles = []
+#mergeFiles = [[0,1]]
 
 analysis_type = 0
     # 0 - average date (raw input)
