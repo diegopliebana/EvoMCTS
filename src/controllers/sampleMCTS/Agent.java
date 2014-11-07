@@ -49,7 +49,6 @@ public class Agent extends AbstractPlayer {
         //Create the player.
 
         mctsPlayer = getPlayer(so, elapsedTimer);
-
     }
 
     public SingleMCTSPlayer getPlayer(StateObservation so, ElapsedCpuTimer elapsedTimer) {
@@ -65,6 +64,8 @@ public class Agent extends AbstractPlayer {
      * @return An action for the current state
      */
     public Types.ACTIONS act(StateObservation stateObs, ElapsedCpuTimer elapsedTimer) {
+
+        //System.out.println("Executing with RL: " + this.ROLLOUT_DEPTH);
 
         ArrayList<Observation> obs[] = stateObs.getFromAvatarSpritesPositions();
         ArrayList<Observation> grid[][] = stateObs.getObservationGrid();

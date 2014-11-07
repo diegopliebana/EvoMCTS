@@ -27,7 +27,8 @@ for filename in filenames:
 
     
     #datafile = '../circle/' + filename + '.csv'
-    datafile = '../leftright/fixedPos/tevcMCTS_lr_2feat_100rx100it/' + filename + '.txt'
+    #datafile = '../leftright/fixedPos/tevcMCTS_lr_2feat_100rx100it/' + filename + '.txt'
+    datafile = '../leftright/fixedPos/tevcMCTS_lr_1feat_100rx1000it/' + filename + '.txt'    
     #datafile = '../tomConsoleRuns/' + filename + '.txt'
 
     print 'loading', datafile
@@ -97,4 +98,4 @@ plt.ylabel("Distance to goal", fontsize=16)
 
 plt.show()
 
-fig.savefig("../leftright/fixedPos/tevcMCTS_lr_2feat_100rx100it/tevcMCTS_lr_2feat_100rx100it_2xStdDev.pdf")
+fig.savefig("../leftright/fixedPos/tevcMCTS_lr_1feat_100rx1000it/tevcMCTS_lr_1feat_100rx1000it_x2StDev.pdf")

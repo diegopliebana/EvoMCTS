@@ -536,7 +536,7 @@ public abstract class Game
     private double playOptimal()
     {
         boolean ended = false;
-        while(!ended)
+        while(!ended && !isEnded)
         {
             this.gameCycle();
             if(Config.FEATURES == Config.LEFTRIGHT_FEATURES && this.getGameTick() > Config.OPTIMAL_MAX_ACTIONS_RL)
