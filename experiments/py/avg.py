@@ -69,7 +69,7 @@ analysis_type = 0
     # 2 - percentage of optimal samples -- requires setting optimal_performance
 optimal_performance = 9
     # leftRight - 9
-    # circle - 14
+    # circle - 13
 
 
 ###-- circle

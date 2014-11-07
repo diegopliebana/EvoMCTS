@@ -85,8 +85,10 @@ public class Test
 
         //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
         //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
-        ArcadeMachine.runGamesN(game, level1, M, RL, sampleMCTSController, isFixedTest, seed, filename);
+        //ArcadeMachine.runGamesN(game, level1, M, RL, sampleMCTSController, isFixedTest, seed, filename);
         //ArcadeMachine.runGamesN(game, level1, M, RL, controller, isFixedTest, seed, filename);
+
+        RightLeft_2014_11_04(gamesPath, games, controller, sampleMCTSController, seed, filename);
 
         /*int M = 100;
         boolean isFixedTest = true;
