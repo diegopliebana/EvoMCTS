@@ -103,8 +103,10 @@ public class SingleMCTSPlayer
             source = new ES(featureNames, order, nActions, memory, m_rnd);
         if(Config.ES_TYPE == Config.BANDIT)
             source = new Bandit(featureNames, order, nActions, memory, m_rnd);
-
-
+        if(Config.ES_TYPE == Config.TD)
+            source = new TD(featureNames, order, nActions, memory, m_rnd);
+        if(Config.ES_TYPE == Config.CMAES)
+            source = new CMAES(featureNames, order, nActions, memory, m_rnd);
     }
 
     /**

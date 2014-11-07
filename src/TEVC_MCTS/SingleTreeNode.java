@@ -317,7 +317,9 @@ public class SingleTreeNode extends TreeNode
 
         while (!finishRollout(rollerState,thisDepth)) {
 
-            rolloutStates.add(rollerState.copy());
+            //System.out.println(rolloutStates.size());
+//rolloutStates.add(rollerState.copy());
+
             int action = roller.roll(rollerState);
             if(action >= 0)
             {
