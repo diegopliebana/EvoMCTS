@@ -60,8 +60,9 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 #filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS bandit20']
 filenames = ['2014_11_04 TEVCMCTS bandit','2014_11_04 TEVCMCTS bandit10','2014_11_04 TEVCMCTS bandit20']
 
-mergeFiles = []
-#mergeFiles = [[0,1]]
+mergeFiles = []     #don't merge any
+#mergeFiles = [[0,1]]   #example: merge SECOND filename into FIRST
+    #define which pairs of files should be merged into one (see above example). The merge copies only the first 8 values from the second list into the first list
 
 analysis_type = 0
     # 0 - average date (raw input)
