@@ -38,6 +38,8 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 
 ###-- leftRight (Tom)
 
+mergeFiles = [] 
+
 #TEVC_MCTS larger K
 #filenames = ['TEVC_MCTS_100iter_K10_100r','TEVC_MCTS_500iter_K2_100r','TEVC_MCTS_1000iter_K1_100r','sampleMCTS_1000iter_100r']
 #filenames = ['sampleMCTS_1000iter_100r_decay0.5','TEVC_MCTS_100iter_K10_100r_decay0.5']
@@ -57,12 +59,13 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 
 
 #2014_11_14 final measurements for the TEVC paper, leftRight
-#filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS bandit20']
-filenames = ['2014_11_04 TEVCMCTS bandit','2014_11_04 TEVCMCTS bandit10','2014_11_04 TEVCMCTS bandit20']
+filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS bandit20']
+#filenames = ['2014_11_04 TEVCMCTS bandit','2014_11_04 TEVCMCTS bandit10','2014_11_04 TEVCMCTS bandit20']
+mergeFiles = [[0,1],[2,3],[4,5]]
 
-mergeFiles = []     #don't merge any
+#mergmergeFiles = [[0,1]]eFiles = []     #don't merge any
 #mergeFiles = [[0,1]]   #example: merge SECOND filename into FIRST
-    #define which pairs of files should be merged into one (see above example). The merge copies only the first 8 values from the second list into the first list
+    #define which pairs of files should be merged into one (see above example). The merge copies only the first 8 values from the second list into the first list, the second list is then discarded from the results and filename arrays
 
 analysis_type = 0
     # 0 - average date (raw input)
@@ -124,12 +127,13 @@ for m in mergeFiles:
     std_errs[m[0]][0:8] = std_errs[m[1]][0:8]
     roll_depth[m[0]][0:8] = roll_depth[m[1]][0:8]
 
-for m in mergeFiles:
-    del averages[m[1]]
-    del std_devs[m[1]]
-    del std_errs[m[1]]
-    del roll_depth[m[1]]
-    del filenames[m[1]]
+for i in xrange(len(mergeFiles)):
+    d = mergeFiles[i][1] - i
+    del averages[d]
+    del std_devs[d]
+    del std_errs[d]
+    del roll_depth[d]
+    del filenames[d]
 
 #Plot everything in this subplot.
 #ax.plot(roll_depth,averages,'-',linewidth=2.0)

@@ -52,13 +52,13 @@ public class Test
 		
         //Game and level to play
 
-        int gameIdx = 20;
+        int gameIdx = 3;
         int levelIdx = 1; //level names from 0 to 4 (game_lvlN.txt).
         String game = gamesPath + games[gameIdx] + ".txt";
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
 
         // 1. This starts a game, in a level, played by a human.
-         //ArcadeMachine.playOneGame(game, level1, recordActionsFile, seed);
+        // ArcadeMachine.playOneGame(game, level1, recordActionsFile, seed);
 
         // 2. This plays a game in a level by the controller.
         //ArcadeMachine.runOneGame(game, level1, visuals, sampleMCTSController, recordActionsFile, seed);
@@ -88,7 +88,8 @@ public class Test
         //ArcadeMachine.runGamesN(game, level1, M, RL, sampleMCTSController, isFixedTest, seed, filename);
         //ArcadeMachine.runGamesN(game, level1, M, RL, controller, isFixedTest, seed, filename);
 
-        RightLeft_2014_11_04(gamesPath, games, controller, sampleMCTSController, seed, filename);
+        //RightLeft_2014_11_04(gamesPath, games, controller, sampleMCTSController, seed, filename);
+        ComplexGames_2014_11_07(gamesPath, games, controller, sampleMCTSController, seed, filename);
 
         /*int M = 100;
         boolean isFixedTest = true;
@@ -129,16 +130,38 @@ public class Test
         String game = gamesPath + games[gameIdx] + ".txt";
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
 
-        int M = 10000;   //number of repeats (only for statistical accuracy)
-        int RLmin = 1;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
-        int RLmax = 8;
+        //int M = 10000;   //number of repeats (only for statistical accuracy)
+        //int RLmin = 1;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
+        //int RLmax = 8;
 
-        //int M = 1000;   //number of repeats (only for statistical accuracy)
-        //int RLmin = 9;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
-        //int RLmax = 30;
+        int M = 1000;   //number of repeats (only for statistical accuracy)
+        int RLmin = 1;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
+        int RLmax = 30;
 
         boolean isFixedTest = false;
         ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
         //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
+    }
+
+    public static void ComplexGames_2014_11_07(String gamesPath, String[] games, String controller, String sampleMCTSController, int seed, String filename){
+
+        int gameIdx = 3;
+        int levelIdx = 0; //level names from 0 to 4 (game_lvlN.txt).
+        String game = gamesPath + games[gameIdx] + ".txt";
+        String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
+
+        //int M = 10000;   //number of repeats (only for statistical accuracy)
+        //int RLmin = 1;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
+        //int RLmax = 8;
+
+        int M = 100;   //number of repeats (only for statistical accuracy)
+        int RLmin = 50;
+        //int RLmin = 50;
+        //int RLmin = 100;
+
+        int RLmax = RLmin;
+        boolean isFixedTest = false;
+        //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
+        ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
     }
 }

@@ -256,7 +256,7 @@ public class ArcadeMachine
                 ArcadeMachine.warmUp(toPlay, CompetitionParameters.WARMUP_TIME);
 
                 //Then, play the game.
-                System.out.format("RL: %2d/%2d   LT: %3d/%3d   stepsWin: ", k+1, num_rollLength_values, i+1, level_times);
+                System.out.format("RL %2d/%2d   LT %3d/%3d   ", k+1, num_rollLength_values, i+1, level_times);
                 double score = toPlay.runGame(player, randomSeed, isFixed);
 
                 scores.add(score);
@@ -264,6 +264,7 @@ public class ArcadeMachine
                 if(!isFixed)
                 {
                     all_results[k][i] = toPlay.getGameTick();
+                    //all_results[k][i] = score;
                 }else{
                     if(player instanceof controllers.sampleMCTS.Agent)
                     {
@@ -274,8 +275,7 @@ public class ArcadeMachine
                     }
                 }
 
-
-                System.out.println(all_results[k][i]);
+                //System.out.println(all_results[k][i]);
 
                 //Finally, when the game is over, we need to tear the player down.
                 ArcadeMachine.tearPlayerDown(player);
