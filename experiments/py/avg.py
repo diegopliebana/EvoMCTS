@@ -22,7 +22,29 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
     
 ###-- Take the data --###
 
-###-- leftRight
+###-- FOLDER: leftRight ../tomConsoleRuns/
+
+#TEVC_MCTS larger K
+#filenames = ['TEVC_MCTS_100iter_K10_100r','TEVC_MCTS_500iter_K2_100r','TEVC_MCTS_1000iter_K1_100r','sampleMCTS_1000iter_100r']
+#filenames = ['sampleMCTS_1000iter_100r_decay0.5','TEVC_MCTS_100iter_K10_100r_decay0.5']
+
+#different reward discount/decay rates
+#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay1.00_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_11_02_r1000_sampleMCTS_decay0.90','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.00_H8-30']
+#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay1.00_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30']
+#filenames = ['2014_11_02_r1000_TEVCMCTS_newFitness_decay0.50','2014_11_02_r1000_TEVCMCTS_newFitness_decay0.80','2014_11_02_r1000_TEVCMCTS_newFitness_decay0.90','2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50']
+#filenames = ['2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.90_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.80_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.50_H8-30']
+
+#TEVC_MCTS different fitness functions
+#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_30_newInverseFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.99_H8-30']
+#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_31_r1000_TEVCMCTS_decay0.50_fitnessZero','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.50_H8-30']
+
+#BEST: sampleMCTS vs TEVC_MCTS
+#filenames = ['2014_11_02_r1000_sampleMCTS_decay0.90','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.90_H8-30','2014_11_02_r1000_TEVCMCTS_newFitness_decay0.80']
+
+
+###-- FOLDER: leftRight
+mergeFiles = [] 
+
 #datafile = 'inout/sampleH3.csv'
 
 #filenames = ['SampleMCTS', 'FEMCTS-HT', 'FEMCTS-RND', 'FEMCTS-11', 'FEMCTS-U1']
@@ -36,38 +58,21 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 
 #filenames = ['FEMCTS_BanditK10_1feat_Proper', 'sampleMCTS_1000iter_100r']
 
-###-- leftRight (Tom)
+#filenames = ['2014_11_04 TEVCMCTS u+one','2014_11_08 TEVCMCTS u+one retest discountR 1.00','2014_11_08 TEVCMCTS u+one retest discountR 0.99','2014_11_08 TEVCMCTS u+one retest discountR 0.50','2014_11_08 TEVCMCTS u+one retest discountR 0.01','2014_11_08 TEVCMCTS u+one retest discountR 0.99 noFitnessCorr','2014_11_08 TEVCMCTS u+one retest discountR 0.99 (21-50)','2014_11_08 TEVCMCTS u+one retest discountR 0.99 noFitnessCorr (21-50)']
 
-mergeFiles = [] 
-
-#TEVC_MCTS larger K
-#filenames = ['TEVC_MCTS_100iter_K10_100r','TEVC_MCTS_500iter_K2_100r','TEVC_MCTS_1000iter_K1_100r','sampleMCTS_1000iter_100r']
-#filenames = ['sampleMCTS_1000iter_100r_decay0.5','TEVC_MCTS_100iter_K10_100r_decay0.5']
-
-#different reward discount/decay rates
-#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay1.00_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_11_02_r1000_sampleMCTS_decay0.90','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.00_H8-30']
-#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay1.00_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30']
-#filenames = ['2014_11_02_r1000_TEVCMCTS_newFitness_decay0.50','2014_11_02_r1000_TEVCMCTS_newFitness_decay0.80','2014_11_02_r1000_TEVCMCTS_newFitness_decay0.90','2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_11_02_r1000_TEVCMCTS_newInverseFitness_decay0.80']
-#filenames = ['2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.90_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.80_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.50_H8-30']
-
-#TEVC_MCTS different fitness functions
-#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_30_newInverseFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.99_H8-30']
-#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_31_r1000_TEVCMCTS_decay0.50_fitnessZero','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.50_H8-30']
-
-#BEST: sampleMCTS vs TEVC_MCTS
-#filenames = ['2014_11_02_r1000_sampleMCTS_decay0.90','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.90_H8-30','2014_11_02_r1000_TEVCMCTS_newFitness_decay0.80']
+#2014_11_04 final measurements for the TEVC paper, leftRight
+filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)']
+mergeFiles = [[0,1],[2,3],[4,5],[8,9]]
+#filenames = ['2014_11_08 TEVCMCTS u+one retest discountR 0.80 (10-30)','2014_11_08 TEVCMCTS u+one retest discountR 0.95 (10-30)','2014_11_08 TEVCMCTS u+one retest discountR 0.98 (10-30)','2014_11_08 TEVCMCTS u+one retest discountR 0.99 (10-30)']
+#filenames = ['2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit10','2014_11_04 TEVCMCTS bandit20']
 
 
-#2014_11_14 final measurements for the TEVC paper, leftRight
-filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS bandit20']
-#filenames = ['2014_11_04 TEVCMCTS bandit','2014_11_04 TEVCMCTS bandit10','2014_11_04 TEVCMCTS bandit20']
-mergeFiles = [[0,1],[2,3],[4,5]]
 
 #mergmergeFiles = [[0,1]]eFiles = []     #don't merge any
 #mergeFiles = [[0,1]]   #example: merge SECOND filename into FIRST
     #define which pairs of files should be merged into one (see above example). The merge copies only the first 8 values from the second list into the first list, the second list is then discarded from the results and filename arrays
 
-analysis_type = 0
+analysis_type = 2
     # 0 - average date (raw input)
     # 1 - optimality of date (e.g., optimal number of steps divided by average number of steps) -- requires setting optimal_performance
     # 2 - percentage of optimal samples -- requires setting optimal_performance
@@ -161,13 +166,21 @@ for i in xrange(len(averages)):
 #plt.legend(('1+1','HT'), 
 #           shadow=True, fancybox=True)
 
-plt.legend(filenames, 
-           shadow=True, fancybox=True) 
+#plt.legend(filenames, 
+#           shadow=True, fancybox=True) 
 
 #Titles and labels
 #plt.title('Heuristic estimation: 8 routes')
 plt.xlabel("Rollout length", fontsize=16)#
-plt.ylabel("Average time steps", fontsize=16)
+if analysis_type == 0:
+    plt.ylabel("Average time steps", fontsize=16)
+    plt.legend(filenames, shadow=True, fancybox=True) 
+elif analysis_type == 1:
+    plt.ylabel("Optimality of time steps [%]", fontsize=16)
+    plt.legend(filenames, shadow=True, fancybox=True, loc=4) 
+elif analysis_type == 2:
+    plt.ylabel("Ratio of optimal runs [%]", fontsize=16)
+    plt.legend(filenames, shadow=True, fancybox=True, loc=4) 
 
 #plt.ylim([5,11])
 

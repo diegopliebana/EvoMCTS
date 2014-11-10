@@ -214,6 +214,83 @@ public class ArcadeMachine
         System.out.println(" *********");
     }
 
+    public static void runGamesLN(String game_file, String[] level_files, int level_times, int rollLength,
+                                 String agentName, boolean isFixed, int randomSeed, String filename)
+    {
+        VGDLFactory.GetInstance().init(); //This always first thing to do.
+        VGDLRegistry.GetInstance().init();
+
+        StatSummary scores = new StatSummary();
+
+        Game toPlay = new VGDLParser().parseGame(game_file);
+
+        try {
+            //Create output file
+            PrintStream ps = new PrintStream(new FileOutputStream(new File(filename)));
+
+            for(int i = 0; i < level_times; ++i)
+            {
+                for(int levelIdx = 0; levelIdx < level_files.length; levelIdx++)
+                {
+                    String level_file = level_files[levelIdx];
+                    //System.out.println(" ** Playing game " + game_file + ", level " + level_file + " ("+(i+1)+"/"+level_times+") **");
+
+                    //build the level in the game.
+                    toPlay.buildLevel(level_file);
+
+                    //Second, create the player.
+                    AbstractPlayer player = ArcadeMachine.createPlayer(agentName, null, toPlay.getObservation(), randomSeed);
+
+                    if(player instanceof controllers.sampleMCTS.Agent)
+                    {
+                        ((controllers.sampleMCTS.Agent)player).ROLLOUT_DEPTH = rollLength;
+                    }else if(player instanceof TEVC_MCTS.Agent)
+                    {
+                        TEVC_MCTS.Config.ROLLOUT_DEPTH = rollLength;
+                    }
+
+                    //Third, warm the game up.
+                    ArcadeMachine.warmUp(toPlay, CompetitionParameters.WARMUP_TIME);
+
+                    //Then, play the game.
+                    double score = toPlay.runGame(player, randomSeed, isFixed);
+                    scores.add(score);
+
+                    System.out.format("R %4d/%4d   LVL %02d/%02d   stepsEnd %4d   Win %d   Score %6.1f\n", i+1, level_times, levelIdx+1, level_files.length, toPlay.getGameTick(), toPlay.winner.key(), score);
+                    ps.format("R %4d/%4d   LVL %02d/%02d   stepsEnd %4d   Win %d   Score %6.1f\n", i+1, level_times, levelIdx+1, level_files.length, toPlay.getGameTick(), toPlay.winner.key(), score);
+
+    //                if(!isFixed)
+    //                {
+    //                    all_results[k][i] = toPlay.getGameTick();
+    //                    //all_results[k][i] = score;
+    //                }else{
+    //                    if(player instanceof controllers.sampleMCTS.Agent)
+    //                    {
+    //                        all_results[k][i] = controllers.sampleMCTS.SingleTreeNode.percVictoriesFound;
+    //                    }else if(player instanceof TEVC_MCTS.Agent)
+    //                    {
+    //                        all_results[k][i] = TEVC_MCTS.SingleTreeNode.percVictoriesFound;
+    //                    }
+    //                }
+
+                    //System.out.println(all_results[k][i]);
+
+                    //Finally, when the game is over, we need to tear the player down.
+                    ArcadeMachine.tearPlayerDown(player);
+
+                    //reset the game.
+                    toPlay.reset();
+
+                }
+            }
+
+            //lastly, close the output file
+            ps.close();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
+    }
 
 
     public static void runGamesN(String game_file, String level_file, int level_times, int num_rollLength_valuesInit, int num_rollLength_values,

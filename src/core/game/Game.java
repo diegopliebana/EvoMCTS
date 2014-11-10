@@ -171,7 +171,7 @@ public abstract class Game
      * Indicates if the game has been won by the player.
      * See Types.WINNER for the values of this variable.
      */
-    protected Types.WINNER winner = Types.WINNER.NO_WINNER;
+    public Types.WINNER winner = Types.WINNER.NO_WINNER;
 
     /**
      * Default frame rate of the basic game.
@@ -640,7 +640,7 @@ public abstract class Game
         //System.out.println("Result (1->win; 0->lose):"+ winner.key() + ", Score:" + score + ", timesteps:" + this.getGameTick());
         //System.out.println(winner.key() + "," + this.getGameTick());
         //System.out.println(this.getGameTick());
-        System.out.format("stepsEnd %4d   Win %d   Score %3.1f\n",this.getGameTick(), winner.key(), score);
+        //System.out.format("stepsEnd %4d   Win %d   Score %3.1f",this.getGameTick(), winner.key(), score);
     }
 
     /**
