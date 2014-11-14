@@ -30,8 +30,14 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
 #filenames = ['TEVC_MCTS_100iter_K10_100r','TEVC_MCTS_500iter_K2_100r','TEVC_MCTS_1000iter_K1_100r','sampleMCTS_1000iter_100r']
 #filenames = ['sampleMCTS_100iter_100r_decay0.5','TEVC_MCTS_100iter_K1_100r_decay0.5']
 #filenames = ['sampleMCTS_1000iter_100r_decay0.5','TEVC_MCTS_100iter_K10_100r_decay0.5']
-filenames = ['FEMCTS-BanditAllRandom_Dist10','FEMCTS-BanditAllRandom_Dist9','FEMCTS-BanditAllRandom_Dist8',
-             'FEMCTS-BanditAllRandom_Dist7', 'FEMCTS-BanditAllRandom_Dist6','FEMCTS-BanditAllRandom_Dist5']
+#filenames = ['FEMCTS-BanditAllRandom_Dist10','FEMCTS-BanditAllRandom_Dist9','FEMCTS-BanditAllRandom_Dist8',
+#             'FEMCTS-BanditAllRandom_Dist7', 'FEMCTS-BanditAllRandom_Dist6','FEMCTS-BanditAllRandom_Dist5']
+
+filenames = ['sampleMCTS_controllers.sampleMCTS.Agent_Dist14','sampleMCTS_controllers.sampleMCTS.Agent_Dist13','sampleMCTS_controllers.sampleMCTS.Agent_Dist12',
+             'sampleMCTS_controllers.sampleMCTS.Agent_Dist11','sampleMCTS_controllers.sampleMCTS.Agent_Dist10','sampleMCTS_controllers.sampleMCTS.Agent_Dist19',
+             'sampleMCTS_controllers.sampleMCTS.Agent_Dist8','sampleMCTS_controllers.sampleMCTS.Agent_Dist7','sampleMCTS_controllers.sampleMCTS.Agent_Dist6',
+             'sampleMCTS_controllers.sampleMCTS.Agent_Dist5','sampleMCTS_controllers.sampleMCTS.Agent_Dist4','sampleMCTS_controllers.sampleMCTS.Agent_Dist3',
+             'sampleMCTS_controllers.sampleMCTS.Agent_Dist2','sampleMCTS_controllers.sampleMCTS.Agent_Dist1']
 
 
 #Create a figure
@@ -43,7 +49,8 @@ ax = fig.add_subplot(111)
 for filename in filenames:
 
     #datafile = '../circle/' + filename + '.csv'
-    datafile = '../leftright/fixedPos/' + filename + '.txt'
+    #datafile = '../leftright/fixedPos/' + filename + '.txt'
+    datafile = '../circle/fixedPos/' + filename + '.txt'
     #datafile = '../tomConsoleRuns/' + filename + '.txt'
 
     print 'loading', datafile

@@ -400,7 +400,8 @@ public class SingleTreeNode extends TreeNode
             mctsScore = memScoreEndPlayout;
         }else{
             //We just use the score
-            vectorFitness = rawScoreEndPlayout - rawScoreBeginRollout;
+            //vectorFitness = rawScoreEndPlayout - rawScoreBeginRollout;
+            vectorFitness = rawScoreEndPlayout;
             mctsScore = rawScoreEndPlayout;
         }
 

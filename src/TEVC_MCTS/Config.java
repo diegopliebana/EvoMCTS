@@ -20,7 +20,7 @@ public class Config {
     public static int SCORE_TYPE = RAW_SCORE;
 
     //MCTS stuff
-    public static int MCTS_ITERATIONS = 100;
+    public static int MCTS_ITERATIONS = 1000;
     public static int INDIVIDUAL_ITERATIONS = 1;
     public static int ROLLOUT_DEPTH = 20;
     public static double K = Math.sqrt(2);
@@ -38,7 +38,7 @@ public class Config {
     public static int BANDIT = 3;
     public static int TD = 4;
     public static int CMAES = 5;
-    public static int ES_TYPE = HAND_TUNED_WEIGHTS;
+    public static int ES_TYPE = BANDIT;
 
     //FEATURES:
     public static int GVG_FEATURES = 0;
@@ -49,7 +49,7 @@ public class Config {
     public static int LEFTRIGHT_FEATURES = 5;
     //public static int FEATURES = LEFTRIGHT_FEATURES;
     //public static int FEATURES = CIRCLE_FEATURES;
-    public static int FEATURES = CHASE_FEATURES;
+    public static int FEATURES = CIRCLE_FEATURES;
 
     //Debug.
     public static boolean COMPUTE_HIT_MAP = false;

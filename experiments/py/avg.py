@@ -186,7 +186,7 @@ elif analysis_type == 2:
 
 
 #Save to file.
-fig.savefig("../leftright/FEMCTS_BanditK10_1feat_Proper.pdf")
+#fig.savefig("../leftright/FEMCTS_BanditK10_1feat_Proper.pdf")
 
 # And show it:
 plt.show()

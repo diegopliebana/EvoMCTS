@@ -140,7 +140,7 @@ public class ChaseFeatures extends NavFeatureSource
         //Four actions, 2 features  (distance to angry, distance to scared)
         //These are constant because it is always good to increase distance with
         //angry goats and decrease it with scared ones.
-        return new double[]{-1,-1,-1,-1,1,1,1,1};
+        return new double[]{-1,1,-1,1,-1,1,-1,1};
     }
 
 
