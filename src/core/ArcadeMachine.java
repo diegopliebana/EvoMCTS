@@ -352,7 +352,7 @@ public class ArcadeMachine
                     }
                 }
 
-                //System.out.println(all_results[k][i]);
+                System.out.println(all_results[k][i]);
 
                 //Finally, when the game is over, we need to tear the player down.
                 ArcadeMachine.tearPlayerDown(player);

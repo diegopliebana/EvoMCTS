@@ -99,7 +99,7 @@ public class VariableFeatureWeightedRoller implements TunableRoller {
         }
 
         // now track relative cumulative probability
-        double x = rand.nextDouble();
+         double x = rand.nextDouble();
 
         // an accumulator
         double acc = 0;

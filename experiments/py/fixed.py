@@ -18,6 +18,17 @@ filenames = ['HitsOnGoal10','HitsOnGoal9','HitsOnGoal8',
 #             'SampleMCTS-Dist4', 'SampleMCTS-Dist3','SampleMCTS-Dist2',
 #             'SampleMCTS-Dist1']
 
+filenames = ['sampleMCTS_controllers.sampleMCTS.Agent_Dist14','sampleMCTS_controllers.sampleMCTS.Agent_Dist13','sampleMCTS_controllers.sampleMCTS.Agent_Dist12',
+             'sampleMCTS_controllers.sampleMCTS.Agent_Dist11','sampleMCTS_controllers.sampleMCTS.Agent_Dist10','sampleMCTS_controllers.sampleMCTS.Agent_Dist9',
+             'sampleMCTS_controllers.sampleMCTS.Agent_Dist8','sampleMCTS_controllers.sampleMCTS.Agent_Dist7','sampleMCTS_controllers.sampleMCTS.Agent_Dist6',
+             'sampleMCTS_controllers.sampleMCTS.Agent_Dist5','sampleMCTS_controllers.sampleMCTS.Agent_Dist4','sampleMCTS_controllers.sampleMCTS.Agent_Dist3',
+             'sampleMCTS_controllers.sampleMCTS.Agent_Dist2','sampleMCTS_controllers.sampleMCTS.Agent_Dist1']
+
+filenames = ['tevcMCTS_TEVC_MCTS.Agent_Dist14','tevcMCTS_TEVC_MCTS.Agent_Dist13','tevcMCTS_TEVC_MCTS.Agent_Dist12',
+             'tevcMCTS_TEVC_MCTS.Agent_Dist11','tevcMCTS_TEVC_MCTS.Agent_Dist10','tevcMCTS_TEVC_MCTS.Agent_Dist9',
+             'tevcMCTS_TEVC_MCTS.Agent_Dist8','tevcMCTS_TEVC_MCTS.Agent_Dist7','tevcMCTS_TEVC_MCTS.Agent_Dist6',
+             'tevcMCTS_TEVC_MCTS.Agent_Dist5','tevcMCTS_TEVC_MCTS.Agent_Dist4','tevcMCTS_TEVC_MCTS.Agent_Dist3',
+             'tevcMCTS_TEVC_MCTS.Agent_Dist2','tevcMCTS_TEVC_MCTS.Agent_Dist1']
 
 averages = [[] for filename in filenames]
 std_err = [[] for filename in filenames]
@@ -28,7 +39,7 @@ for filename in filenames:
     
     #datafile = '../circle/' + filename + '.csv'
     #datafile = '../leftright/fixedPos/tevcMCTS_lr_2feat_100rx100it/' + filename + '.txt'
-    datafile = '../leftright/fixedPos/tevcMCTS_lr_1feat_100rx1000it/' + filename + '.txt'    
+    datafile = '../circle/fixedPos/' + filename + '.txt'
     #datafile = '../tomConsoleRuns/' + filename + '.txt'
 
     print 'loading', datafile
@@ -52,12 +63,12 @@ for filename in filenames:
         else:
             cVal = 'white'
             
-        #text = round(real_average,2)
+        text = round(real_average,2)
+        #text = round(2*std_dev,2)
             
         #text = round(real_average,2), "(", round(std_err[f][i],2), ")"
         #text = round(std_err[f][i],2)
         #text = std_err[f][i]
-        text = round(2*std_dev,2)
         
         ax.text(i, f, text, color=cVal, va='center', ha='center')
     
@@ -81,13 +92,17 @@ ax.spines['top'].set_visible(False)
 ax.yaxis.set_ticks_position('left')
 ax.xaxis.set_ticks_position('bottom')
 
-rangeN=[0,1,2,3,4,5,6,7,8,9]
-labels=['10','9','8','7','6','5','4','3','2','1']
+#rangeN=[0,1,2,3,4,5,6,7,8,9]
+#labels=['10','9','8','7','6','5','4','3','2','1']
+rangeN=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+labels=['14','13','12','11','10','9','8','7','6','5','4','3','2','1']
 plt.yticks(rangeN, labels)
 
 
-rangeN=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
-labels=['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15']
+#rangeN=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+#labels=['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15']
+rangeN=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+labels=['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20']
 plt.xticks(rangeN, labels)
 
     
@@ -98,4 +113,4 @@ plt.ylabel("Distance to goal", fontsize=16)
 
 plt.show()
 
-fig.savefig("../leftright/fixedPos/tevcMCTS_lr_1feat_100rx1000it/tevcMCTS_lr_1feat_100rx1000it_x2StDev.pdf")
+fig.savefig("../circle/fixedPos/tevcMCTS_circle_1feat_100rx1000it.pdf")

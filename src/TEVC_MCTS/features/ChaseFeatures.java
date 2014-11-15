@@ -96,7 +96,22 @@ public class ChaseFeatures extends NavFeatureSource
 
     }
 
-    public double valueFunction(StateObservation stateObs)
+    public double valueFunction(StateObservation stateObs) {
+
+        boolean gameOver = stateObs.isGameOver();
+        Types.WINNER win = stateObs.getGameWinner();
+        double rawScore = stateObs.getGameScore();
+
+        if(gameOver && win == Types.WINNER.PLAYER_LOSES)
+            return HUGE_NEGATIVE;
+
+        if(gameOver && win == Types.WINNER.PLAYER_WINS)
+            return HUGE_POSITIVE;
+
+        return rawScore;
+    }
+
+    /*public double valueFunction(StateObservation stateObs)
     {
         boolean gameOver = stateObs.isGameOver();
         Types.WINNER win = stateObs.getGameWinner();
@@ -133,14 +148,14 @@ public class ChaseFeatures extends NavFeatureSource
         score += (distanceToAngryScore) / maxDist;
         score += stateObs.getGameScore();
         return score;
-    }
+    }*/
 
     @Override
     public double[] getHandTunedWeights(StateObservation stateObs) {
         //Four actions, 2 features  (distance to angry, distance to scared)
         //These are constant because it is always good to increase distance with
         //angry goats and decrease it with scared ones.
-        return new double[]{-1,-1,-1,-1,1,1,1,1};
+        return new double[]{-1,1,-1,1,-1,1,-1,1};
     }
 
 

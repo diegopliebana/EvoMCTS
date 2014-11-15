@@ -22,7 +22,7 @@ public class Config {
     //MCTS stuff
     public static int MCTS_ITERATIONS = 100;
     public static int INDIVIDUAL_ITERATIONS = 1;
-    public static int ROLLOUT_DEPTH = 20;
+    public static int ROLLOUT_DEPTH = 100;
     public static double K = Math.sqrt(2);
     public static double REWARD_DISCOUNT = 0.99;
 

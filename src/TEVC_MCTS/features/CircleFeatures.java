@@ -53,7 +53,7 @@ public class CircleFeatures extends NavFeatureSource
     {
         HashMap<String, Double> features = new HashMap<String, Double>();
         features.put("angry:"+WIN, distanceToWin);
-        features.put("scared:"+LOSE, distanceToLose);
+        //features.put("scared:"+LOSE, distanceToLose);
         return features;
     }
 
@@ -145,7 +145,8 @@ public class CircleFeatures extends NavFeatureSource
             up = -1;
         }
 
-        return new double[]{left, left, right, right, down, down,up,up};
+        //return new double[]{left, left, right, right, down, down,up,up};
+        return new double[]{left,right,down,up};
     }
 
 
