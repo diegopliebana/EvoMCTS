@@ -22,6 +22,7 @@ public class Test
         //String controller = "FastEvoMCTS.Agent";
         String controller = "TEVC_MCTS.Agent";
         String pathfinder = "controllers.pathfinder.Agent";
+        String ol_controller = "SampleOLMCTS.Agent";
 
         //Available games:
         String gamesPath = "examples/gridphysics/";
@@ -52,17 +53,18 @@ public class Test
 		
         //Game and level to play
 
-        int gameIdx = 3;
-        int levelIdx = 1; //level names from 0 to 4 (game_lvlN.txt).
+        int gameIdx = 0;
+        int levelIdx = 0; //level names from 0 to 4 (game_lvlN.txt).
         String game = gamesPath + games[gameIdx] + ".txt";
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
 
         // 1. This starts a game, in a level, played by a human.
-        // ArcadeMachine.playOneGame(game, level1, recordActionsFile, seed);
+        //ArcadeMachine.playOneGame(game, level1, recordActionsFile, seed);
 
         // 2. This plays a game in a level by the controller.
         //ArcadeMachine.runOneGame(game, level1, visuals, sampleMCTSController, recordActionsFile, seed);
         //ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
+        ArcadeMachine.runOneGame(game, level1, visuals, ol_controller, recordActionsFile, seed);
 
         // 3. This replays a game from an action file previously recorded
         //String readActionsFile = "actionsFile_aliens_lvl0.txt";  //This example is for
@@ -71,7 +73,7 @@ public class Test
         // 4. This plays a single game, in N levels, M times :
         //String level2 = gamesPath + games[gameIdx] + "_lvl" + 1 +".txt";//
 
-        int M = 100;
+        //int M = 100;
 
         //int RLmin = 95;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
         //int RLmax = 100;
@@ -89,7 +91,7 @@ public class Test
         //ArcadeMachine.runGamesN(game, level1, M, RL, controller, isFixedTest, seed, filename);
 
         //RightLeft_2014_11_04(gamesPath, games, controller, sampleMCTSController, seed, filename);
-        ComplexGames_2014_11_07(gamesPath, games, controller, sampleMCTSController, seed);
+        //ComplexGames_2014_11_07(gamesPath, games, controller, sampleMCTSController, seed);
 
         /*int M = 100;
         boolean isFixedTest = true;

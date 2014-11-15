@@ -30,6 +30,19 @@ filenames = ['tevcMCTS_TEVC_MCTS.Agent_Dist14','tevcMCTS_TEVC_MCTS.Agent_Dist13'
              'tevcMCTS_TEVC_MCTS.Agent_Dist5','tevcMCTS_TEVC_MCTS.Agent_Dist4','tevcMCTS_TEVC_MCTS.Agent_Dist3',
              'tevcMCTS_TEVC_MCTS.Agent_Dist2','tevcMCTS_TEVC_MCTS.Agent_Dist1']
 
+
+filenames = ['leftright_u1_1feat_TEVC_MCTS.Agent_Dist10','leftright_u1_1feat_TEVC_MCTS.Agent_Dist9','leftright_u1_1feat_TEVC_MCTS.Agent_Dist8',
+             'leftright_u1_1feat_TEVC_MCTS.Agent_Dist7', 'leftright_u1_1feat_TEVC_MCTS.Agent_Dist6','leftright_u1_1feat_TEVC_MCTS.Agent_Dist5',
+             'leftright_u1_1feat_TEVC_MCTS.Agent_Dist4', 'leftright_u1_1feat_TEVC_MCTS.Agent_Dist3','leftright_u1_1feat_TEVC_MCTS.Agent_Dist2',
+             'leftright_u1_1feat_TEVC_MCTS.Agent_Dist1']
+
+
+filenames = ['circle_u1_1feat_TEVC_MCTS.Agent_Dist14','circle_u1_1feat_TEVC_MCTS.Agent_Dist13','circle_u1_1feat_TEVC_MCTS.Agent_Dist12',
+             'circle_u1_1feat_TEVC_MCTS.Agent_Dist11','circle_u1_1feat_TEVC_MCTS.Agent_Dist10','circle_u1_1feat_TEVC_MCTS.Agent_Dist9',
+             'circle_u1_1feat_TEVC_MCTS.Agent_Dist8','circle_u1_1feat_TEVC_MCTS.Agent_Dist7','circle_u1_1feat_TEVC_MCTS.Agent_Dist6',
+             'circle_u1_1feat_TEVC_MCTS.Agent_Dist5','circle_u1_1feat_TEVC_MCTS.Agent_Dist4','circle_u1_1feat_TEVC_MCTS.Agent_Dist3',
+             'circle_u1_1feat_TEVC_MCTS.Agent_Dist2','circle_u1_1feat_TEVC_MCTS.Agent_Dist1']
+
 averages = [[] for filename in filenames]
 std_err = [[] for filename in filenames]
 f = 0
@@ -38,8 +51,8 @@ for filename in filenames:
 
     
     #datafile = '../circle/' + filename + '.csv'
-    #datafile = '../leftright/fixedPos/tevcMCTS_lr_2feat_100rx100it/' + filename + '.txt'
-    datafile = '../circle/fixedPos/' + filename + '.txt'
+    datafile = '../circle/fixedPos/tevcMCTS_circle_u1_1feat_100rx1000it/' + filename + '.txt'
+    #datafile = '../circle/fixedPos/' + filename + '.txt'
     #datafile = '../tomConsoleRuns/' + filename + '.txt'
 
     print 'loading', datafile
@@ -63,8 +76,8 @@ for filename in filenames:
         else:
             cVal = 'white'
             
-        text = round(real_average,2)
-        #text = round(2*std_dev,2)
+        #text = round(real_average,2)
+        text = round(2*std_dev,2)
             
         #text = round(real_average,2), "(", round(std_err[f][i],2), ")"
         #text = round(std_err[f][i],2)
@@ -113,4 +126,4 @@ plt.ylabel("Distance to goal", fontsize=16)
 
 plt.show()
 
-fig.savefig("../circle/fixedPos/tevcMCTS_circle_1feat_100rx1000it.pdf")
+fig.savefig("../circle/fixedPos/tevcMCTS_circle_u1_1feat_100rx1000it_2xStdDev.pdf")
