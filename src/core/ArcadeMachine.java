@@ -256,8 +256,8 @@ public class ArcadeMachine
                     double score = toPlay.runGame(player, randomSeed, isFixed);
                     scores.add(score);
 
-                    System.out.format("R %4d/%4d   LVL %02d/%02d   stepsEnd %4d   Win %d   Score %6.1f\n", i+1, level_times, levelIdx+1, level_files.length, toPlay.getGameTick(), toPlay.winner.key(), score);
-                    ps.format("R %4d/%4d   LVL %02d/%02d   stepsEnd %4d   Win %d   Score %6.1f\n", i+1, level_times, levelIdx+1, level_files.length, toPlay.getGameTick(), toPlay.winner.key(), score);
+                    System.out.format("R %3d/%03d   LVL %02d/%02d   stepsEnd %4d   Win %d   Score %6.1f\n", i+1, level_times, levelIdx+1, level_files.length, toPlay.getGameTick(), toPlay.winner.key(), score);
+                    ps.format("R %3d/%03d   LVL %02d/%02d   stepsEnd %4d   Win %d   Score %6.1f\n", i+1, level_times, levelIdx+1, level_files.length, toPlay.getGameTick(), toPlay.winner.key(), score);
 
     //                if(!isFixed)
     //                {

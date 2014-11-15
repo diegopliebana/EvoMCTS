@@ -61,8 +61,8 @@ mergeFiles = []
 #filenames = ['2014_11_04 TEVCMCTS u+one','2014_11_08 TEVCMCTS u+one retest discountR 1.00','2014_11_08 TEVCMCTS u+one retest discountR 0.99','2014_11_08 TEVCMCTS u+one retest discountR 0.50','2014_11_08 TEVCMCTS u+one retest discountR 0.01','2014_11_08 TEVCMCTS u+one retest discountR 0.99 noFitnessCorr','2014_11_08 TEVCMCTS u+one retest discountR 0.99 (21-50)','2014_11_08 TEVCMCTS u+one retest discountR 0.99 noFitnessCorr (21-50)']
 
 #2014_11_04 final measurements for the TEVC paper, leftRight
-filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)']
-mergeFiles = [[0,1],[2,3],[4,5],[8,9]]
+filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS one+one (1-8)','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)']
+mergeFiles = [[0,1],[2,3],[4,5],[6,7],[8,9],[10,11]]
 #filenames = ['2014_11_08 TEVCMCTS u+one retest discountR 0.80 (10-30)','2014_11_08 TEVCMCTS u+one retest discountR 0.95 (10-30)','2014_11_08 TEVCMCTS u+one retest discountR 0.98 (10-30)','2014_11_08 TEVCMCTS u+one retest discountR 0.99 (10-30)']
 #filenames = ['2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit10','2014_11_04 TEVCMCTS bandit20']
 
@@ -72,7 +72,7 @@ mergeFiles = [[0,1],[2,3],[4,5],[8,9]]
 #mergeFiles = [[0,1]]   #example: merge SECOND filename into FIRST
     #define which pairs of files should be merged into one (see above example). The merge copies only the first 8 values from the second list into the first list, the second list is then discarded from the results and filename arrays
 
-analysis_type = 2
+analysis_type = 0
     # 0 - average date (raw input)
     # 1 - optimality of date (e.g., optimal number of steps divided by average number of steps) -- requires setting optimal_performance
     # 2 - percentage of optimal samples -- requires setting optimal_performance

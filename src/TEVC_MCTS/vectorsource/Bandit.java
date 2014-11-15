@@ -14,7 +14,7 @@ public class Bandit extends FitVectorSource{
 
     public double K = Math.sqrt(2);
     public double epsilon = 1e-6;
-    public int popSize = 5;
+    public int popSize =1;
     double[][] pop;
     double[] fitness;
     int[] n;
@@ -44,11 +44,11 @@ public class Bandit extends FitVectorSource{
         n = new int[popSize];
         pop = new double[popSize][bestYet.length];
 
-        for (int i=0; i< pop.length; i++)
-        {
-            for (int j=0; j<bestYet.length; j++)
-                pop[i][j] = nextRandom();
-        }
+//        for (int i=0; i< pop.length; i++)
+//        {
+//            for (int j=0; j<bestYet.length; j++)
+//                pop[i][j] = nextRandom();
+//        }
 
 
         //pop[pop.length-1][0] = 0;

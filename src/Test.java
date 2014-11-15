@@ -155,7 +155,7 @@ public class Test
         //This plays the first L levels, M times each. Actions to file optional (set saveActions to true).
         int L = 5;      //number of first L levels
         int M = 200;    //number of repeats (for statistical accuracy) of each level
-        int rollOutLength = 50;
+        int rollOutLength = 2;
 
         String[] levels = new String[L];
 
