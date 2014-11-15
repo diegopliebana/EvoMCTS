@@ -20,9 +20,9 @@ public class Config {
     public static int SCORE_TYPE = RAW_SCORE;
 
     //MCTS stuff
-    public static int MCTS_ITERATIONS = 1000;
+    public static int MCTS_ITERATIONS = 100;
     public static int INDIVIDUAL_ITERATIONS = 1;
-    public static int ROLLOUT_DEPTH = 20;
+    public static int ROLLOUT_DEPTH = 100;
     public static double K = Math.sqrt(2);
     public static double REWARD_DISCOUNT = 0.80;
 
@@ -49,7 +49,7 @@ public class Config {
     public static int LEFTRIGHT_FEATURES = 5;
     //public static int FEATURES = LEFTRIGHT_FEATURES;
     //public static int FEATURES = CIRCLE_FEATURES;
-    public static int FEATURES = CIRCLE_FEATURES;
+    public static int FEATURES = CHASE_FEATURES;
 
     //Debug.
     public static boolean COMPUTE_HIT_MAP = false;

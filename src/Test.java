@@ -52,7 +52,7 @@ public class Test
 		
         //Game and level to play
 
-        int gameIdx = 20;
+        int gameIdx = 3;
         int levelIdx = 1; //level names from 0 to 4 (game_lvlN.txt).
         String game = gamesPath + games[gameIdx] + ".txt";
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
@@ -71,7 +71,7 @@ public class Test
         // 4. This plays a single game, in N levels, M times :
         //String level2 = gamesPath + games[gameIdx] + "_lvl" + 1 +".txt";//
 
-        //int M = 100;
+        int M = 100;
 
         //int RLmin = 95;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
         //int RLmax = 100;
@@ -81,7 +81,7 @@ public class Test
         //int[] RL = new int[]{1,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100};
 
         //int M = 50; //1000;   //number of repeats (only for statistical accuracy)
-        //int[] RL = new int[]{40,45,50};
+        //int[] RL = new int[]{10};
 
         //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
         //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
@@ -89,22 +89,23 @@ public class Test
         //ArcadeMachine.runGamesN(game, level1, M, RL, controller, isFixedTest, seed, filename);
 
         //RightLeft_2014_11_04(gamesPath, games, controller, sampleMCTSController, seed, filename);
-        //ComplexGames_2014_11_07(gamesPath, games, controller, sampleMCTSController, seed);
+        ComplexGames_2014_11_07(gamesPath, games, controller, sampleMCTSController, seed);
 
-        int M = 100;
+        /*int M = 100;
         boolean isFixedTest = true;
         int RLmin = 1;
-        int RLmax = 20;
+        int RLmax = 20; //15; //20;
         for(int i = 14; i > 0; --i)
+        //for(int i = 10; i > 0; --i)
         {
             //System.out.println(wkDir.substring(wkDir.lastIndexOf("\\")+1));
             //filename = wkDir.substring(wkDir.lastIndexOf("\\")+1)  + "_" + controller + "_Dist" + i + ".txt";
-            filename = wkDir.substring(wkDir.lastIndexOf("\\")+1)  + "_" + sampleMCTSController + "_Dist" + i + ".txt";
+            filename = wkDir.substring(wkDir.lastIndexOf("\\")+1)  + "_" + controller + "_Dist" + i + ".txt";
             level1 = gamesPath + games[gameIdx] + "_lvl" + i +".txt";
             System.out.println("filename: " + filename + ", levelFile: " + level1);
-            //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
-            ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
-        }
+            ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
+            //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
+        }*/
 
         //5. This plays N games, in the first L levels, M times each. Actions to file optional (set saveActions to true).
         /*int N = 30, L = 1, M = 1;

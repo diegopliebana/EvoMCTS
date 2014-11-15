@@ -459,7 +459,7 @@ public class SingleTreeNode extends TreeNode
             return HUGE_POSITIVE;
 
         double rawScore = a_gameState.getGameScore();
-        rawScore = rawScore - rawScoreBeginPlayout;
+        //rawScore = rawScore - rawScoreBeginPlayout;
 
         return rawScore;
     }
