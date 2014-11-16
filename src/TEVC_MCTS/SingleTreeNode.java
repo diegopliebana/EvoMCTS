@@ -35,8 +35,8 @@ public class SingleTreeNode extends TreeNode
     public boolean m_newNodeCreated;
     public static LinkedList<SingleTreeNode> m_runList = new LinkedList<SingleTreeNode>();
 
-    private static final double HUGE_NEGATIVE = -2.0;
-    private static final double HUGE_POSITIVE =  2.0;
+    private static final double HUGE_NEGATIVE = -10000000.0;
+    private static final double HUGE_POSITIVE =  10000000.0;
     public static double epsilon = 1e-6;
     public SingleTreeNode parent;
     public SingleTreeNode[] children;
@@ -44,8 +44,9 @@ public class SingleTreeNode extends TreeNode
     public int nVisits;
     public static Random m_rnd;
     private int m_depth;
-    private static double[] lastBounds = new double[]{0,1};
-    private static double[] curBounds = new double[]{0,1};
+    //protected static double[] lastBounds = new double[]{0,1}; //not in use since 15.11.2014
+    //private static double[] curBounds = new double[]{0,1};
+    protected static double[] bounds = new double[]{Double.MAX_VALUE, -Double.MAX_VALUE};
 
     static double biasInfluence = 0.0;
     static double meanInfluence = 1.0;
@@ -88,8 +89,8 @@ public class SingleTreeNode extends TreeNode
     int firstAction = -1;
     public void mctsSearch(ElapsedCpuTimer elapsedTimer, TunableRoller roller, FitVectorSource source) {
 
-        lastBounds[0] = curBounds[0];
-        lastBounds[1] = curBounds[1];
+//        lastBounds[0] = curBounds[0];
+//        lastBounds[1] = curBounds[1];
 
         double avgTimeTaken = 0;
         double acumTimeTaken = 0;
@@ -141,7 +142,7 @@ public class SingleTreeNode extends TreeNode
             firstAction = -1;
 
             //initial score at the beginning of the playout.
-            rawScoreBeginPlayout = state.getGameScore();
+            //rawScoreBeginPlayout = state.getGameScore();  //not normalized!
 
             //Tree policy.
             SingleTreeNode selected = treePolicy();
@@ -169,8 +170,8 @@ public class SingleTreeNode extends TreeNode
             if(weightVectorFitness.n() > 0)
             {
                 //This may happen when we choose not to update a fitness (i.e.: bandits).
-                double normFit = Utils.normalise(averageFitness,HUGE_NEGATIVE,HUGE_POSITIVE);
-                source.returnFitness(rolloutStates, rolloutActions, normFit);
+                //double normFit = Utils.normalise(averageFitness,HUGE_NEGATIVE,HUGE_POSITIVE);
+                source.returnFitness(rolloutStates, rolloutActions, averageFitness);
             }
 
             //We might have found new features during the rollouts, update vector sizes.
@@ -265,13 +266,14 @@ public class SingleTreeNode extends TreeNode
         for (SingleTreeNode child : this.children)
         {
 
-            double hvVal = child.totValue;
+            double hvVal = Utils.normalise(child.totValue, bounds[0], bounds[1]);
 
             double childValue =  hvVal / (child.nVisits + this.epsilon);
 
+            double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
             double uctValue = childValue +
-                    Config.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) +
-                    this.m_rnd.nextDouble() * this.epsilon;
+                    ( Config.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) )*
+                    tieBreaker;
 
             // small sampleRandom numbers: break ties in unexpanded nodes
             if (uctValue > bestValue) {
@@ -368,26 +370,31 @@ public class SingleTreeNode extends TreeNode
         double accDiscount = Math.pow(Config.REWARD_DISCOUNT, thisDepth);
         double delta = rawDelta * accDiscount;
 
+//        if(rawDelta == HUGE_POSITIVE || rawDelta == HUGE_NEGATIVE)
+//        {
+//            memory.manageGameEnd(state, rollerState);
+//            if(Config.ES_TYPE != Config.HAND_TUNED_WEIGHTS)
+//            {
+//                //boolean improved = vSource.returnFitness(rolloutStates, rolloutActions, delta);
+//                double evo_delta = percVectorUse * delta;
+//                assignFitnessValue(rolloutMoves, evo_delta);
+//            }
+//            return delta;
+//        }
 
-        if(rawDelta == HUGE_POSITIVE || rawDelta == HUGE_NEGATIVE)
-        {
-            memory.manageGameEnd(state, rollerState);
-            if(Config.ES_TYPE != Config.HAND_TUNED_WEIGHTS)
-            {
-                //boolean improved = vSource.returnFitness(rolloutStates, rolloutActions, delta);
-                double evo_delta = percVectorUse * delta;
-                assignFitnessValue(rolloutMoves, evo_delta);
-            }
-            return delta;
+        if(delta < bounds[0]){
+            bounds[0] = delta;
+            vSource.bounds[0] = delta;
         }
-
-        if(delta < curBounds[0]) curBounds[0] = delta;
-        if(delta > curBounds[1]) curBounds[1] = delta;
+        if(delta > bounds[1]){
+            bounds[1] = delta;
+            vSource.bounds[1] = delta;
+        }
 
         double rawScoreEndPlayout = delta;
 
-        double mctsScore = -1;
-        double vectorFitness = -1;
+        double mctsScore = 0;
+        double vectorFitness = 0;
 
         //Score is 0 and we want to use experience + curiosity:
         if(Config.SCORE_TYPE != Config.RAW_SCORE && (rawScoreEndPlayout == 0))
@@ -396,6 +403,7 @@ public class SingleTreeNode extends TreeNode
                 features  = roller.getFeatures().getFeatureVector();
 
             double memScoreEndPlayout = knowledgeValue(features); //score;
+            //vectorFitness = memScoreEndPlayout - memScoreBeginRollout;
             vectorFitness = memScoreEndPlayout - memScoreBeginRollout;
             mctsScore = memScoreEndPlayout;
         }else{
@@ -451,14 +459,16 @@ public class SingleTreeNode extends TreeNode
     {
         boolean gameOver = a_gameState.isGameOver();
         Types.WINNER win = a_gameState.getGameWinner();
+        double rawScore = a_gameState.getGameScore();
 
         if(gameOver && win == Types.WINNER.PLAYER_LOSES)
-            return HUGE_NEGATIVE;
+            //return HUGE_NEGATIVE;
+            rawScore += HUGE_NEGATIVE;
 
-        if(gameOver && win == Types.WINNER.PLAYER_WINS)
-            return HUGE_POSITIVE;
+        else if(gameOver && win == Types.WINNER.PLAYER_WINS)
+            //return HUGE_POSITIVE;
+            rawScore += HUGE_POSITIVE;
 
-        double rawScore = a_gameState.getGameScore();
         //rawScore = rawScore - rawScoreBeginPlayout;
 
         return rawScore;
@@ -488,7 +498,7 @@ public class SingleTreeNode extends TreeNode
     }
 
     public double meanValue() {
-        return totValue / nVisits + epsilon;
+        return Utils.normalise(totValue, bounds[0], bounds[1]) / (nVisits + epsilon);
     }
 
 
@@ -509,7 +519,9 @@ public class SingleTreeNode extends TreeNode
         // System.out.println(Arrays.toString(biases));
         for (int i=0; i<children.length; i++) {
             if (children[i] != null) {
-                p.add(children[i].meanValue() * meanInfluence + biases[i] * biasInfluence + m_rnd.nextDouble() * epsilon, i);
+
+                double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
+                p.add(children[i].meanValue() * meanInfluence + biases[i] * biasInfluence * tieBreaker, i);
             }
         }
         return p.getBest();
@@ -532,8 +544,9 @@ public class SingleTreeNode extends TreeNode
                     allEqual = false;
                 }
 
-                if (children[i].nVisits + m_rnd.nextDouble() * epsilon > bestValue) {
-                    bestValue = children[i].nVisits;
+                double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
+                if (children[i].nVisits * tieBreaker > bestValue) {
+                    bestValue = children[i].nVisits * tieBreaker;
                     selected = i;
                 }
             }
@@ -603,9 +616,11 @@ public class SingleTreeNode extends TreeNode
 
         for (int i=0; i<children.length; i++) {
 
-            double tieBreaker = m_rnd.nextDouble() * epsilon;
-            if(children[i] != null && children[i].totValue + tieBreaker > bestValue) {
-                bestValue = children[i].totValue + tieBreaker;
+            //double tieBreaker = m_rnd.nextDouble() * epsilon;
+            double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
+            double childValue = Utils.normalise(children[i].totValue, bounds[0], bounds[1]);
+            if(children[i] != null && childValue * tieBreaker > bestValue) {
+                bestValue = childValue * tieBreaker;
                 selected = i;
             }
         }

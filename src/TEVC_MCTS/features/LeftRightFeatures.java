@@ -23,8 +23,8 @@ import java.util.HashMap;
 public class LeftRightFeatures extends NavFeatureSource
 {
 
-    private static final double HUGE_NEGATIVE = -2.0;
-    private static final double HUGE_POSITIVE =  2.0;
+    private static final double HUGE_NEGATIVE = -10000000.0;
+    private static final double HUGE_POSITIVE =  10000000.0;
     private int WALL = 0, WIN = 2, LOSE = 3;
 
     private Vector2d avatarPos;
@@ -93,14 +93,17 @@ public class LeftRightFeatures extends NavFeatureSource
     {
         boolean gameOver = stateObs.isGameOver();
         Types.WINNER win = stateObs.getGameWinner();
+        double rawScore = stateObs.getGameScore();
 
         if(gameOver && win == Types.WINNER.PLAYER_LOSES)
-            return HUGE_NEGATIVE;
+            //return HUGE_NEGATIVE;
+            rawScore += HUGE_NEGATIVE;
 
-        if(gameOver && win == Types.WINNER.PLAYER_WINS)
-            return HUGE_POSITIVE;
+        else if(gameOver && win == Types.WINNER.PLAYER_WINS)
+            //return HUGE_POSITIVE;
+            rawScore += HUGE_POSITIVE;
 
-        return stateObs.getGameScore();
+        return rawScore;
     }
 
 

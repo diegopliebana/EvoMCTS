@@ -107,7 +107,10 @@ public class Utils
     //Normalizes a value between its MIN and MAX.
     public static double normalise(double a_value, double a_min, double a_max)
     {
-        return (a_value - a_min)/(a_max - a_min);
+        if(a_min < a_max)
+            return (a_value - a_min)/(a_max - a_min);
+        else    // if bounds are invalid, then return same value
+            return a_value;
     }
 
     public static boolean processUseKey(boolean[] key_pressed)

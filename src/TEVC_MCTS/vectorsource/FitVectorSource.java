@@ -21,6 +21,8 @@ public abstract class FitVectorSource {
     public double[] proposed;
     double bestScore;
 
+    public double[] bounds = new double[]{Double.MAX_VALUE, -Double.MAX_VALUE};
+
 
     static Random rand;
     public static int MAX_BEST = 1;

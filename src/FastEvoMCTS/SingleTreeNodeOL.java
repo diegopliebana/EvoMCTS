@@ -390,7 +390,7 @@ public class SingleTreeNodeOL extends TreeNode {
     }
 
     public double meanValue() {
-        return totValue / nVisits + epsilon;
+        return totValue / (nVisits + epsilon);
     }
 
 

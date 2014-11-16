@@ -22,8 +22,9 @@ public class SingleTreeNode
     public int nVisits;
     public static Random m_rnd;
     public int m_depth;
-    protected static double[] lastBounds = new double[]{0,1};
-    protected static double[] curBounds = new double[]{0,1};
+    //protected static double[] lastBounds = new double[]{0,1}; //not in use since 15.11.2014
+    //private static double[] curBounds = new double[]{0,1};
+    protected static double[] bounds = new double[]{Double.MAX_VALUE, -Double.MAX_VALUE};
 
     private static int m_num_victories;
     public static double percVictoriesFound;
@@ -49,8 +50,8 @@ public class SingleTreeNode
 
     public void mctsSearch(ElapsedCpuTimer elapsedTimer) {
 
-        lastBounds[0] = curBounds[0];
-        lastBounds[1] = curBounds[1];
+        //lastBounds[0] = curBounds[0];
+        //lastBounds[1] = curBounds[1];
 
         double avgTimeTaken = 0;
         double acumTimeTaken = 0;
@@ -131,12 +132,14 @@ public class SingleTreeNode
         double bestValue = -Double.MAX_VALUE;
         for (SingleTreeNode child : this.children)
         {
-            double hvVal = child.totValue;
+            double hvVal = Utils.normalise(child.totValue, bounds[0], bounds[1]);
             double childValue =  hvVal / (child.nVisits + this.epsilon);
 
+            double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
             double uctValue = childValue +
-                    Agent.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) +
-                    this.m_rnd.nextDouble() * this.epsilon;
+                    ( Agent.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) )*
+                    tieBreaker
+                    ;
 
             // small sampleRandom numbers: break ties in unexpanded nodes
             if (uctValue > bestValue) {
@@ -168,7 +171,7 @@ public class SingleTreeNode
             double bestValue = -Double.MAX_VALUE;
             for (SingleTreeNode child : this.children)
             {
-                double hvVal = child.totValue;
+                double hvVal = Utils.normalise(child.totValue, bounds[0], bounds[1]);
 
                 // small sampleRandom numbers: break ties in unexpanded nodes
                 if (hvVal > bestValue) {
@@ -217,12 +220,12 @@ public class SingleTreeNode
         double delta = rawDelta * accDiscount;
 
 
-        if(delta < curBounds[0]) curBounds[0] = delta;
-        if(delta > curBounds[1]) curBounds[1] = delta;
+        if(delta < bounds[0]) bounds[0] = delta;
+        if(delta > bounds[1]) bounds[1] = delta;
 
-        double normDelta = Utils.normalise(delta ,lastBounds[0], lastBounds[1]);
+        //double normDelta = Utils.normalise(delta ,lastBounds[0], lastBounds[1]);
 
-        return normDelta;
+        return delta;
     }
 
     public double value(StateObservation a_gameState) {
@@ -232,10 +235,12 @@ public class SingleTreeNode
         double rawScore = a_gameState.getGameScore();
 
         if(gameOver && win == Types.WINNER.PLAYER_LOSES)
-            return HUGE_NEGATIVE;
+            //return HUGE_NEGATIVE;
+            rawScore += HUGE_NEGATIVE;
 
-        if(gameOver && win == Types.WINNER.PLAYER_WINS)
-            return HUGE_POSITIVE;
+        else if(gameOver && win == Types.WINNER.PLAYER_WINS)
+            //return HUGE_POSITIVE;
+            rawScore += HUGE_POSITIVE;
 
         return rawScore;
     }
@@ -280,9 +285,10 @@ public class SingleTreeNode
                     allEqual = false;
                 }
 
-                double tieBreaker = m_rnd.nextDouble() * epsilon;
-                if (children[i].nVisits + tieBreaker > bestValue) {
-                    bestValue = children[i].nVisits + tieBreaker;
+                //double tieBreaker = m_rnd.nextDouble() * epsilon;
+                double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
+                if (children[i].nVisits * tieBreaker > bestValue) {
+                    bestValue = children[i].nVisits * tieBreaker;
                     selected = i;
                 }
             }
@@ -307,9 +313,11 @@ public class SingleTreeNode
 
         for (int i=0; i<children.length; i++) {
 
-            double tieBreaker = m_rnd.nextDouble() * epsilon;
-            if(children[i] != null && children[i].totValue + tieBreaker > bestValue) {
-                bestValue = children[i].totValue + tieBreaker;
+            //double tieBreaker = m_rnd.nextDouble() * epsilon;
+            double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
+            double childValue = Utils.normalise(children[i].totValue, bounds[0], bounds[1]);
+            if(children[i] != null && childValue * tieBreaker > bestValue) {
+                bestValue = childValue * tieBreaker;
                 selected = i;
             }
         }

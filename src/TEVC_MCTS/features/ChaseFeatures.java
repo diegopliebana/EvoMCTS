@@ -103,10 +103,12 @@ public class ChaseFeatures extends NavFeatureSource
         double rawScore = stateObs.getGameScore();
 
         if(gameOver && win == Types.WINNER.PLAYER_LOSES)
-            return HUGE_NEGATIVE;
+            //return HUGE_NEGATIVE;
+            rawScore += HUGE_NEGATIVE;
 
-        if(gameOver && win == Types.WINNER.PLAYER_WINS)
-            return HUGE_POSITIVE;
+        else if(gameOver && win == Types.WINNER.PLAYER_WINS)
+            //return HUGE_POSITIVE;
+            rawScore += HUGE_POSITIVE;
 
         return rawScore;
     }
@@ -115,12 +117,13 @@ public class ChaseFeatures extends NavFeatureSource
     {
         boolean gameOver = stateObs.isGameOver();
         Types.WINNER win = stateObs.getGameWinner();
+        double rawScore = stateObs.getGameScore();
 
         if(gameOver && win == Types.WINNER.PLAYER_LOSES)
-            return HUGE_NEGATIVE;
+            return (rawScore+HUGE_NEGATIVE);
 
         if(gameOver && win == Types.WINNER.PLAYER_WINS)
-            return HUGE_POSITIVE;
+            return (rawScore+HUGE_POSITIVE);
 
         avatarPos = stateObs.getAvatarPosition();
         ArrayList<Observation>[] npcPositions = stateObs.getNPCPositions(avatarPos);

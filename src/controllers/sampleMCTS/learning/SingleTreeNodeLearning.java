@@ -184,20 +184,21 @@ public class SingleTreeNodeLearning extends SingleTreeNode {
 
 
     private void learnLinear(ArrayList<ArrayRealVector> states, ArrayList<Integer> actions, double reward) {
+        double normReward = Utils.normalise(reward, bounds[0], bounds[1]);
         for (int i = 0; i <states.size() ; i++) {
             ArrayRealVector a_theta = theta[actions.get(i)];
             double Q_value = a_theta.dotProduct(states.get(i));
-            double mc_error = reward - Q_value;
+            double mc_error = normReward - Q_value;
             for (int j = 0; j < a_theta.getDimension(); j++) {
                 double oldValue = a_theta.getEntry(j);
                 a_theta.setEntry(j, oldValue + learning_rate * oldValue * mc_error);
-                //System.out.println("reward = " + reward);
+                //System.out.println("reward = " + normReward);
                 //System.out.println("Q_value = " + Q_value);
                 //System.out.println("a_theta = " + a_theta);
             }
         }
 
-        //System.out.println("theta = " + theta + " reward = " + reward);
+        //System.out.println("theta = " + theta + " reward = " + normReward);
     }
 
 
@@ -270,13 +271,13 @@ public class SingleTreeNodeLearning extends SingleTreeNode {
 
         double delta = value(rollerState);
 
-        if(delta < curBounds[0]) curBounds[0] = delta;
-        if(delta > curBounds[1]) curBounds[1] = delta;
+        if(delta < bounds[0]) bounds[0] = delta;
+        if(delta > bounds[1]) bounds[1] = delta;
 
-        double normDelta = Utils.normalise(delta, lastBounds[0], lastBounds[1]);
+        //double normDelta = Utils.normalise(delta, lastBounds[0], lastBounds[1]);
 
-        learnLinear(states,actions, normDelta);
+        learnLinear(states,actions, delta);
 
-        return normDelta;
+        return delta;
     }
 }

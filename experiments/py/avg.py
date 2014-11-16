@@ -61,12 +61,16 @@ mergeFiles = []
 #filenames = ['2014_11_04 TEVCMCTS u+one','2014_11_08 TEVCMCTS u+one retest discountR 1.00','2014_11_08 TEVCMCTS u+one retest discountR 0.99','2014_11_08 TEVCMCTS u+one retest discountR 0.50','2014_11_08 TEVCMCTS u+one retest discountR 0.01','2014_11_08 TEVCMCTS u+one retest discountR 0.99 noFitnessCorr','2014_11_08 TEVCMCTS u+one retest discountR 0.99 (21-50)','2014_11_08 TEVCMCTS u+one retest discountR 0.99 noFitnessCorr (21-50)']
 
 #2014_11_04 final measurements for the TEVC paper, leftRight
-filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS one+one (1-8)','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)']
-mergeFiles = [[0,1],[2,3],[4,5],[6,7],[8,9],[10,11]]
+#filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS one+one (1-8)','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)']
+#mergeFiles = [[0,1],[2,3],[4,5],[6,7],[8,9],[10,11]]
 #filenames = ['2014_11_08 TEVCMCTS u+one retest discountR 0.80 (10-30)','2014_11_08 TEVCMCTS u+one retest discountR 0.95 (10-30)','2014_11_08 TEVCMCTS u+one retest discountR 0.98 (10-30)','2014_11_08 TEVCMCTS u+one retest discountR 0.99 (10-30)']
 #filenames = ['2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit10','2014_11_04 TEVCMCTS bandit20']
 
+#filenames=['test mcts','test uone','2014_11_04 sampleMCTS','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS handtuned']
 
+#filenames = ['2014_11_16 d0.80 rl10-30 sampleMCTS','2014_11_16 d0.80 rl10-30 FEMCTS uone','2014_11_16 d0.80 rl10-30 FEMCTS rand','2014_11_16 d0.80 rl10-30 FEMCTS hand','2014_11_16 d0.99 rl10-30 sampleMCTS']
+
+filenames = ['2014_11_16 d0.80 rl10-30 FEMCTS uone','2014_11_16 d0.95 rl10-30 FEMCTS uone','2014_11_16 d0.99 rl10-30 FEMCTS uone','2014_11_16 d1.00 rl10-30 FEMCTS uone']
 
 #mergmergeFiles = [[0,1]]eFiles = []     #don't merge any
 #mergeFiles = [[0,1]]   #example: merge SECOND filename into FIRST

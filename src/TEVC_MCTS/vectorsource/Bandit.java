@@ -2,6 +2,7 @@ package TEVC_MCTS.vectorsource;
 
 import TEVC_MCTS.utils.Memory;
 import core.game.StateObservation;
+import tools.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,11 +45,11 @@ public class Bandit extends FitVectorSource{
         n = new int[popSize];
         pop = new double[popSize][bestYet.length];
 
-//        for (int i=0; i< pop.length; i++)
-//        {
-//            for (int j=0; j<bestYet.length; j++)
-//                pop[i][j] = nextRandom();
-//        }
+        for (int i=0; i< pop.length; i++)
+        {
+            for (int j=0; j<bestYet.length; j++)
+                pop[i][j] = nextRandom();
+        }
 
 
         //pop[pop.length-1][0] = 0;
@@ -94,11 +95,12 @@ public class Bandit extends FitVectorSource{
         for(int i = 0; i < pop.length; ++i)
         {
 
-            double q =  fitness[i] / (n[i] + this.epsilon);
+            double q =  Utils.normalise(fitness[i], bounds[0], bounds[1]) / (n[i] + this.epsilon);
 
+            double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
             double uctValue = q +
-                    K * Math.sqrt(Math.log(bigN + 1) / (n[i] + this.epsilon)) +
-                    this.m_rnd.nextDouble() * this.epsilon;//tiebreaker
+                    ( K * Math.sqrt(Math.log(bigN + 1) / (n[i] + this.epsilon)) ) *
+                    tieBreaker;//tiebreaker
 
             if (uctValue > bestValue) {
                 lastSelected = i;

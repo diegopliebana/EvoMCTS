@@ -27,10 +27,12 @@ public class WinScoreHeuristic extends StateHeuristic {
         double rawScore = stateObs.getGameScore();
 
         if(gameOver && win == Types.WINNER.PLAYER_LOSES)
-            return HUGE_NEGATIVE;
+            //return HUGE_NEGATIVE;
+            rawScore += HUGE_NEGATIVE;
 
-        if(gameOver && win == Types.WINNER.PLAYER_WINS)
-            return HUGE_POSITIVE;
+        else if(gameOver && win == Types.WINNER.PLAYER_WINS)
+            //return HUGE_POSITIVE;
+            rawScore += HUGE_POSITIVE;
 
         return rawScore;
     }
