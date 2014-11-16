@@ -19,7 +19,7 @@ public class SingleTreeNode
     public int nVisits;
     public static Random m_rnd;
     public int m_depth;
-    protected static double[] bounds = new double[]{Double.MAX_VALUE, -Double.MAX_VALUE};
+    protected static double[] bounds = new double[]{0,1};
     public int childIdx;
 
     public static StateObservation rootState;
@@ -119,7 +119,7 @@ public class SingleTreeNode
             double hvVal = child.totValue;
             double childValue =  hvVal / (child.nVisits + this.epsilon);
 
-            childValue = Utils.normalise(childValue ,bounds[0], bounds[1]);
+            childValue = Utils.normalise(childValue, bounds[0], bounds[1]);
             //System.out.println("norm child value: " + childValue);
 
             double uctValue = childValue +
@@ -134,7 +134,8 @@ public class SingleTreeNode
         }
         if (selected == null)
         {
-            throw new RuntimeException("Warning! returning null: " + bestValue + " : " + this.children.length);
+            throw new RuntimeException("Warning! returning null: " + bestValue + " : " + this.children.length + " " +
+            + bounds[0] + " " + bounds[1]);
         }
 
         //Roll the state:
@@ -162,8 +163,10 @@ public class SingleTreeNode
         double accDiscount = Math.pow(Agent.REWARD_DISCOUNT,thisDepth); //1
         double delta = rawDelta * accDiscount;
 
-        if(delta < bounds[0]) bounds[0] = delta;
-        if(delta > bounds[1]) bounds[1] = delta;
+        if(delta < bounds[0])
+            bounds[0] = delta;
+        if(delta > bounds[1])
+            bounds[1] = delta;
 
         //double normDelta = Utils.normalise(delta ,lastBounds[0], lastBounds[1]);
 
