@@ -1,4 +1,4 @@
-package sampleOLMCTS;
+package SampleOLMCTS;
 
 import core.game.StateObservation;
 import tools.ElapsedCpuTimer;
