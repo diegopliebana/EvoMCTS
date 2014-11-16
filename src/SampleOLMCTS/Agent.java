@@ -1,4 +1,4 @@
-package SampleOLMCTS;
+package sampleOLMCTS;
 
 import core.game.StateObservation;
 import core.player.AbstractPlayer;

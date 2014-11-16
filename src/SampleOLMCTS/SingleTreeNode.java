@@ -1,4 +1,4 @@
-package SampleOLMCTS;
+package sampleOLMCTS;
 
 import core.game.StateObservation;
 import ontology.Types;
@@ -19,8 +19,7 @@ public class SingleTreeNode
     public int nVisits;
     public static Random m_rnd;
     public int m_depth;
-    protected static double[] lastBounds = new double[]{0,1};
-    protected static double[] curBounds = new double[]{0,1};
+    protected static double[] bounds = new double[]{Double.MAX_VALUE, -Double.MAX_VALUE};
     public int childIdx;
 
     public static StateObservation rootState;
@@ -43,9 +42,6 @@ public class SingleTreeNode
 
 
     public void mctsSearch(ElapsedCpuTimer elapsedTimer) {
-
-        lastBounds[0] = curBounds[0];
-        lastBounds[1] = curBounds[1];
 
         double avgTimeTaken = 0;
         double acumTimeTaken = 0;
@@ -123,7 +119,7 @@ public class SingleTreeNode
             double hvVal = child.totValue;
             double childValue =  hvVal / (child.nVisits + this.epsilon);
 
-            childValue = Utils.normalise(childValue ,lastBounds[0], lastBounds[1]);
+            childValue = Utils.normalise(childValue ,bounds[0], bounds[1]);
             //System.out.println("norm child value: " + childValue);
 
             double uctValue = childValue +
@@ -166,8 +162,8 @@ public class SingleTreeNode
         double accDiscount = Math.pow(Agent.REWARD_DISCOUNT,thisDepth); //1
         double delta = rawDelta * accDiscount;
 
-        if(delta < curBounds[0]) curBounds[0] = delta;
-        if(delta > curBounds[1]) curBounds[1] = delta;
+        if(delta < bounds[0]) bounds[0] = delta;
+        if(delta > bounds[1]) bounds[1] = delta;
 
         //double normDelta = Utils.normalise(delta ,lastBounds[0], lastBounds[1]);
 
