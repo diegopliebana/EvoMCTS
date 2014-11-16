@@ -122,7 +122,6 @@ public class SingleTreeNode
         {
             double hvVal = child.totValue;
             double childValue =  hvVal / (child.nVisits + this.epsilon);
-
             childValue = Utils.normalise(childValue ,lastBounds[0], lastBounds[1]);
             //System.out.println("norm child value: " + childValue);
 

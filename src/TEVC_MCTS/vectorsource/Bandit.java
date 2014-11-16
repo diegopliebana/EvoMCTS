@@ -95,11 +95,12 @@ public class Bandit extends FitVectorSource{
         for(int i = 0; i < pop.length; ++i)
         {
 
-            double q =  Utils.normalise(fitness[i], bounds[0], bounds[1]) / (n[i] + this.epsilon);
+            double q = fitness[i] / (n[i] + this.epsilon);
+            q =  Utils.normalise(q, bounds[0], bounds[1]);
 
             double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
-            double uctValue = q +
-                    ( K * Math.sqrt(Math.log(bigN + 1) / (n[i] + this.epsilon)) ) *
+            double uctValue = ( q +
+                     K * Math.sqrt(Math.log(bigN + 1) / (n[i] + this.epsilon)) ) *
                     tieBreaker;//tiebreaker
 
             if (uctValue > bestValue) {

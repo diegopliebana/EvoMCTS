@@ -266,13 +266,13 @@ public class SingleTreeNode extends TreeNode
         for (SingleTreeNode child : this.children)
         {
 
-            double hvVal = Utils.normalise(child.totValue, bounds[0], bounds[1]);
-
+            double hvVal = child.totValue;
             double childValue =  hvVal / (child.nVisits + this.epsilon);
+            childValue = Utils.normalise(childValue ,bounds[0], bounds[1]);
 
             double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
-            double uctValue = childValue +
-                    ( Config.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) )*
+            double uctValue = (childValue +
+                     Config.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) )*
                     tieBreaker;
 
             // small sampleRandom numbers: break ties in unexpanded nodes
@@ -498,7 +498,7 @@ public class SingleTreeNode extends TreeNode
     }
 
     public double meanValue() {
-        return Utils.normalise(totValue, bounds[0], bounds[1]) / (nVisits + epsilon);
+        return Utils.normalise(totValue / (nVisits + epsilon), bounds[0], bounds[1]);
     }
 
 
@@ -521,7 +521,7 @@ public class SingleTreeNode extends TreeNode
             if (children[i] != null) {
 
                 double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
-                p.add(children[i].meanValue() * meanInfluence + biases[i] * biasInfluence * tieBreaker, i);
+                p.add((children[i].meanValue() * meanInfluence + biases[i] * biasInfluence) * tieBreaker, i);
             }
         }
         return p.getBest();
@@ -616,12 +616,14 @@ public class SingleTreeNode extends TreeNode
 
         for (int i=0; i<children.length; i++) {
 
-            //double tieBreaker = m_rnd.nextDouble() * epsilon;
-            double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
-            double childValue = Utils.normalise(children[i].totValue, bounds[0], bounds[1]);
-            if(children[i] != null && childValue * tieBreaker > bestValue) {
-                bestValue = childValue * tieBreaker;
-                selected = i;
+            if(children[i] != null) {
+                //double tieBreaker = m_rnd.nextDouble() * epsilon;
+                double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
+                double childValue = ( children[i].totValue / (children[i].nVisits + this.epsilon) ) * tieBreaker;
+                if (childValue > bestValue) {
+                    bestValue = childValue;
+                    selected = i;
+                }
             }
         }
 

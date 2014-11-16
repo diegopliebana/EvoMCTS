@@ -142,8 +142,8 @@ public class Test
         int RLmax = 50;
 
         boolean isFixedTest = false;
-        ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
-        //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
+        //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
+        ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
     }
 
     public static void ComplexGames_2014_11_07(String gamesPath, String[] games, String controller, String sampleMCTSController, int seed){

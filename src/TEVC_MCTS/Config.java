@@ -24,7 +24,7 @@ public class Config {
     public static int INDIVIDUAL_ITERATIONS = 1;
     public static int ROLLOUT_DEPTH = 10;
     public static double K = Math.sqrt(2);
-    public static double REWARD_DISCOUNT = 0.1;
+    public static double REWARD_DISCOUNT = 0.01;
 
     public static boolean OPTIMAL_PLAY_ENABLED = false;
     public static int OPTIMAL_MAX_ACTIONS_RL = 10;
