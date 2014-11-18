@@ -20,75 +20,45 @@ def errorfill(x, y, yerr, color=None, alpha_fill=0.3, ax=None):
     print ymax
     ax.fill_between(x, ymax, ymin, color=color, alpha=alpha_fill)
     
-###-- Take the data --###
-
-###-- FOLDER: leftRight ../tomConsoleRuns/
-
-#TEVC_MCTS larger K
-#filenames = ['TEVC_MCTS_100iter_K10_100r','TEVC_MCTS_500iter_K2_100r','TEVC_MCTS_1000iter_K1_100r','sampleMCTS_1000iter_100r']
-#filenames = ['sampleMCTS_1000iter_100r_decay0.5','TEVC_MCTS_100iter_K10_100r_decay0.5']
-
-#different reward discount/decay rates
-#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay1.00_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_11_02_r1000_sampleMCTS_decay0.90','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.00_H8-30']
-#filenames = ['2014_10_31_r1000_sampleMCTS_100iterK1_decay1.00_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_sampleMCTS_100iterK1_decay0.50_H8-30']
-#filenames = ['2014_11_02_r1000_TEVCMCTS_newFitness_decay0.50','2014_11_02_r1000_TEVCMCTS_newFitness_decay0.80','2014_11_02_r1000_TEVCMCTS_newFitness_decay0.90','2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50']
-#filenames = ['2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.99_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.90_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.80_H8-30','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.50_H8-30']
-
-#TEVC_MCTS different fitness functions
-#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_30_newInverseFitness_TEVC_MCTS_100iterK1_decay0.99_H1-50','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.99_H8-30']
-#filenames = ['2014_10_30_newFitness_TEVC_MCTS_100iterK1_decay0.50_H1-50','2014_10_31_r1000_TEVCMCTS_decay0.50_fitnessZero','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.50_H8-30']
-
-#BEST: sampleMCTS vs TEVC_MCTS
-#filenames = ['2014_11_02_r1000_sampleMCTS_decay0.90','2014_10_31_r1000_TEVC_MCTS_100iterK1_decay0.90_H8-30','2014_11_02_r1000_TEVCMCTS_newFitness_decay0.80']
-
+###-- Define input data --###
 
 ###-- FOLDER: leftRight
-mergeFiles = [] 
-
-#datafile = 'inout/sampleH3.csv'
-
-#filenames = ['SampleMCTS', 'FEMCTS-HT', 'FEMCTS-RND', 'FEMCTS-11', 'FEMCTS-U1']
-#filenames = ['SampleMCTS', 'SampleMCTS-NODF']
-#filenames = ['FEMCTS-HT', 'FEMCTS-HT-NODF']
-
-#filenames = ['TEVC_MCTS_100iter_K10_100r','TEVC_MCTS_500iter_K2_100r','TEVC_MCTS_1000iter_K1_100r','sampleMCTS_1000iter_100r']
-#filenames = ['sampleMCTS_100iter_100r_decay0.5','TEVC_MCTS_100iter_K1_100r_decay0.5']
-#filenames = ['sampleMCTS_1000iter_100r_decay0.5','TEVC_MCTS_100iter_K10_100r_decay0.5']
-#filenames = ['FEMCTS-Bandit-random-k1_2feat', 'FEMCTS-Bandit-random-k1_1feat', 'sampleMCTS']
-
-#filenames = ['FEMCTS_BanditK10_1feat_Proper', 'sampleMCTS_1000iter_100r']
-
-#filenames = ['2014_11_04 TEVCMCTS u+one','2014_11_08 TEVCMCTS u+one retest discountR 1.00','2014_11_08 TEVCMCTS u+one retest discountR 0.99','2014_11_08 TEVCMCTS u+one retest discountR 0.50','2014_11_08 TEVCMCTS u+one retest discountR 0.01','2014_11_08 TEVCMCTS u+one retest discountR 0.99 noFitnessCorr','2014_11_08 TEVCMCTS u+one retest discountR 0.99 (21-50)','2014_11_08 TEVCMCTS u+one retest discountR 0.99 noFitnessCorr (21-50)']
-
-#2014_11_04 final measurements for the TEVC paper, leftRight
-#filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS one+one (1-8)','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)']
-#mergeFiles = [[0,1],[2,3],[4,5],[6,7],[8,9],[10,11]]
-#filenames = ['2014_11_08 TEVCMCTS u+one retest discountR 0.80 (10-30)','2014_11_08 TEVCMCTS u+one retest discountR 0.95 (10-30)','2014_11_08 TEVCMCTS u+one retest discountR 0.98 (10-30)','2014_11_08 TEVCMCTS u+one retest discountR 0.99 (10-30)']
-#filenames = ['2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit10','2014_11_04 TEVCMCTS bandit20']
-
-#filenames=['test mcts','test uone','2014_11_04 sampleMCTS','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS handtuned']
-
-filenames = ['2014_11_16 d0.80 rl10-30 sampleMCTS','2014_11_16 d0.80 rl10-30 FEMCTS uone','2014_11_16 d0.80 rl10-30 FEMCTS rand','2014_11_16 d0.80 rl10-30 FEMCTS hand','2014_11_16 d0.99 rl10-30 sampleMCTS']
-
-#filenames = ['2014_11_16 d0.80 rl10-30 FEMCTS uone','2014_11_16 d0.95 rl10-30 FEMCTS uone','2014_11_16 d0.99 rl10-30 FEMCTS uone','2014_11_16 d1.00 rl10-30 FEMCTS uone']
-
-#mergmergeFiles = [[0,1]]eFiles = []     #don't merge any
+mergeFiles = []         #don't merge any
 #mergeFiles = [[0,1]]   #example: merge SECOND filename into FIRST
     #define which pairs of files should be merged into one (see above example). The merge copies only the first 8 values from the second list into the first list, the second list is then discarded from the results and filename arrays
 
-analysis_type = 0
+#2014_11_04 final measurements for the TEVC paper, leftRight
+#filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS one+one (1-8)','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)']; mergeFiles = [[0,1],[2,3],[4,5],[6,7],[8,9],[10,11]]
+#filenames = ['2014_11_16 rl01-50 sampleMCTS d1.00','2014_11_16 rl01-50 sampleMCTS d0.99','2014_11_16 rl01-50 sampleMCTS d0.95','2014_11_16 rl01-50 sampleMCTS d0.90','2014_11_16 rl01-50 sampleMCTS d0.80','2014_11_16 rl01-50 sampleMCTS d0.50','2014_11_16 rl01-50 sampleMCTS d0.10','2014_11_16 rl01-50 sampleMCTS d0.01']
+
+
+
+
+#filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_16 rl01-50 sampleMCTS d0.80','2014_11_16 rl01-50 FEMCTS uone d0.80','2014_11_16 rl01-50 FEMCTS uone d0.80 discStart']; mergeFiles = [[0,1],[2,3]]
+filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_16 rl01-50 sampleMCTS d0.90']; mergeFiles = [[0,1],[2,3]]
+#filenames =['2014_11_16 rl01-50 FEMCTS uone d1.00','2014_11_16 rl01-50 FEMCTS uone d0.99','2014_11_16 rl01-50 FEMCTS uone d0.95','2014_11_16 rl01-50 FEMCTS uone d0.90','2014_11_16 rl01-50 FEMCTS uone d0.50','2014_11_16 rl01-50 FEMCTS uone d0.10','2014_11_16 rl01-50 FEMCTS uone d0.01']
+
+
+#filenames = ['gvgai_framework_jar','2014_11_17 rl05-20 d0.80 sampleMCTS nor','2014_11_17 rl05-20 d0.80 sampleMCTS nor+rew','2014_11_17 rl05-20 d0.80 sampleMCTS tie+rew+nor','2014_11_17 rl05-20 d0.80 sampleMCTS old']#,
+  #           '2014_11_17 rl05-20 d0.80 sampleMCTS tie+rew+nor1','2014_11_17 rl05-20 d0.80 sampleMCTS tie+rew+nor (normLast)','2014_11_17 rl05-20 d0.80 sampleMCTS tie+rew+nor (K=0)']
+
+
+###-- Config output --###
+
+analysis_type = 2 #from 16.11.2014 on use only analysis 2 -> percentage of optimal samples (results for others were not computed as they were biased due to the 1000 step limit)
     # 0 - average date (raw input)
     # 1 - optimality of date (e.g., optimal number of steps divided by average number of steps) -- requires setting optimal_performance
     # 2 - percentage of optimal samples -- requires setting optimal_performance
 optimal_performance = 9
     # leftRight - 9
     # circle - 13
+confidence_bounds_factor = 0
+    # 2.63 -> 99% confidence interval
+    # 1.98 -> 95% confidence interval
+    # 0.00 -> disabled
 
 
-###-- circle
-#filenames = ['2014_10_31_r100_sampleMCTS_decay0.99','2014_10_31_r100_TEVCMCTS_decay0.50']
-
-
+###-- End of config section (do not change anything below here) --###
 
 #Create a figure
 fig = pylab.figure()
@@ -128,7 +98,7 @@ for j in xrange(len(filenames)):
         roll_depth[j][i] = i+1
         averages[j][i] = np.average(r[:,i])
         std_devs[j][i] = np.std(r[:,i])
-        std_errs[j][i] = np.std(r[:,i]) / np.sqrt(len(r[:,i]))
+        std_errs[j][i] = (np.std(r[:,i]) / np.sqrt(len(r[:,i]))) * confidence_bounds_factor
 
 for m in mergeFiles:
     averages[m[0]][0:8] = averages[m[1]][0:8]

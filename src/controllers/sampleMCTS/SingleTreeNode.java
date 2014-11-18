@@ -133,16 +133,22 @@ public class SingleTreeNode
         for (SingleTreeNode child : this.children)
         {
             double hvVal = child.totValue;
-            double childValue =  hvVal / (child.nVisits + this.epsilon);
+            double childValue = hvVal / (child.nVisits + this.epsilon);
+
             childValue = Utils.normalise(childValue, bounds[0], bounds[1]);
+            //childValue = Utils.normalise(childValue, lastBounds[0], lastBounds[1]);
+
+//            double uctValue = childValue +
+//                    Agent.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) +
+//                    this.m_rnd.nextDouble() * this.epsilon;
 
             double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
-            double uctValue = (childValue +
-                    Agent.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) )*
-                    tieBreaker
-                    ;
+            double uctValue = childValue +
+                    Agent.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon));
+
 
             // small sampleRandom numbers: break ties in unexpanded nodes
+            uctValue = Utils.tiebreaker(uctValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
             if (uctValue > bestValue) {
                 selected = child;
                 bestValue = uctValue;
@@ -175,6 +181,7 @@ public class SingleTreeNode
                 double hvVal = child.totValue;
 
                 // small sampleRandom numbers: break ties in unexpanded nodes
+                hvVal = Utils.tiebreaker(hvVal, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
                 if (hvVal > bestValue) {
                     selected = child;
                     bestValue = hvVal;
@@ -218,13 +225,22 @@ public class SingleTreeNode
 
         //Discount factor:
         double accDiscount = Math.pow(Agent.REWARD_DISCOUNT,thisDepth); //1
+        //double accDiscount = Math.pow(Config.REWARD_DISCOUNT, thisDepth + (state.getGameTick() - 1));   //consider the distance from the beginning of the game
         double delta = rawDelta * accDiscount;
 
+        if(delta < bounds[0]) {
+            bounds[0] = delta;
+            //System.out.format("bound0 %f %d %d\n",delta,thisDepth,state.getGameTick());
+        }
+        if(delta > bounds[1]) {
+            bounds[1] = delta;
+            //System.out.format("bound1 %f %d %d\n",delta,thisDepth,state.getGameTick());
+        }
 
-        if(delta < bounds[0]) bounds[0] = delta;
-        if(delta > bounds[1]) bounds[1] = delta;
+        //if(delta < curBounds[0]) curBounds[0] = delta;
+        //if(delta > curBounds[1]) curBounds[1] = delta;
 
-        //double normDelta = Utils.normalise(delta ,lastBounds[0], lastBounds[1]);
+        //delta = Utils.normalise(delta ,lastBounds[0], lastBounds[1]);
 
         return delta;
     }
@@ -286,12 +302,19 @@ public class SingleTreeNode
                     allEqual = false;
                 }
 
-                //double tieBreaker = m_rnd.nextDouble() * epsilon;
-                double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
-                if (children[i].nVisits * tieBreaker > bestValue) {
-                    bestValue = children[i].nVisits * tieBreaker;
+//                double tieBreaker = m_rnd.nextDouble() * epsilon;
+//                if (children[i].nVisits + tieBreaker > bestValue) {
+//                    bestValue = children[i].nVisits + tieBreaker;
+//                    selected = i;
+//                }
+
+                double childValue = children[i].nVisits;
+                childValue = Utils.tiebreaker(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+                if (childValue > bestValue) {
+                    bestValue = childValue;
                     selected = i;
                 }
+
             }
         }
 
@@ -312,18 +335,24 @@ public class SingleTreeNode
         int selected = -1;
         double bestValue = -Double.MAX_VALUE;
 
-
         for (int i=0; i<children.length; i++) {
+
+//            double tieBreaker = m_rnd.nextDouble() * epsilon;
+//            if(children[i] != null && children[i].totValue + tieBreaker > bestValue) {
+//                bestValue = children[i].totValue + tieBreaker;
+//                selected = i;
+//            }
 
             if(children[i] != null) {
                 //double tieBreaker = m_rnd.nextDouble() * epsilon;
-                double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
-                double childValue = ( children[i].totValue / (children[i].nVisits + this.epsilon) ) * tieBreaker;
+                double childValue = children[i].totValue / (children[i].nVisits + this.epsilon);
+                childValue = Utils.tiebreaker(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
                 if (childValue > bestValue) {
                     bestValue = childValue;
                     selected = i;
                 }
             }
+
         }
 
         if (selected == -1)

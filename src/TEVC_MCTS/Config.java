@@ -24,10 +24,10 @@ public class Config {
     public static int INDIVIDUAL_ITERATIONS = 1;
     public static int ROLLOUT_DEPTH = 10;
     public static double K = Math.sqrt(2);
-    public static double REWARD_DISCOUNT = 0.01;
+    public static double REWARD_DISCOUNT = 0.80;
 
-    public static boolean OPTIMAL_PLAY_ENABLED = false;
-    public static int OPTIMAL_MAX_ACTIONS_RL = 10;
+    public static boolean OPTIMAL_PLAY_ENABLED = true;
+    public static int OPTIMAL_MAX_ACTIONS_RL = 9;
     public static int OPTIMAL_MAX_ACTIONS_CIRCLE = 14;
 
     //Vector source type.
@@ -38,7 +38,7 @@ public class Config {
     public static int BANDIT = 3;
     public static int TD = 4;
     public static int CMAES = 5;
-    public static int ES_TYPE = ONE_PLUS_ONE;
+    public static int ES_TYPE = MU_PLUS_ONE;
 
     //FEATURES:
     public static int GVG_FEATURES = 0;

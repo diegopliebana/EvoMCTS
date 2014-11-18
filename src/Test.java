@@ -64,7 +64,7 @@ public class Test
         // 2. This plays a game in a level by the controller.
         //ArcadeMachine.runOneGame(game, level1, visuals, sampleMCTSController, recordActionsFile, seed);
         //ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
-        ArcadeMachine.runOneGame(game, level1, visuals, controller_ol, recordActionsFile, seed);
+        //ArcadeMachine.runOneGame(game, level1, visuals, controller_ol, recordActionsFile, seed);
 
 
         // 3. This replays a game from an action file previously recorded
@@ -141,12 +141,12 @@ public class Test
         //int RLmax = 8;
 
         int M = 1000;   //number of repeats (only for statistical accuracy)
-        int RLmin = 10;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
+        int RLmin = 1;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
         int RLmax = 50;
 
         boolean isFixedTest = false;
-        //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
-        ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
+        ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
+        //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
     }
 
     public static void ComplexGames_2014_11_07(String gamesPath, String[] games, String controller, String sampleMCTSController, int seed){

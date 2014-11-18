@@ -270,12 +270,11 @@ public class SingleTreeNode extends TreeNode
             double childValue =  hvVal / (child.nVisits + this.epsilon);
             childValue = Utils.normalise(childValue ,bounds[0], bounds[1]);
 
-            double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
             double uctValue = (childValue +
-                     Config.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) )*
-                    tieBreaker;
+                     Config.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) );
 
             // small sampleRandom numbers: break ties in unexpanded nodes
+            uctValue = Utils.tiebreaker(uctValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
             if (uctValue > bestValue) {
                 selected = child;
                 bestValue = uctValue;
@@ -368,6 +367,7 @@ public class SingleTreeNode extends TreeNode
 
         //Discount factor:
         double accDiscount = Math.pow(Config.REWARD_DISCOUNT, thisDepth);
+        //double accDiscount = Math.pow(Config.REWARD_DISCOUNT, thisDepth + (state.getGameTick() - 1));   //consider the distance from the beginning of the game
         double delta = rawDelta * accDiscount;
 
 //        if(rawDelta == HUGE_POSITIVE || rawDelta == HUGE_NEGATIVE)
@@ -389,6 +389,7 @@ public class SingleTreeNode extends TreeNode
         if(delta > bounds[1]){
             bounds[1] = delta;
             vSource.bounds[1] = delta;
+            //System.out.format("bound %f %d %d\n",delta,thisDepth,state.getGameTick());
         }
 
         double rawScoreEndPlayout = delta;
@@ -519,9 +520,9 @@ public class SingleTreeNode extends TreeNode
         // System.out.println(Arrays.toString(biases));
         for (int i=0; i<children.length; i++) {
             if (children[i] != null) {
-
-                double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
-                p.add((children[i].meanValue() * meanInfluence + biases[i] * biasInfluence) * tieBreaker, i);
+                double childValue = (children[i].meanValue() * meanInfluence + biases[i] * biasInfluence);
+                childValue = Utils.tiebreaker(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+                p.add(childValue, i);
             }
         }
         return p.getBest();
@@ -544,9 +545,10 @@ public class SingleTreeNode extends TreeNode
                     allEqual = false;
                 }
 
-                double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
-                if (children[i].nVisits * tieBreaker > bestValue) {
-                    bestValue = children[i].nVisits * tieBreaker;
+                double childValue = children[i].nVisits;
+                childValue = Utils.tiebreaker(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+                if (childValue > bestValue) {
+                    bestValue = childValue;
                     selected = i;
                 }
             }
@@ -617,9 +619,8 @@ public class SingleTreeNode extends TreeNode
         for (int i=0; i<children.length; i++) {
 
             if(children[i] != null) {
-                //double tieBreaker = m_rnd.nextDouble() * epsilon;
-                double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
-                double childValue = ( children[i].totValue / (children[i].nVisits + this.epsilon) ) * tieBreaker;
+                double childValue = children[i].totValue / (children[i].nVisits + this.epsilon);
+                childValue = Utils.tiebreaker(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
                 if (childValue > bestValue) {
                     bestValue = childValue;
                     selected = i;

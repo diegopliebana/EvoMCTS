@@ -15,7 +15,7 @@ public class Bandit extends FitVectorSource{
 
     public double K = Math.sqrt(2);
     public double epsilon = 1e-6;
-    public int popSize =1;
+    public int popSize = 5;
     double[][] pop;
     double[] fitness;
     int[] n;
@@ -98,11 +98,10 @@ public class Bandit extends FitVectorSource{
             double q = fitness[i] / (n[i] + this.epsilon);
             q =  Utils.normalise(q, bounds[0], bounds[1]);
 
-            double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
-            double uctValue = ( q +
-                     K * Math.sqrt(Math.log(bigN + 1) / (n[i] + this.epsilon)) ) *
-                    tieBreaker;//tiebreaker
+            double uctValue = q +
+                     K * Math.sqrt(Math.log(bigN + 1) / (n[i] + this.epsilon));
 
+            uctValue = Utils.tiebreaker(uctValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
             if (uctValue > bestValue) {
                 lastSelected = i;
                 bestValue = uctValue;
