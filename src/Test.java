@@ -53,8 +53,8 @@ public class Test
 		
         //Game and level to play
 
-        int gameIdx = 0;
-        int levelIdx = 1; //level names from 0 to 4 (game_lvlN.txt).
+        int gameIdx = 10;
+        int levelIdx = 0; //level names from 0 to 4 (game_lvlN.txt).
         String game = gamesPath + games[gameIdx] + ".txt";
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
 
