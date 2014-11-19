@@ -1,5 +1,6 @@
-package sampleOLMCTS;
+package MacroOLMCTS;
 
+import MacroOLMCTS.macro.MacroAction;
 import core.game.StateObservation;
 import tools.ElapsedCpuTimer;
 
@@ -40,7 +41,7 @@ public class SingleMCTSPlayer
         //Set the game observation to a newly root node.
         //System.out.println("learning_style = " + learning_style);
         m_root = new SingleTreeNode(m_rnd);
-        m_root.rootState = a_gameState;
+        m_root.rootState = a_gameState.copy();
     }
 
     /**

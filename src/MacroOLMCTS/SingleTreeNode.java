@@ -1,10 +1,12 @@
-package sampleOLMCTS;
+package MacroOLMCTS;
 
+import MacroOLMCTS.macro.MacroAction;
 import core.game.StateObservation;
 import ontology.Types;
 import tools.ElapsedCpuTimer;
 import tools.Utils;
 
+import javax.swing.plaf.nimbus.State;
 import java.util.Random;
 
 public class SingleTreeNode
@@ -100,7 +102,9 @@ public class SingleTreeNode
         }
 
         //Roll the state
-        state.advance(Agent.actions[bestAction]);
+        //state.advance(Agent.actions[bestAction].actions[0]); //TODO: macro-advance, check!!
+        advanceMacro(state, Agent.actions[bestAction]);
+
 
         SingleTreeNode tn = new SingleTreeNode(this,bestAction,this.m_rnd);
         children[bestAction] = tn;
@@ -122,9 +126,16 @@ public class SingleTreeNode
             childValue = Utils.normalise(childValue, bounds[0], bounds[1]);
             //System.out.println("norm child value: " + childValue);
 
-            double uctValue = childValue +
-                    Agent.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) +
-                    this.m_rnd.nextDouble() * this.epsilon;
+            //double uctValue = childValue +
+            //        Agent.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) +
+            //        this.m_rnd.nextDouble() * this.epsilon;
+
+
+            double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
+            double uctValue = (childValue +
+                    Agent.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) )*
+                    tieBreaker;
+
 
             // small sampleRandom numbers: break ties in unexpanded nodes
             if (uctValue > bestValue) {
@@ -139,7 +150,8 @@ public class SingleTreeNode
         }
 
         //Roll the state:
-        state.advance(Agent.actions[selected.childIdx]);
+        //state.advance(Agent.actions[selected.childIdx].actions[0]); //TODO: macro-advance, check!!
+        advanceMacro(state, Agent.actions[selected.childIdx]);
 
         return selected;
     }
@@ -152,7 +164,8 @@ public class SingleTreeNode
         while (!finishRollout(state,thisDepth)) {
 
             int action = m_rnd.nextInt(Agent.NUM_ACTIONS);
-            state.advance(Agent.actions[action]);
+            //state.advance(Agent.actions[action].actions[0]); //TODO: macro-advance, check!!
+            advanceMacro(state, Agent.actions[action]);
             thisDepth++;
         }
 
@@ -190,7 +203,8 @@ public class SingleTreeNode
 
     public boolean finishRollout(StateObservation rollerState, int depth)
     {
-        if(depth >= Agent.ROLLOUT_DEPTH)      //rollout end condition.
+        //if(depth >= Agent.ROLLOUT_DEPTH)      //rollout end condition.
+        if((depth + Agent.MACROACTION_LENGTH) >= Agent.ROLLOUT_DEPTH)      //rollout end condition.
             return true;
 
         if(rollerState.isGameOver())               //end of game
@@ -281,4 +295,15 @@ public class SingleTreeNode
 
         return false;
     }
+
+    //This function assumes that it's not going beyond the rollout length.
+    public void advanceMacro(StateObservation stObs, MacroAction action)
+    {
+        action.reset();
+        while(!stObs.isGameOver() && !action.isFinished())
+        {
+            stObs.advance(action.next());
+        }
+    }
+
 }
