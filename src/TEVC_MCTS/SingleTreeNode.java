@@ -271,7 +271,7 @@ public class SingleTreeNode extends TreeNode
             childValue = Utils.normalise(childValue ,bounds[0], bounds[1]);
 
             double uctValue = (childValue +
-                     Config.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) );
+                    Config.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) );
 
             // small sampleRandom numbers: break ties in unexpanded nodes
             uctValue = Utils.tiebreaker(uctValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly

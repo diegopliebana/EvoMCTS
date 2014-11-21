@@ -28,19 +28,19 @@ mergeFiles = []         #don't merge any
     #define which pairs of files should be merged into one (see above example). The merge copies only the first 8 values from the second list into the first list, the second list is then discarded from the results and filename arrays
 
 #2014_11_04 final measurements for the TEVC paper, leftRight
-#filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS one+one (1-8)','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)']; mergeFiles = [[0,1],[2,3],[4,5],[6,7],[8,9],[10,11]]
+#filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS one+one (1-8)','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)','2014_11_16 rl01-50 d0.90 sampleMCTS','2014_11_16 rl01-50 d0.90 FEMCTS hand','2014_11_16 rl01-50 d0.90 FEMCTS rand','2014_11_16 rl01-50 d0.90 FEMCTS oneone','2014_11_16 rl01-50 d0.90 FEMCTS uone','2014_11_16 rl01-50 d0.90 FEMCTS band05']; mergeFiles = [[0,1],[2,3],[4,5],[6,7],[8,9],[10,11]]
+
 #filenames = ['2014_11_16 rl01-50 sampleMCTS d1.00','2014_11_16 rl01-50 sampleMCTS d0.99','2014_11_16 rl01-50 sampleMCTS d0.95','2014_11_16 rl01-50 sampleMCTS d0.90','2014_11_16 rl01-50 sampleMCTS d0.80','2014_11_16 rl01-50 sampleMCTS d0.50','2014_11_16 rl01-50 sampleMCTS d0.10','2014_11_16 rl01-50 sampleMCTS d0.01']
+#filenames = ['2014_11_16 rl01-50 FEMCTS uone d1.00','2014_11_16 rl01-50 FEMCTS uone d0.99','2014_11_16 rl01-50 FEMCTS uone d0.95','2014_11_16 rl01-50 FEMCTS uone d0.90','2014_11_16 rl01-50 FEMCTS uone d0.80','2014_11_16 rl01-50 FEMCTS uone d0.50','2014_11_16 rl01-50 FEMCTS uone d0.10','2014_11_16 rl01-50 FEMCTS uone d0.01']
+filenames = ['2014_11_16 rl01-50 d0.90 sampleMCTS','2014_11_16 rl01-50 d0.90 FEMCTS hand','2014_11_16 rl01-50 d0.90 FEMCTS rand','2014_11_16 rl01-50 d0.90 FEMCTS oneone','2014_11_16 rl01-50 d0.90 FEMCTS uone','2014_11_16 rl01-50 d0.90 FEMCTS band05','2014_11_16 rl01-50 d0.90 FEMCTS band10']
 
+#filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_16 rl01-50 d0.90 sampleMCTS']; mergeFiles = [[0,1]]
+#filenames = ['2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS hand']; mergeFiles = [[0,1]]
+#filenames = ['2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS rand']; mergeFiles = [[0,1]]
+#filenames = ['2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS one+one (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS oneone']; mergeFiles = [[0,1]]
+#filenames = ['2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS uone']; mergeFiles = [[0,1]]
+#filenames = ['2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS band05','2014_11_16 rl01-50 d0.90 FEMCTS band10','2014_11_16 rl01-50 d0.90 FEMCTS band15','2014_11_16 rl01-50 d0.90 FEMCTS band20']; mergeFiles = [[0,1]]
 
-
-
-#filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_16 rl01-50 sampleMCTS d0.80','2014_11_16 rl01-50 FEMCTS uone d0.80','2014_11_16 rl01-50 FEMCTS uone d0.80 discStart']; mergeFiles = [[0,1],[2,3]]
-filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_16 rl01-50 sampleMCTS d0.90']; mergeFiles = [[0,1],[2,3]]
-#filenames =['2014_11_16 rl01-50 FEMCTS uone d1.00','2014_11_16 rl01-50 FEMCTS uone d0.99','2014_11_16 rl01-50 FEMCTS uone d0.95','2014_11_16 rl01-50 FEMCTS uone d0.90','2014_11_16 rl01-50 FEMCTS uone d0.50','2014_11_16 rl01-50 FEMCTS uone d0.10','2014_11_16 rl01-50 FEMCTS uone d0.01']
-
-
-#filenames = ['gvgai_framework_jar','2014_11_17 rl05-20 d0.80 sampleMCTS nor','2014_11_17 rl05-20 d0.80 sampleMCTS nor+rew','2014_11_17 rl05-20 d0.80 sampleMCTS tie+rew+nor','2014_11_17 rl05-20 d0.80 sampleMCTS old']#,
-  #           '2014_11_17 rl05-20 d0.80 sampleMCTS tie+rew+nor1','2014_11_17 rl05-20 d0.80 sampleMCTS tie+rew+nor (normLast)','2014_11_17 rl05-20 d0.80 sampleMCTS tie+rew+nor (K=0)']
 
 
 ###-- Config output --###
@@ -52,7 +52,7 @@ analysis_type = 2 #from 16.11.2014 on use only analysis 2 -> percentage of optim
 optimal_performance = 9
     # leftRight - 9
     # circle - 13
-confidence_bounds_factor = 0
+confidence_bounds_factor = 2.63
     # 2.63 -> 99% confidence interval
     # 1.98 -> 95% confidence interval
     # 0.00 -> disabled

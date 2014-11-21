@@ -15,7 +15,7 @@ public class Bandit extends FitVectorSource{
 
     public double K = Math.sqrt(2);
     public double epsilon = 1e-6;
-    public int popSize = 5;
+    public int popSize = 20;
     double[][] pop;
     double[] fitness;
     int[] n;

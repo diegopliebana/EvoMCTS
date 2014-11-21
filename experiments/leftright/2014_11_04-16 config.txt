@@ -35,3 +35,21 @@ public class VariableRandomMutHillClimber extends FitVectorSource
 {
     double noiseDev = 0.1;
     static double noiseFac = 1.02;
+	
+public HashMap<String, Double> getFeatureVector()
+{
+	HashMap<String, Double> features = new HashMap<String, Double>();
+	features.put("win:"+WIN, distanceToWin);
+	features.put("lose:"+LOSE, distanceToLose);
+	return features;
+}
+	
+#------------ ONLY AFTER 5.11.2014
+
+    public HashMap<String, Double> getFeatureVector()
+    {
+        HashMap<String, Double> features = new HashMap<String, Double>();
+        features.put("win:"+WIN, distanceToWin);
+        //features.put("lose:"+LOSE, distanceToLose);
+        return features;
+    }
