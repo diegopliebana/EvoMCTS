@@ -30,8 +30,7 @@ public class ChaseFeatures extends NavFeatureSource
 
     private Vector2d avatarPos;
 
-    private double distanceToScared;
-    private double distanceToAngry;
+    private double up_down_angry, left_right_angry, up_down_scared, left_right_scared;
 
     private HashMap<Integer, Double> npcDist2First;
     protected ArrayList<Observation> grid[][];
@@ -56,8 +55,10 @@ public class ChaseFeatures extends NavFeatureSource
     public HashMap<String, Double> getFeatureVector()
     {
         HashMap<String, Double> features = new HashMap<String, Double>();
-        features.put("angry:"+ANGRY, distanceToAngry);
-        features.put("scared:"+SCARED, distanceToScared);
+        features.put("up_down_angry:"+ANGRY, up_down_angry);
+        features.put("left_right_angry:"+ANGRY, left_right_angry);
+        features.put("up_down_scared:"+SCARED, up_down_scared);
+        features.put("left_right_scared:"+SCARED, left_right_scared);
         return features;
     }
 
@@ -72,9 +73,10 @@ public class ChaseFeatures extends NavFeatureSource
 
         ArrayList<Observation>[] npcPositions = stateObs.getNPCPositions(avatarPos);
 
-
-        distanceToAngry = -1;
-        distanceToScared = -1;
+        up_down_angry = 0;
+        left_right_angry = 0;
+        up_down_scared = 0;
+        left_right_scared = 0;
 
         if(npcPositions != null)
         {
@@ -85,10 +87,19 @@ public class ChaseFeatures extends NavFeatureSource
                     Observation closestObs = npcPositions[i].get(0);
                     if(closestObs.itype == ANGRY)
                     {
-                        distanceToAngry = astarDistanceFromTo(avatarPos, closestObs.position, block_size, false);
+                        Types.ACTIONS act = astarActionThatMinimizes(avatarPos, closestObs.position, block_size, false);
+                        if(act == Types.ACTIONS.ACTION_UP) {up_down_angry = 1;}
+                        if(act == Types.ACTIONS.ACTION_DOWN) {up_down_angry = -1;}
+                        if(act == Types.ACTIONS.ACTION_LEFT) {left_right_angry = 1;}
+                        if(act == Types.ACTIONS.ACTION_RIGHT) {left_right_angry = -1;}
+
                     }else if(closestObs.itype == SCARED)
                     {
-                        distanceToScared = astarDistanceFromTo(avatarPos, closestObs.position, block_size, false);
+                        Types.ACTIONS act = astarActionThatMinimizes(avatarPos, closestObs.position, block_size, false);
+                        if(act == Types.ACTIONS.ACTION_UP) {up_down_scared = 1;}
+                        if(act == Types.ACTIONS.ACTION_DOWN) {up_down_scared = -1;}
+                        if(act == Types.ACTIONS.ACTION_LEFT) {left_right_scared = 1;}
+                        if(act == Types.ACTIONS.ACTION_RIGHT) {left_right_scared = -1;}
                     }
                 }
             }
@@ -158,7 +169,10 @@ public class ChaseFeatures extends NavFeatureSource
         //Four actions, 2 features  (distance to angry, distance to scared)
         //These are constant because it is always good to increase distance with
         //angry goats and decrease it with scared ones.
-        return new double[]{-1,1,-1,1,-1,1,-1,1};
+        return new double[]{ 0, -2, 0, 1,
+                             0, 2, 0, -1,
+                             -2,0, 1, 0,
+                             2, 0, -1,0};
     }
 
 
