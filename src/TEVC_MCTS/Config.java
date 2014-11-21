@@ -24,9 +24,9 @@ public class Config {
     public static int INDIVIDUAL_ITERATIONS = 1;
     public static int ROLLOUT_DEPTH = 10;
     public static double K = Math.sqrt(2);
-    public static double REWARD_DISCOUNT = 0.80;
+    public static double REWARD_DISCOUNT = 1.00;
 
-    public static boolean OPTIMAL_PLAY_ENABLED = true;
+    public static boolean OPTIMAL_PLAY_ENABLED = false;
     public static int OPTIMAL_MAX_ACTIONS_RL = 9;
     public static int OPTIMAL_MAX_ACTIONS_CIRCLE = 14;
 
@@ -49,7 +49,7 @@ public class Config {
     public static int LEFTRIGHT_FEATURES = 5;
     //public static int FEATURES = LEFTRIGHT_FEATURES;
     //public static int FEATURES = CIRCLE_FEATURES;
-    public static int FEATURES = LEFTRIGHT_FEATURES;
+    public static int FEATURES = CHASE_FEATURES;
 
     //Debug.
     public static boolean COMPUTE_HIT_MAP = false;

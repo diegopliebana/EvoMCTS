@@ -91,8 +91,8 @@ public class Test
         //ArcadeMachine.runGamesN(game, level1, M, RL, sampleMCTSController, isFixedTest, seed, filename);
         //ArcadeMachine.runGamesN(game, level1, M, RL, controller, isFixedTest, seed, filename);
 
-        RightLeft_2014_11_04(gamesPath, games, controller, sampleMCTSController, seed, filename);
-        //ComplexGames_2014_11_07(gamesPath, games, controller, sampleMCTSController, seed);
+        //RightLeft_2014_11_04(gamesPath, games, controller, sampleMCTSController, seed, filename);
+        ComplexGames_2014_11_07(gamesPath, games, controller, sampleMCTSController, seed);
 
         /*int M = 100;
         boolean isFixedTest = true;
@@ -160,8 +160,8 @@ public class Test
 
         //This plays the first L levels, M times each. Actions to file optional (set saveActions to true).
         int L = 5;      //number of first L levels
-        int M = 200;    //number of repeats (for statistical accuracy) of each level
-        int rollOutLength = 5;
+        int M = 50;    //number of repeats (for statistical accuracy) of each level
+        int rollOutLength = 20;
 
         String[] levels = new String[L];
 
