@@ -39,7 +39,7 @@ filenames = ['2014_11_16 rl01-50 d0.90 sampleMCTS','2014_11_16 rl01-50 d0.90 FEM
 #filenames = ['2014_11_04 TEVCMCTS random','2014_11_04 TEVCMCTS random (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS rand']; mergeFiles = [[0,1]]
 #filenames = ['2014_11_04 TEVCMCTS one+one','2014_11_04 TEVCMCTS one+one (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS oneone']; mergeFiles = [[0,1]]
 #filenames = ['2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS uone']; mergeFiles = [[0,1]]
-#filenames = ['2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS band05','2014_11_16 rl01-50 d0.90 FEMCTS band10','2014_11_16 rl01-50 d0.90 FEMCTS band15','2014_11_16 rl01-50 d0.90 FEMCTS band20']; mergeFiles = [[0,1]]
+#filenames = ['2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS band05','2014_11_16 rl01-50 d0.90 FEMCTS band10','2014_11_16 rl01-50 d0.90 FEMCTS band15','2014_11_16 rl01-50 d0.90 FEMCTS band20','2014_11_16 rl01-50 d0.90 FEMCTS band50','2014_11_16 rl01-50 d0.90 FEMCTS band100']; mergeFiles = [[0,1]]
 
 
 
