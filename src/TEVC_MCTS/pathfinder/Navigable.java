@@ -29,6 +29,29 @@ public abstract class Navigable
     }
 
 
+    protected Types.ACTIONS astarActionThatMinimizes(Vector2d origin, Vector2d target, int block_size, boolean toNeighbour)
+    {
+        ArrayList<Node> pathToObservation = getPath(origin, target, block_size, toNeighbour);
+
+        if(pathToObservation != null)
+        {
+            double x = origin.x/block_size;
+            double y = origin.y/block_size;
+            Node first = pathToObservation.get(0);
+
+            if(x < first.position.x)
+                return Types.ACTIONS.ACTION_RIGHT;
+            else if(x > first.position.x)
+                return Types.ACTIONS.ACTION_LEFT;
+            else if(y > first.position.y)
+                return Types.ACTIONS.ACTION_UP;
+            else if(y < first.position.y)
+                return Types.ACTIONS.ACTION_DOWN;
+        }
+
+        return Types.ACTIONS.ACTION_NIL;
+    }
+
     protected double astarDistanceFromTo(Vector2d origin, Vector2d target, int block_size, boolean toNeighbour)
     {
         ArrayList<Node> pathToObservation = getPath(origin, target, block_size, toNeighbour);

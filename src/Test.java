@@ -53,7 +53,7 @@ public class Test
 		
         //Game and level to play
 
-        int gameIdx = 10;
+        int gameIdx = 3;
         int levelIdx = 0; //level names from 0 to 4 (game_lvlN.txt).
         String game = gamesPath + games[gameIdx] + ".txt";
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
@@ -63,7 +63,7 @@ public class Test
 
         // 2. This plays a game in a level by the controller.
         //ArcadeMachine.runOneGame(game, level1, visuals, sampleMCTSController, recordActionsFile, seed);
-        //ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
+        ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
         //ArcadeMachine.runOneGame(game, level1, visuals, controller_ol, recordActionsFile, seed);
 
 
@@ -74,8 +74,7 @@ public class Test
         // 4. This plays a single game, in N levels, M times :
         //String level2 = gamesPath + games[gameIdx] + "_lvl" + 1 +".txt";//
 
-        int M = 100;
-
+        //int M = 100;
         //int RLmin = 95;     //rollout lenghts to be tested from RLmin to RLmax, where RLmin >= 1
         //int RLmax = 100;
         //boolean isFixedTest = false;
@@ -107,8 +106,8 @@ public class Test
             filename = wkDir.substring(wkDir.lastIndexOf("\\")+1)  + "_" + controller + "_Dist" + i + ".txt";
             level1 = gamesPath + games[gameIdx] + "_lvl" + i +".txt";
             System.out.println("filename: " + filename + ", levelFile: " + level1);
-            ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
-            //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
+            //ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, controller, isFixedTest, seed, filename);
+            ArcadeMachine.runGamesN(game, level1, M, RLmin, RLmax, sampleMCTSController, isFixedTest, seed, filename);
         }*/
 
         //5. This plays N games, in the first L levels, M times each. Actions to file optional (set saveActions to true).
