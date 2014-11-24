@@ -34,12 +34,12 @@ public class MacroAction
 
     public boolean isFinished()
     {
-        return (cursor >= Agent.MACROACTION_LENGTH);
+        return (cursor >= actions.length);
     }
 
     public boolean isLast()
     {
-        return (cursor == Agent.MACROACTION_LENGTH-1);
+        return (cursor == actions.length-1);
     }
 
     public Types.ACTIONS next()

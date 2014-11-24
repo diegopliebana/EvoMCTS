@@ -22,6 +22,7 @@ public class Test
         //String controller = "FastEvoMCTS.Agent";
         String controller = "TEVC_MCTS.Agent";
         String controller_ol = "sampleOLMCTS.Agent";
+        String controller_mol = "MacroOLMCTS.Agent";
         String pathfinder = "controllers.pathfinder.Agent";
 
         //Available games:
@@ -64,7 +65,7 @@ public class Test
         // 2. This plays a game in a level by the controller.
         //ArcadeMachine.runOneGame(game, level1, visuals, sampleMCTSController, recordActionsFile, seed);
         //ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
-        ArcadeMachine.runOneGame(game, level1, visuals, controller_ol, recordActionsFile, seed);
+        ArcadeMachine.runOneGame(game, level1, visuals, controller_mol, recordActionsFile, seed);
 
 
         // 3. This replays a game from an action file previously recorded
@@ -92,7 +93,7 @@ public class Test
 
         //RightLeft_2014_11_20(gamesPath, games, controller, sampleMCTSController, seed, filename);
         //Circle_2014_11_21(gamesPath, games, controller, sampleMCTSController, seed, filename);
-        Chase_2014_11_21(gamesPath, games, controller, sampleMCTSController, seed);
+        //Chase_2014_11_21(gamesPath, games, controller, sampleMCTSController, seed);
 
         /*int M = 100;
         boolean isFixedTest = true;

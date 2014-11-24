@@ -1,6 +1,9 @@
 package MacroOLMCTS;
 
+import MacroOLMCTS.macro.ConstantMacroFeed;
+import MacroOLMCTS.macro.IMacroFeed;
 import MacroOLMCTS.macro.MacroAction;
+import MacroOLMCTS.macro.RandomNMacroFeed;
 import core.game.StateObservation;
 import core.player.AbstractPlayer;
 import ontology.Types;
@@ -20,15 +23,17 @@ public class Agent extends AbstractPlayer {
 
     public static int NUM_ACTIONS;
     public static int MCTS_ITERATIONS = 100;
-    public static int ROLLOUT_DEPTH = 15; //10;
     public static double K = Math.sqrt(2);
     public static double REWARD_DISCOUNT = 1.00;
-    public static int MACROACTION_LENGTH = 3;
+
+    public static int ROLLOUT_DEPTH = 30; //10;
+    public static int MACROACTION_LENGTH = 5;
 
     //public static Types.ACTIONS[] actions;
 
     public static MacroAction[] actions;
     public MacroAction currentMacro;
+    public IMacroFeed macroFeed;
 
     protected SingleMCTSPlayer mctsPlayer;
 
@@ -42,6 +47,20 @@ public class Agent extends AbstractPlayer {
         //Get the actions in a static array.
         ArrayList<Types.ACTIONS> act = so.getAvailableActions();
         actions = new MacroAction[act.size()];
+        NUM_ACTIONS = actions.length;
+
+        //macroFeed = new ConstantMacroFeed(3);
+        macroFeed = new RandomNMacroFeed(5);
+
+        setNewActions(act);
+
+        //Create the player.
+        mctsPlayer = getPlayer(so, elapsedTimer);
+    }
+
+    private void setNewActions(ArrayList<Types.ACTIONS> act)
+    {
+        MACROACTION_LENGTH = macroFeed.getNextLength();
         for(int i = 0; i < actions.length; ++i)
         {
             Types.ACTIONS singleAction = act.get(i);
@@ -54,11 +73,6 @@ public class Agent extends AbstractPlayer {
 
             actions[i] = new MacroAction(actionsArray);
         }
-        NUM_ACTIONS = actions.length;
-
-        //Create the player.
-
-        mctsPlayer = getPlayer(so, elapsedTimer);
     }
 
     public SingleMCTSPlayer getPlayer(StateObservation so, ElapsedCpuTimer elapsedTimer) {
@@ -93,6 +107,7 @@ public class Agent extends AbstractPlayer {
         {
             //Set the state observation object as the new root of the tree.
             //System.out.println("Creating a new tree...");
+            setNewActions(stateObs.getAvailableActions());
             mctsPlayer.init(stateObs);
         }
 
@@ -103,7 +118,7 @@ public class Agent extends AbstractPlayer {
         if(currentMacro == null || currentMacro.isFinished())
         {
             //It's time to determine the next macro action.
-            currentMacro = actions[action];
+            currentMacro = actions[action].copy();
             currentMacro.reset();
             //System.out.println("New macro-action set:");
             //currentMacro.print();
