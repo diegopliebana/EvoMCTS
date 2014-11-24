@@ -53,7 +53,7 @@ public class Test
 		
         //Game and level to play
 
-        int gameIdx = 3;
+        int gameIdx = 0;
         int levelIdx = 0; //level names from 0 to 4 (game_lvlN.txt).
         String game = gamesPath + games[gameIdx] + ".txt";
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
@@ -63,8 +63,8 @@ public class Test
 
         // 2. This plays a game in a level by the controller.
         //ArcadeMachine.runOneGame(game, level1, visuals, sampleMCTSController, recordActionsFile, seed);
-        ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
-        //ArcadeMachine.runOneGame(game, level1, visuals, controller_ol, recordActionsFile, seed);
+        //ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
+        ArcadeMachine.runOneGame(game, level1, visuals, controller_ol, recordActionsFile, seed);
 
 
         // 3. This replays a game from an action file previously recorded

@@ -274,7 +274,7 @@ public class SingleTreeNode extends TreeNode
                     Config.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) );
 
             // small sampleRandom numbers: break ties in unexpanded nodes
-            uctValue = Utils.tiebreaker(uctValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+            uctValue = Utils.noise(uctValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
             if (uctValue > bestValue) {
                 selected = child;
                 bestValue = uctValue;
@@ -521,7 +521,7 @@ public class SingleTreeNode extends TreeNode
         for (int i=0; i<children.length; i++) {
             if (children[i] != null) {
                 double childValue = (children[i].meanValue() * meanInfluence + biases[i] * biasInfluence);
-                childValue = Utils.tiebreaker(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+                childValue = Utils.noise(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
                 p.add(childValue, i);
             }
         }
@@ -546,7 +546,7 @@ public class SingleTreeNode extends TreeNode
                 }
 
                 double childValue = children[i].nVisits;
-                childValue = Utils.tiebreaker(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+                childValue = Utils.noise(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
                 if (childValue > bestValue) {
                     bestValue = childValue;
                     selected = i;
@@ -620,7 +620,7 @@ public class SingleTreeNode extends TreeNode
 
             if(children[i] != null) {
                 double childValue = children[i].totValue / (children[i].nVisits + this.epsilon);
-                childValue = Utils.tiebreaker(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+                childValue = Utils.noise(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
                 if (childValue > bestValue) {
                     bestValue = childValue;
                     selected = i;
