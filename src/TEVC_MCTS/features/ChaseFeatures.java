@@ -172,8 +172,10 @@ public class ChaseFeatures extends NavFeatureSource
         //angry goats and decrease it with scared ones.
         return new double[]{ 0, -2, 0, 1,
                              0, 2, 0, -1,
-                             -2,0, 1, 0,
-                             2, 0, -1,0};
+                            2, 0, -1,0,
+                            -2,0, 1, 0};
+                             //-2,0, 1, 0,
+                             //2, 0, -1,0};
     }
 
 
