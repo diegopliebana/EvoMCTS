@@ -58,10 +58,17 @@ public class Agent extends AbstractPlayer {
         mctsPlayer = getPlayer(so, elapsedTimer);
     }
 
-    private void setNewActions(ArrayList<Types.ACTIONS> act)
+    public void setNewActions(IMacroFeed macroFeed, StateObservation so)
+    {
+        this.macroFeed = macroFeed;
+        this.setNewActions(so.getAvailableActions());
+    }
+
+
+    public void setNewActions(ArrayList<Types.ACTIONS> act)
     {
         MACROACTION_LENGTH = macroFeed.getNextLength();
-        for(int i = 0; i < actions.length; ++i)
+        if(act.size() > 0) for(int i = 0; i < actions.length; ++i)
         {
             Types.ACTIONS singleAction = act.get(i);
             Types.ACTIONS[] actionsArray = new Types.ACTIONS[MACROACTION_LENGTH];
@@ -73,6 +80,7 @@ public class Agent extends AbstractPlayer {
 
             actions[i] = new MacroAction(actionsArray);
         }
+        //System.out.print(actions[0].actions.length + ",");
     }
 
     public SingleMCTSPlayer getPlayer(StateObservation so, ElapsedCpuTimer elapsedTimer) {

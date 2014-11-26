@@ -47,15 +47,17 @@ public class Test
         boolean visuals = true;
         String recordActionsFile = null; //where to record the actions executed. null if not to save.
         int seed = new Random().nextInt();
-        System.out.println("Seed = " + seed);
+        //System.out.println("Seed = " + seed);
         String wkDir = System.getProperty("user.dir");
         String filename = wkDir.substring(wkDir.lastIndexOf("\\")+1) + ".csv";
         //String filename = wkDir.substring(wkDir.lastIndexOf("\\")+1) + ".txt";
-		
+
+
+
         //Game and level to play
 
-        int gameIdx = 0;
-        int levelIdx = 0; //level names from 0 to 4 (game_lvlN.txt).
+        int gameIdx = 3;
+        int levelIdx = 6; //level names from 0 to 4 (game_lvlN.txt).
         String game = gamesPath + games[gameIdx] + ".txt";
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
 
@@ -64,8 +66,8 @@ public class Test
 
         // 2. This plays a game in a level by the controller.
         //ArcadeMachine.runOneGame(game, level1, visuals, sampleMCTSController, recordActionsFile, seed);
-        //ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
-        ArcadeMachine.runOneGame(game, level1, visuals, controller_mol, recordActionsFile, seed);
+        ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
+        //ArcadeMachine.runOneGame(game, level1, visuals, controller_mol, recordActionsFile, seed);
 
 
         // 3. This replays a game from an action file previously recorded
@@ -128,6 +130,41 @@ public class Test
             ArcadeMachine.runGames(game, levels, M, controller, saveActions? actionFiles:null, seed);
         }
                      */
+
+
+        //runNMacro(gamesPath, games, controller_mol, args);
+
+    }
+
+    public static void runNMacro(String gamesPath, String[] games, String controller, String args[])
+    {
+        int gameId = -1;
+        if(args!=null && args.length==1)
+        {
+            gameId = Integer.parseInt(args[0]);
+        }
+
+        int NGames = 20, NRepetitions = 100;
+        int macroActionLengths[] = new int[]{1,2,3,5};
+
+        if(gameId == -1) {
+            for (int i = 0; i < NGames; ++i) {
+
+                String game = gamesPath + games[i] + ".txt";
+                String level = gamesPath + games[i] + "_lvl0.txt";
+                String filename = games[i] + "_lvl0_" + controller + ".txt";
+
+                ArcadeMachine.runGamesMacroN(game, level, NRepetitions, macroActionLengths, controller, false, filename);
+            }
+        }else
+        {
+            String game = gamesPath + games[gameId] + ".txt";
+            String level = gamesPath + games[gameId] + "_lvl0.txt";
+            String filename = games[gameId] + "_lvl0_" + controller + ".txt";
+
+            ArcadeMachine.runGamesMacroN(game, level, NRepetitions, macroActionLengths, controller, false, filename);
+        }
+
     }
 
     public static void RightLeft_2014_11_20(String gamesPath, String[] games, String controller, String sampleMCTSController, int seed, String filename){

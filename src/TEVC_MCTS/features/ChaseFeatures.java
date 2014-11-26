@@ -10,6 +10,7 @@ import tools.Vector2d;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 
 /**
  * Created by diego on 10/03/14.
@@ -52,9 +53,9 @@ public class ChaseFeatures extends NavFeatureSource
     }
 
     @Override
-    public HashMap<String, Double> getFeatureVector()
+    public LinkedHashMap<String, Double> getFeatureVector()
     {
-        HashMap<String, Double> features = new HashMap<String, Double>();
+        LinkedHashMap<String, Double> features = new LinkedHashMap<String, Double>();
         features.put("up_down_angry:"+ANGRY, up_down_angry);
         features.put("left_right_angry:"+ANGRY, left_right_angry);
         features.put("up_down_scared:"+SCARED, up_down_scared);
