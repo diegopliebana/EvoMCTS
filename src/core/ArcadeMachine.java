@@ -1,5 +1,6 @@
 package core;
 
+import MacroOLMCTS.macro.ConstantMacroFeed;
 import TEVC_MCTS.Config;
 import controllers.sampleMCTS.Agent;
 import core.competition.CompetitionParameters;
@@ -292,6 +293,67 @@ public class ArcadeMachine
         }
     }
 
+    public static void runGamesMacroN(String game_file, String level_file, int level_times, int[] macroActionLengths,
+                                      String agentName, boolean isFixed, String filename)
+    {
+        VGDLFactory.GetInstance().init(); //This always first thing to do.
+        VGDLRegistry.GetInstance().init();
+
+        StatSummary scores = new StatSummary();
+
+        Game toPlay = new VGDLParser().parseGame(game_file);
+        int numMacroActionLengths = macroActionLengths.length;
+
+        try {
+            //Create output file
+            PrintStream ps = new PrintStream(new FileOutputStream(new File(filename)));
+
+            for (int j = 0; j < numMacroActionLengths; ++j) {
+                int macroLength = macroActionLengths[j];
+
+                for (int i = 0; i < level_times; ++i) {
+                    //System.out.println(" ** Playing game " + game_file + ", level " + level_file + " ("+(i+1)+"/"+level_times+") **");
+
+                    //build the level in the game.
+                    toPlay.buildLevel(level_file);
+
+                    //Second, create the player.
+                    int seed = new Random().nextInt();
+                    AbstractPlayer player = ArcadeMachine.createPlayer(agentName, null, toPlay.getObservation(), seed);
+
+                    if (player instanceof MacroOLMCTS.Agent) {
+                        ((MacroOLMCTS.Agent) player).setNewActions(new ConstantMacroFeed(macroLength), toPlay.getObservation());
+                    }
+
+                    //Third, warm the game up.
+                    ArcadeMachine.warmUp(toPlay, CompetitionParameters.WARMUP_TIME);
+
+                    //Then, play the game.
+                    seed = new Random().nextInt();
+                    double score = toPlay.runGame(player, seed, isFixed);
+
+                    scores.add(score);
+
+                    System.out.format("ML %1d/%1d (%1d)   R %3d/%03d   stepsEnd %4d   Win %d   Score %6.1f\n", j + 1, numMacroActionLengths, macroLength, i+1, level_times, toPlay.getGameTick(), toPlay.winner.key(), score);
+                    ps.format("%2d, %3d, %4d, %d, %6.1f\n", macroLength, i+1, toPlay.getGameTick(), toPlay.winner.key(), score);
+
+                    //Finally, when the game is over, we need to tear the player down.
+                    ArcadeMachine.tearPlayerDown(player);
+
+                    //reset the game.
+                    toPlay.reset();
+                }
+
+            }
+
+            //lastly, close the output file
+            ps.close();
+
+        }catch(Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
+    }
 
     public static void runGamesN(String game_file, String level_file, int level_times, int num_rollLength_valuesInit, int num_rollLength_values,
                                 String agentName, boolean isFixed, int randomSeed, String filename)

@@ -113,6 +113,25 @@ public class Utils
             return a_value;
     }
 
+
+
+    /**
+     * Adds a small noise to the input value.
+     * @param input value to be altered
+     * @param epsilon relative amount the input will be altered
+     * @param random random variable in range [0,1]
+     * @return epsilon-random-altered input value
+     */
+    public static double noise(double input, double epsilon, double random)
+    {
+        if(input != -epsilon) {
+            return (input + epsilon) * (1.0 + epsilon * (random - 0.5));
+        }else {
+            //System.out.format("Utils.tiebreaker(): WARNING: value equal to epsilon: %f\n",input);
+            return (input + epsilon) * (1.0 + epsilon * (random - 0.5));
+        }
+    }
+
     public static boolean processUseKey(boolean[] key_pressed)
     {
         return key_pressed[Types.ACTIONS.ACTION_USE.getKey()[0]];
@@ -132,25 +151,4 @@ public class Utils
         return maxIndex;
     }
 
-    /**
-     * Random tie breaking by slightly altering the input value
-     * @param input value to be altered
-     * @param epsilon relative amount the input will be altered
-     * @param random random variable in range [0,1]
-     * @return epsilon-random-altered input value
-     */
-    public static double tiebreaker(double input, double epsilon, double random)
-    {
-        ////Option 1: add random value: works well as long as inputs are not in same range as epsilon
-        //return input + epsilon*random;
-
-        //multiply with random value: works well as long as inputs are not exactly the same as -epsilon (in such case it fails to break ties)
-        //thus it will definitely work if inputs are normalized between 0 and 1, otherwise it could fail, but with an EXTREMELY low probability
-        if(input != -epsilon) {
-            return (input + epsilon) * (1.0 + epsilon * (random - 0.5));
-        }else {
-            System.out.format("Utils.tiebreaker(): WARNING: value equal to epsilon: %f\n",input);
-            return (input + epsilon) * (1.0 + epsilon * (random - 0.5));
-        }
-    }
 }

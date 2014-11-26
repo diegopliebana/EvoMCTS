@@ -50,8 +50,6 @@ public class SingleTreeNode
 
     public void mctsSearch(ElapsedCpuTimer elapsedTimer) {
 
-        //lastBounds[0] = curBounds[0];
-        //lastBounds[1] = curBounds[1];
 
         double avgTimeTaken = 0;
         double acumTimeTaken = 0;
@@ -136,19 +134,13 @@ public class SingleTreeNode
             double childValue = hvVal / (child.nVisits + this.epsilon);
 
             childValue = Utils.normalise(childValue, bounds[0], bounds[1]);
-            //childValue = Utils.normalise(childValue, lastBounds[0], lastBounds[1]);
 
-//            double uctValue = childValue +
-//                    Agent.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon)) +
-//                    this.m_rnd.nextDouble() * this.epsilon;
-
-            double tieBreaker = (1.0 + this.epsilon * (this.m_rnd.nextDouble() - 0.5));
             double uctValue = childValue +
                     Agent.K * Math.sqrt(Math.log(this.nVisits + 1) / (child.nVisits + this.epsilon));
 
-
             // small sampleRandom numbers: break ties in unexpanded nodes
-            uctValue = Utils.tiebreaker(uctValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+            uctValue = Utils.noise(uctValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+
             if (uctValue > bestValue) {
                 selected = child;
                 bestValue = uctValue;
@@ -181,7 +173,7 @@ public class SingleTreeNode
                 double hvVal = child.totValue;
 
                 // small sampleRandom numbers: break ties in unexpanded nodes
-                hvVal = Utils.tiebreaker(hvVal, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+                hvVal = Utils.noise(hvVal, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
                 if (hvVal > bestValue) {
                     selected = child;
                     bestValue = hvVal;
@@ -219,8 +211,6 @@ public class SingleTreeNode
         }
 
 
-        //double delta = value(rollerState);
-
         double rawDelta = value(rollerState);
 
         //Discount factor:
@@ -240,11 +230,6 @@ public class SingleTreeNode
             bounds[1] = delta;
             //System.out.format("bound1 %f %d %d\n",delta,thisDepth,state.getGameTick());
         }
-
-        //if(delta < curBounds[0]) curBounds[0] = delta;
-        //if(delta > curBounds[1]) curBounds[1] = delta;
-
-        //delta = Utils.normalise(delta ,lastBounds[0], lastBounds[1]);
 
         return delta;
     }
@@ -306,14 +291,8 @@ public class SingleTreeNode
                     allEqual = false;
                 }
 
-//                double tieBreaker = m_rnd.nextDouble() * epsilon;
-//                if (children[i].nVisits + tieBreaker > bestValue) {
-//                    bestValue = children[i].nVisits + tieBreaker;
-//                    selected = i;
-//                }
-
                 double childValue = children[i].nVisits;
-                childValue = Utils.tiebreaker(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+                childValue = Utils.noise(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
                 if (childValue > bestValue) {
                     bestValue = childValue;
                     selected = i;
@@ -341,16 +320,10 @@ public class SingleTreeNode
 
         for (int i=0; i<children.length; i++) {
 
-//            double tieBreaker = m_rnd.nextDouble() * epsilon;
-//            if(children[i] != null && children[i].totValue + tieBreaker > bestValue) {
-//                bestValue = children[i].totValue + tieBreaker;
-//                selected = i;
-//            }
-
             if(children[i] != null) {
                 //double tieBreaker = m_rnd.nextDouble() * epsilon;
                 double childValue = children[i].totValue / (children[i].nVisits + this.epsilon);
-                childValue = Utils.tiebreaker(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+                childValue = Utils.noise(childValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
                 if (childValue > bestValue) {
                     bestValue = childValue;
                     selected = i;

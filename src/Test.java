@@ -22,6 +22,7 @@ public class Test
         //String controller = "FastEvoMCTS.Agent";
         String controller = "TEVC_MCTS.Agent";
         String controller_ol = "sampleOLMCTS.Agent";
+        String controller_mol = "MacroOLMCTS.Agent";
         String pathfinder = "controllers.pathfinder.Agent";
 
         //Available games:
@@ -46,15 +47,20 @@ public class Test
         boolean visuals = true;
         String recordActionsFile = null; //where to record the actions executed. null if not to save.
         int seed = new Random().nextInt();
-        System.out.println("Seed = " + seed);
+        //System.out.println("Seed = " + seed);
         String wkDir = System.getProperty("user.dir");
         String filename = wkDir.substring(wkDir.lastIndexOf("\\")+1) + ".csv";
         //String filename = wkDir.substring(wkDir.lastIndexOf("\\")+1) + ".txt";
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 7c9b4a951933d7a1efb41d8ac84bc5a105e900c9
         //Game and level to play
 
         int gameIdx = 3;
-        int levelIdx = 0; //level names from 0 to 4 (game_lvlN.txt).
+        int levelIdx = 6; //level names from 0 to 4 (game_lvlN.txt).
         String game = gamesPath + games[gameIdx] + ".txt";
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
 
@@ -63,8 +69,13 @@ public class Test
 
         // 2. This plays a game in a level by the controller.
         //ArcadeMachine.runOneGame(game, level1, visuals, sampleMCTSController, recordActionsFile, seed);
+<<<<<<< HEAD
         //ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
         //ArcadeMachine.runOneGame(game, level1, visuals, controller_ol, recordActionsFile, seed);
+=======
+        ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
+        //ArcadeMachine.runOneGame(game, level1, visuals, controller_mol, recordActionsFile, seed);
+>>>>>>> 7c9b4a951933d7a1efb41d8ac84bc5a105e900c9
 
 
         // 3. This replays a game from an action file previously recorded
@@ -92,8 +103,12 @@ public class Test
 
         //RightLeft_2014_11_20(gamesPath, games, controller, sampleMCTSController, seed, filename);
         //Circle_2014_11_21(gamesPath, games, controller, sampleMCTSController, seed, filename);
+<<<<<<< HEAD
         Chase_2014_11_21(gamesPath, games, controller, sampleMCTSController, seed);
         //ChaseTest_2014_11_26(gamesPath, games, controller, sampleMCTSController, seed);
+=======
+        //Chase_2014_11_21(gamesPath, games, controller, sampleMCTSController, seed);
+>>>>>>> 7c9b4a951933d7a1efb41d8ac84bc5a105e900c9
 
         /*int M = 100;
         boolean isFixedTest = true;
@@ -128,6 +143,41 @@ public class Test
             ArcadeMachine.runGames(game, levels, M, controller, saveActions? actionFiles:null, seed);
         }
                      */
+
+
+        //runNMacro(gamesPath, games, controller_mol, args);
+
+    }
+
+    public static void runNMacro(String gamesPath, String[] games, String controller, String args[])
+    {
+        int gameId = -1;
+        if(args!=null && args.length==1)
+        {
+            gameId = Integer.parseInt(args[0]);
+        }
+
+        int NGames = 20, NRepetitions = 100;
+        int macroActionLengths[] = new int[]{1,2,3,5};
+
+        if(gameId == -1) {
+            for (int i = 0; i < NGames; ++i) {
+
+                String game = gamesPath + games[i] + ".txt";
+                String level = gamesPath + games[i] + "_lvl0.txt";
+                String filename = games[i] + "_lvl0_" + controller + ".txt";
+
+                ArcadeMachine.runGamesMacroN(game, level, NRepetitions, macroActionLengths, controller, false, filename);
+            }
+        }else
+        {
+            String game = gamesPath + games[gameId] + ".txt";
+            String level = gamesPath + games[gameId] + "_lvl0.txt";
+            String filename = games[gameId] + "_lvl0_" + controller + ".txt";
+
+            ArcadeMachine.runGamesMacroN(game, level, NRepetitions, macroActionLengths, controller, false, filename);
+        }
+
     }
 
     public static void RightLeft_2014_11_20(String gamesPath, String[] games, String controller, String sampleMCTSController, int seed, String filename){

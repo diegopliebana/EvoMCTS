@@ -101,7 +101,7 @@ public class Bandit extends FitVectorSource{
             double uctValue = q +
                      K * Math.sqrt(Math.log(bigN + 1) / (n[i] + this.epsilon));
 
-            uctValue = Utils.tiebreaker(uctValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
+            uctValue = Utils.noise(uctValue, this.epsilon, this.m_rnd.nextDouble());     //break ties randomly
             if (uctValue > bestValue) {
                 lastSelected = i;
                 bestValue = uctValue;

@@ -31,17 +31,17 @@ filenames = ['tevcMCTS_TEVC_MCTS.Agent_Dist14','tevcMCTS_TEVC_MCTS.Agent_Dist13'
              'tevcMCTS_TEVC_MCTS.Agent_Dist2','tevcMCTS_TEVC_MCTS.Agent_Dist1']
 
 
-filenames = ['leftright_u1_1feat_TEVC_MCTS.Agent_Dist10','leftright_u1_1feat_TEVC_MCTS.Agent_Dist9','leftright_u1_1feat_TEVC_MCTS.Agent_Dist8',
-             'leftright_u1_1feat_TEVC_MCTS.Agent_Dist7', 'leftright_u1_1feat_TEVC_MCTS.Agent_Dist6','leftright_u1_1feat_TEVC_MCTS.Agent_Dist5',
-             'leftright_u1_1feat_TEVC_MCTS.Agent_Dist4', 'leftright_u1_1feat_TEVC_MCTS.Agent_Dist3','leftright_u1_1feat_TEVC_MCTS.Agent_Dist2',
-             'leftright_u1_1feat_TEVC_MCTS.Agent_Dist1']
+filenames = ['lr_fixedPos_TECVu1_1000it_100r_TEVC_MCTS.Agent_Dist10','lr_fixedPos_TECVu1_1000it_100r_TEVC_MCTS.Agent_Dist9','lr_fixedPos_TECVu1_1000it_100r_TEVC_MCTS.Agent_Dist8',
+             'lr_fixedPos_TECVu1_1000it_100r_TEVC_MCTS.Agent_Dist7', 'lr_fixedPos_TECVu1_1000it_100r_TEVC_MCTS.Agent_Dist6','lr_fixedPos_TECVu1_1000it_100r_TEVC_MCTS.Agent_Dist5',
+             'lr_fixedPos_TECVu1_1000it_100r_TEVC_MCTS.Agent_Dist4', 'lr_fixedPos_TECVu1_1000it_100r_TEVC_MCTS.Agent_Dist3','lr_fixedPos_TECVu1_1000it_100r_TEVC_MCTS.Agent_Dist2',
+             'lr_fixedPos_TECVu1_1000it_100r_TEVC_MCTS.Agent_Dist1']
 
 
-filenames = ['circle_u1_1feat_TEVC_MCTS.Agent_Dist14','circle_u1_1feat_TEVC_MCTS.Agent_Dist13','circle_u1_1feat_TEVC_MCTS.Agent_Dist12',
-             'circle_u1_1feat_TEVC_MCTS.Agent_Dist11','circle_u1_1feat_TEVC_MCTS.Agent_Dist10','circle_u1_1feat_TEVC_MCTS.Agent_Dist9',
-             'circle_u1_1feat_TEVC_MCTS.Agent_Dist8','circle_u1_1feat_TEVC_MCTS.Agent_Dist7','circle_u1_1feat_TEVC_MCTS.Agent_Dist6',
-             'circle_u1_1feat_TEVC_MCTS.Agent_Dist5','circle_u1_1feat_TEVC_MCTS.Agent_Dist4','circle_u1_1feat_TEVC_MCTS.Agent_Dist3',
-             'circle_u1_1feat_TEVC_MCTS.Agent_Dist2','circle_u1_1feat_TEVC_MCTS.Agent_Dist1']
+filenames = ['corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist14','corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist13','corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist12',
+             'corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist11','corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist10','corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist9',
+             'corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist8','corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist7','corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist6',
+             'corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist5','corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist4','corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist3',
+             'corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist2','corners_fixedPos_TEVCu1_1000it_100r_TEVC_MCTS.Agent_Dist1']
 
 averages = [[] for filename in filenames]
 std_err = [[] for filename in filenames]
@@ -51,7 +51,7 @@ for filename in filenames:
 
     
     #datafile = '../circle/' + filename + '.csv'
-    datafile = '../circle/fixedPos/tevcMCTS_circle_u1_1feat_100rx1000it/' + filename + '.txt'
+    datafile = '../circle/fixedPos_23Nov/' + filename + '.txt'
     #datafile = '../circle/fixedPos/' + filename + '.txt'
     #datafile = '../tomConsoleRuns/' + filename + '.txt'
 
@@ -121,9 +121,9 @@ plt.xticks(rangeN, labels)
     
 
 
-plt.xlabel("Rollout length", fontsize=16)#
+plt.xlabel("Rollout length", fontsize=16)
 plt.ylabel("Distance to goal", fontsize=16)
 
 plt.show()
 
-fig.savefig("../circle/fixedPos/tevcMCTS_circle_u1_1feat_100rx1000it_2xStdDev.pdf")
+fig.savefig("../circle/fixedPos_23Nov/corners_fixedPos_TEVCu1_1000it_100r_2xStdDev.pdf")
