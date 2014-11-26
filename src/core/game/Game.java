@@ -543,6 +543,8 @@ public abstract class Game
                 ended = true;
             if(Config.FEATURES == Config.CIRCLE_FEATURES && this.getGameTick() > Config.OPTIMAL_MAX_ACTIONS_CIRCLE)
                 ended = true;
+            if(Config.FEATURES == Config.CHASE_FEATURES && this.getGameTick() > Config.OPTIMAL_MAX_ACTIONS_CHASETEST)
+                ended = true;
         }
         return handleResult();
     }

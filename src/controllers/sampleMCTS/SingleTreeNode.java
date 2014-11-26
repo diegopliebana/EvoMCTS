@@ -216,7 +216,11 @@ public class SingleTreeNode
         //Discount factor:
         double accDiscount = Math.pow(Agent.REWARD_DISCOUNT,thisDepth); //1
         //double accDiscount = Math.pow(Config.REWARD_DISCOUNT, thisDepth + (state.getGameTick() - 1));   //consider the distance from the beginning of the game
+
         double delta = rawDelta * accDiscount;
+
+        //linearly bias reward in order to minimize distance to end (penalize each move)
+        delta = delta + Agent.REWARD_STEP_PENALTY * (thisDepth + (state.getGameTick() - 1));
 
         if(delta < bounds[0]) {
             bounds[0] = delta;

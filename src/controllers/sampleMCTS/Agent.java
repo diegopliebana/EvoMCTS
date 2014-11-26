@@ -22,7 +22,8 @@ public class Agent extends AbstractPlayer {
     public static int MCTS_ITERATIONS = 100;
     public static int ROLLOUT_DEPTH = 10;
     public static double K = Math.sqrt(2);
-    public static double REWARD_DISCOUNT = 1.0;
+    public static double REWARD_DISCOUNT = 1.0; //value of 1.0 equals to no discount
+    public static double REWARD_STEP_PENALTY = 0.0; //defines received reward after each step/action; set to < 0.0 to minimize total number of steps
     public static Types.ACTIONS[] actions;
 
     /**
