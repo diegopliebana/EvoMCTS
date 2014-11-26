@@ -50,7 +50,7 @@ public class Test
         String wkDir = System.getProperty("user.dir");
         String filename = wkDir.substring(wkDir.lastIndexOf("\\")+1) + ".csv";
         //String filename = wkDir.substring(wkDir.lastIndexOf("\\")+1) + ".txt";
-		
+
         //Game and level to play
 
         int gameIdx = 3;
@@ -59,11 +59,11 @@ public class Test
         String level1 = gamesPath + games[gameIdx] + "_lvl" + levelIdx +".txt";
 
         // 1. This starts a game, in a level, played by a human.
-        // ArcadeMachine.playOneGame(game, level1, recordActionsFile, seed);
+        //ArcadeMachine.playOneGame(game, level1, recordActionsFile, seed);
 
         // 2. This plays a game in a level by the controller.
         //ArcadeMachine.runOneGame(game, level1, visuals, sampleMCTSController, recordActionsFile, seed);
-        ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
+        //ArcadeMachine.runOneGame(game, level1, visuals, controller, recordActionsFile, seed);
         //ArcadeMachine.runOneGame(game, level1, visuals, controller_ol, recordActionsFile, seed);
 
 
@@ -93,6 +93,7 @@ public class Test
         //RightLeft_2014_11_20(gamesPath, games, controller, sampleMCTSController, seed, filename);
         //Circle_2014_11_21(gamesPath, games, controller, sampleMCTSController, seed, filename);
         Chase_2014_11_21(gamesPath, games, controller, sampleMCTSController, seed);
+        //ChaseTest_2014_11_26(gamesPath, games, controller, sampleMCTSController, seed);
 
         /*int M = 100;
         boolean isFixedTest = true;
@@ -180,7 +181,7 @@ public class Test
         //This plays the first L levels, M times each. Actions to file optional (set saveActions to true).
         int L = 5;      //number of first L levels
         int M = 200;     //number of repeats (for statistical accuracy) of each level
-        int rollOutLength = 40;
+        int rollOutLength = 10;
 
         String[] levels = new String[L];
 
@@ -188,8 +189,35 @@ public class Test
             levels[j] = gamesPath + games[gameIdx] + "_lvl" + j +".txt";
 
         boolean isFixedTest = false;
-        //ArcadeMachine.runGamesLN(game, levels, M, rollOutLength, controller, isFixedTest, seed, filename);
-        ArcadeMachine.runGamesLN(game, levels, M, rollOutLength, sampleMCTSController, isFixedTest, seed, filename);
+        ArcadeMachine.runGamesLN(game, levels, M, rollOutLength, controller, isFixedTest, seed, filename);
+        //ArcadeMachine.runGamesLN(game, levels, M, rollOutLength, sampleMCTSController, isFixedTest, seed, filename);
 
     }
+
+
+    public static void ChaseTest_2014_11_26(String gamesPath, String[] games, String controller, String sampleMCTSController, int seed){
+
+        String wkDir = System.getProperty("user.dir");
+        String filename = wkDir.substring(wkDir.lastIndexOf("\\")+1) + ".txt";
+
+        int gameIdx = 3;
+        //int levelIdx = 0; //level names from 0 to 4 (game_lvlN.txt).
+        String game = gamesPath + games[gameIdx] + ".txt";
+
+        //This plays the first L levels, M times each. Actions to file optional (set saveActions to true).
+        int L = 1;      //number of levels starting with lvl5
+        int M = 1000;     //number of repeats (for statistical accuracy) of each level
+        int rollOutLength = 10;
+
+        String[] levels = new String[L];
+
+        for(int j = 0; j < L; ++j)
+            levels[j] = gamesPath + games[gameIdx] + "_lvl" + (5+j) +".txt";
+
+        boolean isFixedTest = false;
+        ArcadeMachine.runGamesLN(game, levels, M, rollOutLength, controller, isFixedTest, seed, filename);
+        //ArcadeMachine.runGamesLN(game, levels, M, rollOutLength, sampleMCTSController, isFixedTest, seed, filename);
+
+    }
+
 }

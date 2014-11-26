@@ -9,6 +9,7 @@ import tools.Vector2d;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by diego on 10/03/14.
@@ -49,9 +50,9 @@ public class CircleFeatures extends NavFeatureSource
     }
 
     @Override
-    public HashMap<String, Double> getFeatureVector()
+    public LinkedHashMap<String, Double> getFeatureVector()
     {
-        HashMap<String, Double> features = new HashMap<String, Double>();
+        LinkedHashMap<String, Double> features = new LinkedHashMap<String, Double>();
         features.put("angry:"+WIN, distanceToWin);
         //features.put("scared:"+LOSE, distanceToLose);
         return features;

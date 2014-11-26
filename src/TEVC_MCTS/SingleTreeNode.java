@@ -370,6 +370,9 @@ public class SingleTreeNode extends TreeNode
         //double accDiscount = Math.pow(Config.REWARD_DISCOUNT, thisDepth + (state.getGameTick() - 1));   //consider the distance from the beginning of the game
         double delta = rawDelta * accDiscount;
 
+        //linearly bias reward in order to minimize distance to end (penalize each move)
+        delta = delta + Config.REWARD_STEP_PENALTY * (thisDepth + (state.getGameTick() - 1));
+
 //        if(rawDelta == HUGE_POSITIVE || rawDelta == HUGE_NEGATIVE)
 //        {
 //            memory.manageGameEnd(state, rollerState);

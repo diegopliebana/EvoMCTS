@@ -11,6 +11,7 @@ import tools.Vector2d;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Iterator;
 
 /**
@@ -219,9 +220,9 @@ public class GVGFeatureExtraction extends NavFeatureSource
     }
 
     @Override
-    public HashMap<String, Double> getFeatureVector()
+    public LinkedHashMap<String, Double> getFeatureVector()
     {
-        HashMap<String, Double> features = new HashMap<String, Double>();
+        LinkedHashMap<String, Double> features = new LinkedHashMap<String, Double>();
         if(npcDist2First != null)  addFeaturesFromMap(npcDist2First, features, "npc:");
         if(resDist2First != null)  addFeaturesFromMap(resDist2First, features, "res:");
         if(portDist2First != null) addFeaturesFromMap(portDist2First, features, "por:");

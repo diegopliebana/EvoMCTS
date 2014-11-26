@@ -11,6 +11,7 @@ import tools.Vector2d;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Iterator;
 
 /**
@@ -19,7 +20,7 @@ import java.util.Iterator;
 public abstract class NavFeatureSource extends Navigable
 {
 
-    public abstract HashMap<String, Double> getFeatureVector();
+    public abstract LinkedHashMap<String, Double> getFeatureVector();
     protected abstract void calcFeatures(StateObservation stateObs);
     public abstract double valueFunction(StateObservation stateObs);
     public abstract double[] getHandTunedWeights(StateObservation stateObs);

@@ -9,6 +9,7 @@ import tools.Vector2d;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Iterator;
 
 /**
@@ -52,9 +53,9 @@ public class ChaseFeatures extends NavFeatureSource
     }
 
     @Override
-    public HashMap<String, Double> getFeatureVector()
+    public LinkedHashMap<String, Double> getFeatureVector()
     {
-        HashMap<String, Double> features = new HashMap<String, Double>();
+        LinkedHashMap<String, Double> features = new LinkedHashMap<String, Double>();
         features.put("up_down_angry:"+ANGRY, up_down_angry);
         features.put("left_right_angry:"+ANGRY, left_right_angry);
         features.put("up_down_scared:"+SCARED, up_down_scared);
@@ -169,10 +170,18 @@ public class ChaseFeatures extends NavFeatureSource
         //Four actions, 2 features  (distance to angry, distance to scared)
         //These are constant because it is always good to increase distance with
         //angry goats and decrease it with scared ones.
+
+        //actions order: left, right, down, up
         return new double[]{ 0, -2, 0, 1,
                              0, 2, 0, -1,
-                             -2,0, 1, 0,
-                             2, 0, -1,0};
+                             2,0, -1, 0,
+                             -2, 0, 1,0};
+//        return new double[]{
+//                0, 0, 0, 0,
+//                0, 0, 0, 0,
+//                0, 0, 0, 0,
+//                0, 0, 0, 0
+//        };
     }
 
 

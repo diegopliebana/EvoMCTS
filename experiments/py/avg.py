@@ -32,7 +32,7 @@ mergeFiles = []         #don't merge any
 
 #filenames = ['2014_11_16 rl01-50 sampleMCTS d1.00','2014_11_16 rl01-50 sampleMCTS d0.99','2014_11_16 rl01-50 sampleMCTS d0.95','2014_11_16 rl01-50 sampleMCTS d0.90','2014_11_16 rl01-50 sampleMCTS d0.80','2014_11_16 rl01-50 sampleMCTS d0.50','2014_11_16 rl01-50 sampleMCTS d0.10','2014_11_16 rl01-50 sampleMCTS d0.01']
 #filenames = ['2014_11_16 rl01-50 FEMCTS uone d1.00','2014_11_16 rl01-50 FEMCTS uone d0.99','2014_11_16 rl01-50 FEMCTS uone d0.95','2014_11_16 rl01-50 FEMCTS uone d0.90','2014_11_16 rl01-50 FEMCTS uone d0.80','2014_11_16 rl01-50 FEMCTS uone d0.50','2014_11_16 rl01-50 FEMCTS uone d0.10','2014_11_16 rl01-50 FEMCTS uone d0.01']
-filenames = ['2014_11_16 rl01-50 d0.90 sampleMCTS','2014_11_16 rl01-50 d0.90 FEMCTS hand','2014_11_16 rl01-50 d0.90 FEMCTS rand','2014_11_16 rl01-50 d0.90 FEMCTS oneone','2014_11_16 rl01-50 d0.90 FEMCTS uone','2014_11_16 rl01-50 d0.90 FEMCTS band05','2014_11_16 rl01-50 d0.90 FEMCTS band10']
+filenames = ['2014_11_16 rl01-50 d0.90 sampleMCTS','2014_11_16 rl01-50 d0.90 FEMCTS hand','2014_11_16 rl01-50 d0.90 FEMCTS rand','2014_11_16 rl01-50 d0.90 FEMCTS oneone','2014_11_16 rl01-50 d0.90 FEMCTS uone','2014_11_16 rl01-50 d0.90 FEMCTS band10','2014_11_16 rl01-50 d0.90 FEMCTS band100']
 
 #filenames = ['2014_11_04 sampleMCTS','2014_11_04 sampleMCTS (1-8)','2014_11_16 rl01-50 d0.90 sampleMCTS']; mergeFiles = [[0,1]]
 #filenames = ['2014_11_04 TEVCMCTS handtuned','2014_11_04 TEVCMCTS handtuned (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS hand']; mergeFiles = [[0,1]]
@@ -41,24 +41,35 @@ filenames = ['2014_11_16 rl01-50 d0.90 sampleMCTS','2014_11_16 rl01-50 d0.90 FEM
 #filenames = ['2014_11_04 TEVCMCTS u+one','2014_11_04 TEVCMCTS u+one (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS uone']; mergeFiles = [[0,1]]
 #filenames = ['2014_11_04 TEVCMCTS bandit05','2014_11_04 TEVCMCTS bandit05 (1-8)','2014_11_16 rl01-50 d0.90 FEMCTS band05','2014_11_16 rl01-50 d0.90 FEMCTS band10','2014_11_16 rl01-50 d0.90 FEMCTS band15','2014_11_16 rl01-50 d0.90 FEMCTS band20','2014_11_16 rl01-50 d0.90 FEMCTS band50','2014_11_16 rl01-50 d0.90 FEMCTS band100']; mergeFiles = [[0,1]]
 
+###-- FOLDER: corners
 
+#filenames = ['2014_11_21 RL05-100 d0.9 sampleMCTS','2014_11_21 RL05-100 d0.9 FEMCTS hand','2014_11_21 RL05-100 d0.9 FEMCTS rand','2014_11_21 RL05-100 d0.9 FEMCTS oneone','2014_11_21 RL05-100 d0.9 FEMCTS uone','2014_11_21 RL05-100 d0.9 FEMCTS band05','2014_11_21 RL05-100 d0.9 FEMCTS band20','2014_11_21 RL05-100 d0.9 FEMCTS band100','2014_11_21 RL05-100 d0.9 FEMCTS band1000']
 
-###-- Config output --###
+###-- User config section --###
 
-analysis_type = 2 #from 16.11.2014 on use only analysis 2 -> percentage of optimal samples (results for others were not computed as they were biased due to the 1000 step limit)
-    # 0 - average date (raw input)
-    # 1 - optimality of date (e.g., optimal number of steps divided by average number of steps) -- requires setting optimal_performance
-    # 2 - percentage of optimal samples -- requires setting optimal_performance
-optimal_performance = 9
-    # leftRight - 9
-    # circle - 13
-confidence_bounds_factor = 2.63
+game = 0
+    # 0 - leftRight
+    # 1 - corners
+  
+confidence_bounds_factor = 0.00
     # 2.63 -> 99% confidence interval
     # 1.98 -> 95% confidence interval
     # 0.00 -> disabled
 
 
+analysis_type = 2 #from 16.11.2014 on use only analysis 2 -> percentage of optimal samples (results for others were not computed as they were biased due to the 1000 step limit)
+    # 0 - average date (raw input)
+    # 1 - optimality of date (e.g., optimal number of steps divided by average number of steps) -- requires setting optimal_performance
+    # 2 - percentage of optimal samples -- requires setting optimal_performance
+optimal_performance_leftRight = 9
+optimal_performance_corners = 13
+
 ###-- End of config section (do not change anything below here) --###
+
+if game == 0:
+    optimal_performance = optimal_performance_leftRight
+elif game == 1:
+    optimal_performance = optimal_performance_corners
 
 #Create a figure
 fig = pylab.figure()
@@ -76,9 +87,10 @@ for j in xrange(len(filenames)):
 
     filename = filenames[j]
 
-    #datafile = '../circle/' + filename + '.csv'
-    datafile = '../leftright/' + filename + '.csv'
-    #datafile = '../tomConsoleRuns/' + filename + '.txt'    #leftRight (Tom)
+    if game == 0:
+        datafile = '../leftright/' + filename + '.csv'
+    elif game == 1:
+        datafile = '../corners/' + filename + '.csv'
 
     print 'loading', datafile
     r = pylab.loadtxt(datafile, comments='#', delimiter=',')
@@ -128,7 +140,10 @@ for i in xrange(len(mergeFiles)):
 #errorbar(roll_depth,averages,std_errs, linestyle='None')
 
 for i in xrange(len(averages)):
-    errorfill(roll_depth[i],averages[i],std_errs[i])
+    if game == 0:
+        errorfill(roll_depth[i],averages[i],std_errs[i])
+    elif game == 1:
+        errorfill( range(1,len(averages[i])*5,5)  ,averages[i],std_errs[i])
     #errorfill(roll_depth[-7:],averages[-7:],std_errs[-7:]) #for leftright
     #errorfill(roll_depth[-5:],averages[-5:],std_errs[-5:]) #for circle
     #errorfill(roll_depth[-7:],averages[-7:],std_errs[-7:]) #for leftright
